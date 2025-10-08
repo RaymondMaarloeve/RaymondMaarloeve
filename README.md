@@ -1,4 +1,4 @@
-# Raymond Maarloeve sp. z o.o.
+# Raymond Maarloeve sp. z o.o. 2nd term
 
 ![Unity](https://img.shields.io/badge/Engine-Unity%206-3c3c3c?logo=unity)
 ![Language](https://img.shields.io/badge/Language-C%23%20%7C%20Python-blue?logo=csharp&logoColor=white)
@@ -87,69 +87,84 @@ Whether you're on Windows or Linux, the game runs seamlessly, so you can enjoy t
 
 ---
 
-## 🎮 Assumptions
+## Introduction to development plan
 
-### 🕹️ Gameplay
-
-- **Game Objective:**  
-  The player takes on the role of a detective investigating a murder case in a small NPC community. The investigation is based on analyzing clues and conversing with AI-controlled NPCs. In the end, the player reconstructs the sequence of events, determining their success or failure.
-
-- **Success Metrics:**  
-  - The game allows free world exploration and interactions with NPCs.  
-  - There are at least two sources of clues (e.g., NPC conversations + physical evidence).  
-  - The player can present their theory in the game's finale through an interactive sequence-building system.
-
-### 🧍 NPC Characters
-
-- **Behavior:**  
-  NPCs have unique personalities, daily schedules, and the ability to dynamically react to player actions.
-
-- **Success Metrics:**  
-  - Minimum number of NPCs: 6, target: 10  
-  - NPCs generate responses and make decisions using LLM  
-  - NPCs can dynamically change their routes in response to player interactions (eventually, also in response to interactions with other NPCs)
-
-### 🗺️ Map
-
-- **Appearance:**  
-  Each NPC in the game has their own home, and their placement is procedurally generated.
+The main goal of the project’s development is to improve the LLM system through collaboration with the PG server.  
+Additionally, some minor gameplay improvements and fixes are planned.  
+The server will primarily be used to train the model, but it will also serve as a platform for running more powerful models during testing.
 
 ---
 
-## 🎯 Development Goals
+## Assumptions
 
-### 👨‍🔧 Task Distribution
+### 1. PG Server
 
-#### Unity:
-- Paweł Reich  
-- Marek Nijakowski  
-- Paweł Dolak
+1. Connect to the PG server.  
+2. Select the best model, taking into account the server’s capabilities and the average user’s hardware.  
+3. Create a new LLM manager that allows multiple models to operate in parallel.  
+4. Distill a large LLM into smaller, specialized versions.
 
-#### LLM:
-- Maciej Pitucha  
-- Maciej Włudarski  
-- Karol Rzepiński  
-- Kamil Włodarczyk  
-- Łukasz Jastrzębski  
-- Michał Eisler  
-- Łukasz Czarzasty
+---
 
-### 📍 Milestones
+### 2. Narrator
 
-#### 1st Milestone – Game Prototype (without LLM)
-- A game base exists where characters move around  
-- NPC actions are taken randomly or follow predefined patterns
+A more advanced model will be chosen for the narrator to reduce story generation errors.  
+A new mechanism for generating a chronological timeline of events on the day of the crime will be added.  
+This will make the investigation and fact-connecting process more engaging for the player.  
+Furthermore, the murderer will be forced to lie, introducing the need for comparing facts and testimonies.
 
-#### 2nd Milestone – LLM Integration with Unity
-- A day and night system is introduced  
-- The dataset contains 50% of the intended prompts
+---
 
-#### 3rd Milestone – Final Touches
-- Main menu  
-- Soundtrack  
-- Credits  
-- Fine-tuning of the LLM model completed
+### 3. Game
 
-### 🗓️ Task Schedule
-📌 [Gantt Schedule (polish language)](https://docs.google.com/spreadsheets/d/1uFGMCmiO6wAubyI_MKR1ynXz4QdD-30tejBS1lcy7w8/edit?usp=sharing)
+#### 3.1 Final Minigame
+
+The final minigame system will be redesigned.  
+Currently, solving the case involves selecting correct facts and identifying the killer.  
+In this new version, the player will have to **verbally describe the sequence of events** and **convince the LLM** who the murderer is during a dialogue.
+
+#### 3.2 Launcher
+
+The launcher’s functionality will be moved into the in-game menu.  
+From the menu, players will be able to **download models** and **define NPC personalities**.
+
+#### 3.3 Gameplay
+
+1. Implement a better camera system to enhance immersion and fix NPC visibility issues.  
+2. Add new character models and associated actions.  
+3. Display a small speech bubble above each NPC showing their current activity.  
+4. Allow NPCs to engage in conversations with each other.  
+5. Introduce a detective notebook system for recording notes about each NPC.  
+6. Improve the minimap to better indicate NPC positions.
+
+---
+
+### 4. Publication
+
+The game will be published on a selected gaming platform.
+
+---
+
+## 5. Deliverables
+
+### First Milestone
+
+1. Working infrastructure for model communication with the PG server.  
+2. Distilled NPC model.  
+3. Improved narrator model.  
+4. NPCs capable of conversing with one another.  
+5. Some new character models and actions.  
+6. Detective notebook system for NPC tracking.  
+7. Improved minimap and NPC indicators.
+
+### Second Milestone / Final Submission
+
+1. Launcher functionality moved into the main menu.  
+2. Additional character models and actions.  
+3. NPC action indicator (speech bubble).  
+4. Fixed and improved camera system.  
+5. NPC personality descriptions transmitted to the model via embeddings.  
+6. New final minigame system.  
+7. Public release of the game.
+
 
