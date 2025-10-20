@@ -70,7 +70,7 @@ public class CameraFollow : MonoBehaviour
             }
             else
             {
-                transform.LookAt(target.position);
+                transform.LookAt(target.position + Vector3.up * 2.0f);
             }
         }
     }
