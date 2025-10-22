@@ -491,8 +491,8 @@ public class NPC : MonoBehaviour
         string resp = null;
         
         Debug.Log("Drawing conclusions...");
-    
-        LlmManager.Instance.Chat(GameManager.Instance.gameConfig.NarratorModelId.ToString(), messages, result =>
+
+        LlmManager.Instance.Chat("", messages, result =>
         {
             callbackCalled = true;
             resp = result.response;
