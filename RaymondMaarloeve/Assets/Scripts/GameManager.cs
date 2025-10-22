@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour
     
     private List<string> archetypes;
     public GeneratedHistoryDTO generatedHistory;
-    public ConvertHistoryToBlocksDTO storyBlocks;
 
     public NPC murdererNPC;
 
@@ -44,8 +43,6 @@ public class GameManager : MonoBehaviour
     [Header("Narrator")]
     [SerializeField] private bool DontGenerateHistory = false;
     [SerializeField] private string historyJSON = "";
-    [SerializeField] private bool DontConvertHistoryToBlocks = false;
-    [SerializeField] private string historyBlocksJSON = "";
 
     [Header("Decision Making")]
     public bool SkipRelevance = false;
@@ -96,13 +93,6 @@ public class GameManager : MonoBehaviour
             generatedHistory = JsonUtility.FromJson<GeneratedHistoryDTO>(historyJSON);
         else
             yield return StartCoroutine(GenerateHistory());
-        
-        if (DontConvertHistoryToBlocks)
-            storyBlocks = JsonUtility.FromJson<ConvertHistoryToBlocksDTO>(historyBlocksJSON);
-        else
-            yield return StartCoroutine(ConvertHistoryToBlocks());
-
-        MiniGameManager.Instance.Setup(storyBlocks.key_events, storyBlocks.false_events);
 
         MapGenerator.Instance.GenerateMap();
         
@@ -119,8 +109,7 @@ public class GameManager : MonoBehaviour
         }
         
         var localCharacters = generatedHistory.characters.FindAll(x => !x.dead).ToList();
-        var localStoryBlocks = storyBlocks.key_events.ToList();
-        
+
         Debug.Log("Game Manager: " + localCharacters.Count + " NPCs to spawn");
 
         foreach (var characterDTO in localCharacters)
@@ -159,14 +148,6 @@ public class GameManager : MonoBehaviour
                 system = new LlmDecisionMaker();
             }
             npcComponent.Setup(system, npcModel.Id.ToString(), characterDTO);
-            
-            if (localStoryBlocks.Count > 0)
-            {
-                var storyBlock = localStoryBlocks[Random.Range(0, localStoryBlocks.Count)];
-                localStoryBlocks.Remove(storyBlock);
-                npcComponent.SystemPrompt += "VERY IMPORTANT (it plays a very big role to You): You know that at the day of murder " + storyBlock;
-            }
-            
             HashSet<BuildingData.BuildingType> allowedTypes = new HashSet<BuildingData.BuildingType>()
             {
                 BuildingData.BuildingType.House,
@@ -427,88 +408,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Coroutine that generates blocks from Story using Narrator LLM Model,
-    /// If the generation fails, it retries automatically.
-    /// </summary>
-    /// <returns>IEnumerator for coroutine execution.</returns>
-    private IEnumerator ConvertHistoryToBlocks()
-    {
-        string prompt = $"You will be given a short story.\n" +
-                        $"Extract SIX most important factual events.\n" +
-                        $"Then, think of TWO false sentences that do not occur in the story, but are believable enough to fool someone. " +
-                        $"You will NOT include names in the output." + 
-                        $"Output these sentences into a JSON Object structure:\n\n" +
-                        $"\"key_events\" — an array of exactly six short English sentences, each stating a concrete, factual event that actually appears in the story.\n" +
-                        $"\"false_events\" — an array of exactly two short English sentences that are believable but clearly did not happen in the story.\n" +
-                        $"Your response must be ONLY this EXACT CORRECT JSON object:\n" +
-                            $"{{\n\"key_events\": [\n" +
-                                $"\"Event 1 here.\",\n" +
-                                $"\"Event 2 here.\",\n" +
-                                $"\"Event 3 here.\",\n" +
-                                $"\"Event 4 here.\",\n" +
-                                $"\"Event 5 here.\",\n" +
-                                $"\"Event 6 here.\"\n" +
-                            $"],\n" +
-                            $"\"false_events\": [\n" +
-                                $"\"False event 1 here.\",\n" +
-                                $"\"False event 2 here.\"\n" +
-                            $"]\n}}";
-        List<Message> messages = new List<Message>();
-        messages.Add(new Message { role =  "system", content = prompt});
-        messages.Add(new Message { role =    "user", content = generatedHistory.story});
-        
-        while (true)
-        {
-            bool callbackCalled = false;
-            string resp = null;
-            
-            Debug.Log("Converting history to blocks...");
-        
-            LlmManager.Instance.Chat(gameConfig.NarratorModelId.ToString(), messages, result =>
-            {
-                callbackCalled = true;
-                resp = result.response;
-            }, (error) =>
-            {
-                Debug.LogError($"GameManager: ConvertHistoryToBlocks error: {error}");
-                callbackCalled = true;
-            }, 0.95f, 0.5f, 500);
-        
-            // Wait for the callback to be called
-            while (!callbackCalled)
-                yield return null;
-
-            if (resp == null)
-                continue;
-
-            if (!resp.Contains('{') || !resp.Contains('}'))
-            {
-                Debug.LogError($"GameManager: ConvertHistoryToBlocks error: missing JSON brackets\n{resp}");
-                continue;
-            } 
-            
-            string strippedResp = resp.Substring(resp.IndexOf('{'));
-            strippedResp = strippedResp.Substring(0, strippedResp.LastIndexOf('}') + 1);
-        
-            try
-            {
-                storyBlocks = JsonUtility.FromJson<ConvertHistoryToBlocksDTO>(strippedResp);
-            }
-            catch (Exception e)
-            {
-                Debug.LogError($"GameManager: ConvertHistoryToBlocks error: {e.Message}:\nFull response:{resp}\n\nStripped response:{strippedResp}");
-                continue;
-            }
-        
-            Debug.Log($"GameManager: ConvertHistoryToBlocks complete:\n{storyBlocks}");
-        
-            HistoryGenerated = true;
-            break;
-        }
-        
-    }
-    
     // Update is called once per frame
     void Update()
     {
@@ -594,12 +493,6 @@ public class GameManager : MonoBehaviour
     public static bool DumpStory()
     {
         Debug.Log(JsonUtility.ToJson(Instance.generatedHistory));
-        return true;
-    }
-    [ConsoleCommand("blocks", "Dumps ConvertHistoryToBlocksDTO as JSON")]
-    public static bool DumpBlocks()
-    {
-        Debug.Log(JsonUtility.ToJson(Instance.storyBlocks));
         return true;
     }
 
