@@ -176,63 +176,6 @@ public class LlmManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Loads a model on the LLM server.
-    /// </summary>
-    /// <param name="modelID">Unique identifier for the model.</param>
-    /// <param name="path">File system path to the model file.</param>
-    /// <param name="onComplete">Callback on successful response.</param>
-    /// <param name="onError">Callback on error.</param>
-    public void LoadModel(string modelID, string path, Action<MessageDTO> onComplete, Action<string> onError)
-    {
-        var data = new LoadModelDTO()
-        {
-            model_id = modelID,
-            model_path = path,
-            f16_kv = true,
-            n_ctx = 4096,
-            n_parts = -1,
-            seed = 42, // TODO: Make it randomized
-            n_gpu_layers = -1,
-        };
-        
-        QueuePostRequest<MessageDTO, LoadModelDTO>("load", data, onComplete, onError);
-    }
-
-    /// <summary>
-    /// Unloads a model from the LLM server.
-    /// </summary>
-    /// <param name="modelID">Unique identifier for the model.</param>
-    /// <param name="onComplete">Callback on successful response.</param>
-    /// <param name="onError">Callback on error.</param>
-    public void UnloadModel(string modelID, Action<MessageDTO> onComplete, Action<string> onError)
-    {
-        var data = new UnloadModelRequestDTO()
-        {
-            model_id = modelID
-        };
-        
-        QueuePostRequest<MessageDTO, UnloadModelRequestDTO>("unload", data, onComplete, onError);
-    }
-
-    /// <summary>
-    /// Registers a model with the LLM server, making it available for loading and inference.
-    /// </summary>
-    /// <param name="modelID">Unique identifier for the model.</param>
-    /// <param name="path">File system path to the model file.</param>
-    /// <param name="onComplete">Callback on successful response.</param>
-    /// <param name="onError">Callback on error.</param>
-    public void Register(string modelID, string path, Action<MessageDTO> onComplete, Action<string> onError)
-    {
-        var data = new RegisterDTO()
-        {
-            model_id = modelID,
-            model_path = path,
-        };
-        
-        QueuePostRequest<MessageDTO, RegisterDTO>("register", data, onComplete, onError);
-    }
-    
-    /// <summary>
     /// Sends a chat request to the LLM server using the specified model and message history.
     /// </summary>
     /// <param name="modelID">Unique identifier for the model to use.</param>
@@ -271,10 +214,6 @@ public class LlmManager : MonoBehaviour
             healthData =>
             {
                 IsConnected = healthData.healthy;
-                
-                foreach (var model in healthData.models)
-                    UnloadModel(model, GenericComplete, Debug.LogError);
-                
                 onComplete?.Invoke(IsConnected);
             },
             error =>
