@@ -11,15 +11,15 @@ using System.Collections;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    
+
     public GameObject[] npcPrefabs;
-    
+
     private int entityIDCounter = 0;
     public int GetEntityID() => ++entityIDCounter;
     public List<NPC> npcs = new List<NPC>();
     [HideInInspector] public bool LlmServerReady = false;
     [HideInInspector] public bool HistoryGenerated = false;
-    
+
     private List<string> archetypes;
     public GeneratedHistoryDTO generatedHistory;
 
@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private AudioSource musicAudioSource;
 
-    
     [Header("DEBUG")]
     [Header("Config")]
     [SerializeField] private bool useCustomGameConfig = false;
@@ -47,7 +46,6 @@ public class GameManager : MonoBehaviour
     [Header("Decision Making")]
     public bool SkipRelevance = false;
     public bool SkipConslusions = false;
-
 
     IEnumerator Start()
     {
@@ -95,7 +93,7 @@ public class GameManager : MonoBehaviour
             yield return StartCoroutine(GenerateHistory());
 
         MapGenerator.Instance.GenerateMap();
-        
+
         List<GameObject> npcPrefabsList = npcPrefabs.ToList();
 
         if (LlmServerReady && MapGenerator.Instance.IsMapGenerated)
@@ -130,13 +128,13 @@ public class GameManager : MonoBehaviour
             }
             
             int npcVariant = Random.Range(0, npcPrefabsList.Count);
-            
+
             GameObject newNpc = Instantiate(npcPrefabsList[npcVariant], npcPosition, Quaternion.identity);
             SceneManager.MoveGameObjectToScene(newNpc, SceneManager.GetSceneByName("Game"));
             npcPrefabsList.RemoveAt(npcVariant);
-            
+
             var npcComponent = newNpc.GetComponent<NPC>();
-            
+
             IDecisionSystem system;
             if (string.IsNullOrEmpty(npcModel.Path))
             {
@@ -306,7 +304,7 @@ public class GameManager : MonoBehaviour
                             $"age (an integer)\n" +
                             $"description (about who they are, their personality, what they saw at the moment of the murder, what they are doing during the story, how they feel, who they like or dislike, and one habit or routine they have)\n" +
                             $"murderer (boolean)\n" +
-                            $"dead (boolean)\n" + 
+                            $"dead (boolean)\n" +
                             $"Remember to NOT write a comma after description as it is an end of the child JSON object. Remember to output ONLY VALID JSON with structure given above. Remember to not write comma after last objects in list and in object!" +
                             $"Use this EXACT format for your output:\n\n" +
                             $"{{\n" +
@@ -317,19 +315,19 @@ public class GameManager : MonoBehaviour
                                     $"\"age\": 52,\n" +
                                     $"\"description\": \"You are a delusional man. You are 52 years old. [Add more details here.]\",\n" +
                                     $"\"murderer\": false\n" +
-                                    $"\"dead\": false\n" + 
+                                    $"\"dead\": false\n" +
                                     $"}}," +
                                 $"\n...\n]" +
                             $"\n}}\n";
-        
+
         List<Message> messages = new List<Message>();
-        messages.Add(new Message { role =  "user", content = prompt});
+        messages.Add(new Message { role = "user", content = prompt });
 
         while (true)
         {
             bool callbackCalled = false;
             string resp = null;
-        
+
             Debug.Log("Generating history...");
             
             LlmManager.Instance.Chat(gameConfig.NarratorModelId.ToString(), messages, result =>
@@ -341,7 +339,7 @@ public class GameManager : MonoBehaviour
                 Debug.LogError($"GameManager: GenerateHistory error: {error}");
                 callbackCalled = true;
             }, 0.95f, 0.5f, 2000);
-        
+
             // Wait for the callback to be called
             while (!callbackCalled)
                 yield return null;
@@ -353,8 +351,8 @@ public class GameManager : MonoBehaviour
             {
                 Debug.LogError($"GameManager: GenerateHistory error: missing JSON brackets\n{resp}");
                 continue;
-            } 
-                
+            }
+
             string strippedResp = resp.Substring(resp.IndexOf('{'));
             strippedResp = strippedResp.Substring(0, strippedResp.LastIndexOf('}') + 1);
 
@@ -372,7 +370,7 @@ public class GameManager : MonoBehaviour
                     Debug.LogError($"GameManager: GenerateHistory error: generated history has {generatedHistory.characters.Count(x => x.murderer)} murderers!\nFull response:{resp}\n\nStripped response:{strippedResp}");
                     continue;
                 }
-                
+
                 if (generatedHistory.characters.Count(x => x.dead) != 1)
                 {
                     Debug.LogError($"GameManager: GenerateHistory error: generated history has {generatedHistory.characters.Count(x => x.dead)} victims!\nFull response:{resp}\n\nStripped response:{strippedResp}");
@@ -382,7 +380,7 @@ public class GameManager : MonoBehaviour
                 if (generatedHistory.characters.Any(x => x.archetype - 1 < 0 || x.archetype > archetypes.Count))
                 {
                     Debug.LogError($"GameManager: GenerateHistory error: generated character has invalid archetype index!\nFull response:{resp}\n\nStripped response:{strippedResp}");
-                    continue;     
+                    continue;
                 }
 
                 if (generatedHistory.characters.Count != gameConfig.Npcs.Count + 1)
@@ -394,7 +392,7 @@ public class GameManager : MonoBehaviour
                 if (generatedHistory.characters.Find(x => x.dead) == generatedHistory.characters.Find(x => x.murderer))
                 {
                     Debug.LogError($"GameManager: GenerateHistory error: Victim is the murderer!\nFull response:{resp}\n\nStripped response:{strippedResp}");
-                    continue;     
+                    continue;
                 }
             }
             catch (Exception e)
@@ -402,7 +400,7 @@ public class GameManager : MonoBehaviour
                 Debug.LogError($"GameManager: Error parsing generated history output: {e.Message}:\nFull response:{resp}\n\nStripped response:{strippedResp}");
                 continue;
             }
-        
+
             Debug.Log($"GameManager: Generate history complete:\n{generatedHistory}");
             break;
         }
@@ -448,7 +446,6 @@ public class GameManager : MonoBehaviour
         {
             musicAudioSource.volume = musicVolume;
         }
-
     }
 
     [ConsoleCommand("npcs", "List all npcs")]
@@ -466,11 +463,11 @@ public class GameManager : MonoBehaviour
     {
         if (!int.TryParse(par1, out var id))
             return false;
-        
+
         var npc = Instance.npcs.Find(x => x.EntityID == id);
         if (npc == null)
             return false;
-        
+
         PlayerController.Instance.transform.position = npc.transform.position;
         return true;
     }
@@ -480,11 +477,11 @@ public class GameManager : MonoBehaviour
     {
         if (!int.TryParse(par1, out var id))
             return false;
-        
+
         var npc = Instance.npcs.Find(x => x.EntityID == id);
         if (npc == null)
             return false;
-        
+
         PlayerController.Instance.StartInteraction(npc);
         return true;
     }
@@ -508,7 +505,7 @@ public class GameManager : MonoBehaviour
     {
         if (!int.TryParse(par1, out var seed))
             return false;
-        
+
         Instance.Seed = seed;
         Debug.Log($"Set Seed to: {Instance.Seed}");
         return true;
