@@ -45,7 +45,7 @@ public class LlmManager : MonoBehaviour
     {
         BaseUrl = api;
     }
-    
+
     /// <summary>
     /// Initializes the singleton instance.
     /// </summary>
@@ -53,7 +53,7 @@ public class LlmManager : MonoBehaviour
     {
         Instance = this;
     }
-    
+
     /// <summary>
     /// Sends a GET request to the specified endpoint and deserializes the response to type T.
     /// </summary>
@@ -93,8 +93,8 @@ public class LlmManager : MonoBehaviour
     /// <param name="data">Request data.</param>
     /// <param name="onSuccess">Callback on successful response.</param>
     /// <param name="onError">Callback on error.</param>
-    public void QueuePostRequest<T, TRequest>(string endpoint, TRequest data, Action<T> onSuccess, Action<string> onError) 
-        where T : class 
+    public void QueuePostRequest<T, TRequest>(string endpoint, TRequest data, Action<T> onSuccess, Action<string> onError)
+        where T : class
         where TRequest : class
     {
         // Add the request to the queue
@@ -132,8 +132,8 @@ public class LlmManager : MonoBehaviour
     /// <param name="onSuccess">Callback on successful response.</param>
     /// <param name="onError">Callback on error.</param>
     /// <returns>Coroutine enumerator.</returns>
-    private IEnumerator Post<T, TRequest>(string endpoint, TRequest data, Action<T> onSuccess, Action<string> onError) 
-        where T : class 
+    private IEnumerator Post<T, TRequest>(string endpoint, TRequest data, Action<T> onSuccess, Action<string> onError)
+        where T : class
         where TRequest : class
     {
         using (UnityWebRequest request = new UnityWebRequest($"{BaseUrl}/{endpoint}", "POST"))
@@ -146,11 +146,11 @@ public class LlmManager : MonoBehaviour
 
             if (LogDebug)
                 Debug.Log($"LlmManager: Post request: {json}");
-            
+
             yield return request.SendWebRequest();
 
             var responseContent = request.downloadHandler.text;
-            
+
             if (request.result != UnityWebRequest.Result.Success)
             {
                 onError?.Invoke($"LlmManager: Post request failed ({request.error}): {responseContent}");
@@ -175,63 +175,6 @@ public class LlmManager : MonoBehaviour
         StartCoroutine(Get<StatusDTO>("status", onComplete, onError));
     }
 
-    /// <summary>
-    /// Loads a model on the LLM server.
-    /// </summary>
-    /// <param name="modelID">Unique identifier for the model.</param>
-    /// <param name="path">File system path to the model file.</param>
-    /// <param name="onComplete">Callback on successful response.</param>
-    /// <param name="onError">Callback on error.</param>
-    public void LoadModel(string modelID, string path, Action<MessageDTO> onComplete, Action<string> onError)
-    {
-        var data = new LoadModelDTO()
-        {
-            model_id = modelID,
-            model_path = path,
-            f16_kv = true,
-            n_ctx = 4096,
-            n_parts = -1,
-            seed = 42, // TODO: Make it randomized
-            n_gpu_layers = -1,
-        };
-        
-        QueuePostRequest<MessageDTO, LoadModelDTO>("load", data, onComplete, onError);
-    }
-
-    /// <summary>
-    /// Unloads a model from the LLM server.
-    /// </summary>
-    /// <param name="modelID">Unique identifier for the model.</param>
-    /// <param name="onComplete">Callback on successful response.</param>
-    /// <param name="onError">Callback on error.</param>
-    public void UnloadModel(string modelID, Action<MessageDTO> onComplete, Action<string> onError)
-    {
-        var data = new UnloadModelRequestDTO()
-        {
-            model_id = modelID
-        };
-        
-        QueuePostRequest<MessageDTO, UnloadModelRequestDTO>("unload", data, onComplete, onError);
-    }
-
-    /// <summary>
-    /// Registers a model with the LLM server, making it available for loading and inference.
-    /// </summary>
-    /// <param name="modelID">Unique identifier for the model.</param>
-    /// <param name="path">File system path to the model file.</param>
-    /// <param name="onComplete">Callback on successful response.</param>
-    /// <param name="onError">Callback on error.</param>
-    public void Register(string modelID, string path, Action<MessageDTO> onComplete, Action<string> onError)
-    {
-        var data = new RegisterDTO()
-        {
-            model_id = modelID,
-            model_path = path,
-        };
-        
-        QueuePostRequest<MessageDTO, RegisterDTO>("register", data, onComplete, onError);
-    }
-    
     /// <summary>
     /// Sends a chat request to the LLM server using the specified model and message history.
     /// </summary>
@@ -260,7 +203,7 @@ public class LlmManager : MonoBehaviour
         QueuePostRequest<ChatResponseDTO, ChatRequestDTO>("chat", data, onComplete, onError);
     }
     #endregion
-    
+
     /// <summary>
     /// Connects to the LLM server and unloads all currently loaded models.
     /// </summary>
@@ -268,16 +211,12 @@ public class LlmManager : MonoBehaviour
     public void Connect(Action<bool> onComplete)
     {
         Status(
-            healthData => 
+            healthData =>
             {
                 IsConnected = healthData.healthy;
-                
-                foreach (var model in healthData.models)
-                    UnloadModel(model, GenericComplete, Debug.LogError);
-                
                 onComplete?.Invoke(IsConnected);
             },
-            error => 
+            error =>
             {
                 Debug.LogError("Could not connect to LLM Server: " + error);
                 IsConnected = false;
@@ -294,10 +233,10 @@ public class LlmManager : MonoBehaviour
         if (message.success)
             if (LogDebug)
                 Debug.Log(message.message);
-        else 
-            Debug.LogError(message.message);
+            else
+                Debug.LogError(message.message);
     }
-    
+
     #region Console Commands
     /// <summary>
     /// Console command to check the status of the LLM server.
@@ -306,9 +245,9 @@ public class LlmManager : MonoBehaviour
     [ConsoleCommand("llmstatus", "Checks the status of the LLM server")]
     public static bool StatusCommand()
     {
-        Instance.Status(statusData => 
+        Instance.Status(statusData =>
                 Debug.Log($"LLM Server status: healthy: {statusData.healthy}\nLoaded models: {string.Join("\n", statusData.models)}"),
-            error => 
+            error =>
                 Debug.LogError(error));
         return true;
     }
@@ -319,6 +258,6 @@ public class LlmManager : MonoBehaviour
         Debug.Log($"POST Status Queue: {Instance.postRequestQueue.Count} elements");
         return true;
     }
-    
+
     #endregion
 }
