@@ -2,7 +2,7 @@ name: Build Unity Game Project
 
 on:
   push:
-    branches: [ main ]
+    branches: [ v2-main ]
     paths:
       - 'RaymondMaarloeve/**'  # Trigger on changes in the 'RaymondMaarloeve' folder
   workflow_dispatch:
