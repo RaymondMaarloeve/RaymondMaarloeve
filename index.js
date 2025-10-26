@@ -5,21 +5,19 @@ var index =
       [ "⚙️ Technology Stack", "index.html#autotoc_md4", null ]
     ] ],
     [ "🧑‍💻 Team", "index.html#autotoc_md6", null ],
-    [ "🎮 Assumptions", "index.html#autotoc_md8", [
-      [ "🕹️ Gameplay", "index.html#autotoc_md9", null ],
-      [ "🧍 NPC Characters", "index.html#autotoc_md10", null ],
-      [ "🗺️ Map", "index.html#autotoc_md11", null ]
+    [ "Introduction to development plan", "index.html#autotoc_md8", null ],
+    [ "Assumptions", "index.html#autotoc_md10", [
+      [ "1. PG Server", "index.html#autotoc_md11", null ],
+      [ "2. Narrator", "index.html#autotoc_md13", null ],
+      [ "3. Game", "index.html#autotoc_md15", [
+        [ "3.1 Final Minigame", "index.html#autotoc_md16", null ],
+        [ "3.2 Launcher", "index.html#autotoc_md17", null ],
+        [ "3.3 Gameplay", "index.html#autotoc_md18", null ]
+      ] ],
+      [ "4. Publication", "index.html#autotoc_md20", null ]
     ] ],
-    [ "🎯 Development Goals", "index.html#autotoc_md13", [
-      [ "👨‍🔧 Task Distribution", "index.html#autotoc_md14", [
-        [ "Unity:", "index.html#autotoc_md15", null ],
-        [ "LLM:", "index.html#autotoc_md16", null ]
-      ] ],
-      [ "📍 Milestones", "index.html#autotoc_md17", [
-        [ "1st Milestone – Game Prototype (without LLM)", "index.html#autotoc_md18", null ],
-        [ "2nd Milestone – LLM Integration with Unity", "index.html#autotoc_md19", null ],
-        [ "3rd Milestone – Final Touches", "index.html#autotoc_md20", null ]
-      ] ],
-      [ "🗓️ Task Schedule", "index.html#autotoc_md21", null ]
+    [ "5. Deliverables", "index.html#autotoc_md22", [
+      [ "First Milestone", "index.html#autotoc_md23", null ],
+      [ "Second Milestone / Final Submission", "index.html#autotoc_md24", null ]
     ] ]
 ];

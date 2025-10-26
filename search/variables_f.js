@@ -1,9 +1,21 @@
 var searchData=
 [
-  ['paragraph_0',['paragraph',['../class_draw_conclusions_response_d_t_o.html#aaeb2f7bb96cf5f52a593537193eb9367',1,'DrawConclusionsResponseDTO']]],
-  ['path_1',['Path',['../class_model_config.html#a502f7636fe02dce406d68ae2636543f6',1,'ModelConfig']]],
-  ['player_2',['player',['../class_minimap_camera_script.html#a9b60bea31fdbab7a36f7ee42768adddd',1,'MinimapCameraScript']]],
-  ['position_3',['Position',['../class_npc_action_event.html#af4c739f09b541ad1edddaa3d9d4266dc',1,'NpcActionEvent']]],
-  ['prefab_4',['Prefab',['../class_tile.html#aaa9b70d33f6fd5fe057a45367b6696b3',1,'Tile']]],
-  ['prefab_5',['prefab',['../class_building_setup.html#a22a364f78bfb2e4e23e16e329ccb2353',1,'BuildingSetup.prefab()'],['../class_walls_setup.html#a0d404865bd880ccab3a9963c938a8b64',1,'WallsSetup.prefab()'],['../class_clue_setup.html#aa300243bec0e6b6ab07e119a3a875a25',1,'ClueSetup.prefab()']]]
+  ['secondfootsteppercent_5ffloat_0',['secondFootstepPercent_float',['../classfootstep__manager__npc.html#a54a7196b5555bcc519bc149f55354504',1,'footstep_manager_npc']]],
+  ['seed_1',['Seed',['../class_game_manager.html#aca8a6d312e1832516afc9b9a4fd20f05',1,'GameManager']]],
+  ['seed_2',['seed',['../class_chat_request_d_t_o.html#add7b89833ee7aa9642625ca0289441a9',1,'ChatRequestDTO']]],
+  ['settingsscenename_3',['settingsSceneName',['../class_main_menu_manager.html#afbc367f8e041d8a7673a57555bbf4d97',1,'MainMenuManager']]],
+  ['skipconslusions_4',['SkipConslusions',['../class_game_manager.html#afef9e156bd9ba1c5476efd22e5369b3c',1,'GameManager']]],
+  ['skiprelevance_5',['SkipRelevance',['../class_game_manager.html#a828576c16489608497711c8120a500ed',1,'GameManager']]],
+  ['skyboxrotationspeed_6',['skyboxRotationSpeed',['../class_day_night_cycle.html#a3a9e221019b318595bd9723384c0e123',1,'DayNightCycle']]],
+  ['smoothspeed_7',['smoothSpeed',['../class_camera_follow.html#a924c2f26a261004c89aa63ca0c89d454',1,'CameraFollow']]],
+  ['sourceid_8',['SourceId',['../class_npc_action_event.html#a3db48e89276785e6fb7c7dfeeb92e36a',1,'NpcActionEvent']]],
+  ['spawnedbuildings_9',['spawnedBuildings',['../class_map_generator.html#ac139d2902fbce9237436dc2683f2c942',1,'MapGenerator']]],
+  ['speed_10',['speed',['../class_n_p_c.html#a1ff4c824759ae05a03c0d1a10e14c626',1,'NPC']]],
+  ['stopped_5faction_11',['stopped_action',['../class_idle_d_t_o.html#a1a852aa5f2f7fae60be1469312c2c161',1,'IdleDTO']]],
+  ['stoppeddecision_12',['StoppedDecision',['../class_n_p_c.html#a383a7f38abf03fcba878e44982e54db5',1,'NPC']]],
+  ['story_13',['story',['../class_generated_history_d_t_o.html#ab3f17f73d5c15d641c31826f6c80661e',1,'GeneratedHistoryDTO']]],
+  ['success_14',['success',['../class_chat_response_d_t_o.html#a7f0ff887c90705b1ead27be2f7cb971b',1,'ChatResponseDTO.success()'],['../class_message_d_t_o.html#a05d910c7ab79289c9b5558ecdf7c267e',1,'MessageDTO.success()']]],
+  ['surface_15',['surface',['../class_map_generator.html#a6661513b196383432c4b555faddd4940',1,'MapGenerator']]],
+  ['system_16',['System',['../_game_manager_8cs.html#a3c122fc3b07a3125646f3586d38f46ed',1,'GameManager.cs']]],
+  ['systemprompt_17',['SystemPrompt',['../_game_manager_8cs.html#ad56fcce64ea6a48cdb0dc7ae07365e7f',1,'GameManager.cs']]]
 ];

@@ -119,15 +119,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a97f29d33ad99c68a6f8ef018e80b6136"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_llm_manager.html#a97f29d33ad99c68a6f8ef018e80b6136">Status</a> (Action&lt; <a class="el" href="class_status_d_t_o.html">StatusDTO</a> &gt; onComplete, Action&lt; string &gt; onError)</td></tr>
 <tr class="memdesc:a97f29d33ad99c68a6f8ef018e80b6136"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the status of the LLM server.  <br /></td></tr>
 <tr class="separator:a97f29d33ad99c68a6f8ef018e80b6136"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a438d3db971686d8164a476e650af637c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_llm_manager.html#a438d3db971686d8164a476e650af637c">LoadModel</a> (string modelID, string path, Action&lt; <a class="el" href="class_message_d_t_o.html">MessageDTO</a> &gt; onComplete, Action&lt; string &gt; onError)</td></tr>
-<tr class="memdesc:a438d3db971686d8164a476e650af637c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a model on the LLM server.  <br /></td></tr>
-<tr class="separator:a438d3db971686d8164a476e650af637c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ab2ff7c38b6a286126723fa4562f2a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_llm_manager.html#a8ab2ff7c38b6a286126723fa4562f2a5">UnloadModel</a> (string modelID, Action&lt; <a class="el" href="class_message_d_t_o.html">MessageDTO</a> &gt; onComplete, Action&lt; string &gt; onError)</td></tr>
-<tr class="memdesc:a8ab2ff7c38b6a286126723fa4562f2a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unloads a model from the LLM server.  <br /></td></tr>
-<tr class="separator:a8ab2ff7c38b6a286126723fa4562f2a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7eb33076d9bbed1eb8de2504817b0bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_llm_manager.html#aa7eb33076d9bbed1eb8de2504817b0bf">Register</a> (string modelID, string path, Action&lt; <a class="el" href="class_message_d_t_o.html">MessageDTO</a> &gt; onComplete, Action&lt; string &gt; onError)</td></tr>
-<tr class="memdesc:aa7eb33076d9bbed1eb8de2504817b0bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a model with the LLM server, making it available for loading and inference.  <br /></td></tr>
-<tr class="separator:aa7eb33076d9bbed1eb8de2504817b0bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab64735d2b7617475c1b9f7466d6521ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_llm_manager.html#ab64735d2b7617475c1b9f7466d6521ff">Chat</a> (string modelID, List&lt; <a class="el" href="class_message.html">Message</a> &gt; messages, Action&lt; <a class="el" href="class_chat_response_d_t_o.html">ChatResponseDTO</a> &gt; onComplete, Action&lt; string &gt; onError, float top_p=0.95f, float temperature=0.8f, int maxTokens=4096)</td></tr>
 <tr class="memdesc:ab64735d2b7617475c1b9f7466d6521ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a chat request to the LLM server using the specified model and message history.  <br /></td></tr>
 <tr class="separator:ab64735d2b7617475c1b9f7466d6521ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -375,58 +366,6 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a438d3db971686d8164a476e650af637c" name="a438d3db971686d8164a476e650af637c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a438d3db971686d8164a476e650af637c">&#9670;&#160;</a></span>LoadModel()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void LlmManager.LoadModel </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>modelID</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Action&lt; <a class="el" href="class_message_d_t_o.html">MessageDTO</a> &gt;&#160;</td>
-          <td class="paramname"><em>onComplete</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Action&lt; string &gt;&#160;</td>
-          <td class="paramname"><em>onError</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Loads a model on the LLM server. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">modelID</td><td>Unique identifier for the model.</td></tr>
-    <tr><td class="paramname">path</td><td>File system path to the model file.</td></tr>
-    <tr><td class="paramname">onComplete</td><td>Callback on successful response.</td></tr>
-    <tr><td class="paramname">onError</td><td>Callback on error.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>: Make it randomized </dd></dl>
-
-</div>
-</div>
 <a id="ab01e3d68c849cf97482350a5bc52fd49" name="ab01e3d68c849cf97482350a5bc52fd49"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab01e3d68c849cf97482350a5bc52fd49">&#9670;&#160;</a></span>QueuePostRequest&lt; T, TRequest &gt;()</h2>
 
@@ -491,57 +430,6 @@ Properties</h2></td></tr>
 </dd>
 </dl>
 </div>
-
-</div>
-</div>
-<a id="aa7eb33076d9bbed1eb8de2504817b0bf" name="aa7eb33076d9bbed1eb8de2504817b0bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa7eb33076d9bbed1eb8de2504817b0bf">&#9670;&#160;</a></span>Register()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void LlmManager.Register </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>modelID</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Action&lt; <a class="el" href="class_message_d_t_o.html">MessageDTO</a> &gt;&#160;</td>
-          <td class="paramname"><em>onComplete</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Action&lt; string &gt;&#160;</td>
-          <td class="paramname"><em>onError</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Registers a model with the LLM server, making it available for loading and inference. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">modelID</td><td>Unique identifier for the model.</td></tr>
-    <tr><td class="paramname">path</td><td>File system path to the model file.</td></tr>
-    <tr><td class="paramname">onComplete</td><td>Callback on successful response.</td></tr>
-    <tr><td class="paramname">onError</td><td>Callback on error.</td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -633,50 +521,6 @@ Properties</h2></td></tr>
 
 <p>Console command to check the status of the LLM server. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if the command was executed.</dd></dl>
-
-</div>
-</div>
-<a id="a8ab2ff7c38b6a286126723fa4562f2a5" name="a8ab2ff7c38b6a286126723fa4562f2a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ab2ff7c38b6a286126723fa4562f2a5">&#9670;&#160;</a></span>UnloadModel()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void LlmManager.UnloadModel </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>modelID</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Action&lt; <a class="el" href="class_message_d_t_o.html">MessageDTO</a> &gt;&#160;</td>
-          <td class="paramname"><em>onComplete</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Action&lt; string &gt;&#160;</td>
-          <td class="paramname"><em>onError</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Unloads a model from the LLM server. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">modelID</td><td>Unique identifier for the model.</td></tr>
-    <tr><td class="paramname">onComplete</td><td>Callback on successful response.</td></tr>
-    <tr><td class="paramname">onError</td><td>Callback on error.</td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>

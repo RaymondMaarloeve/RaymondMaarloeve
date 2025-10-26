@@ -1,11 +1,13 @@
 var searchData=
 [
-  ['gamemanager_0',['GameManager',['../_game_manager_8cs.html#ac25262d0b394f748f1416bbccb255f5b',1,'GameManager.cs']]],
-  ['gamewindowheight_1',['GameWindowHeight',['../class_game_config.html#a767237c86f7412c4e05440c5b9e40fb2',1,'GameConfig']]],
-  ['gamewindowwidth_2',['GameWindowWidth',['../class_game_config.html#a5ce9a20b6e478e7d975a83d63456bee0',1,'GameConfig']]],
-  ['generatedhistory_3',['generatedHistory',['../class_game_manager.html#a9fc9b145368645a6b13c736fefd9c65e',1,'GameManager']]],
-  ['generation_5ftime_4',['generation_time',['../class_chat_response_d_t_o.html#a8fed687e493932cb2b67bc30c9c1ec39',1,'ChatResponseDTO']]],
-  ['graphicsdropdown_5',['graphicsDropdown',['../class_main_menu_manager.html#a11acc623ad9dbb2afd91b5f7405fdbd9',1,'MainMenuManager']]],
-  ['gravity_6',['gravity',['../class_player_controller.html#a0a8e0eb9de4ccc5bd5f4cc5b44469b01',1,'PlayerController']]],
-  ['gridposition_7',['GridPosition',['../class_tile.html#aea7349aaf7cefe25268e05d40c356a48',1,'Tile']]]
+  ['healthy_0',['healthy',['../class_status_d_t_o.html#a17d7185e52779043a17ffcc64a6afcae',1,'StatusDTO']]],
+  ['hisbuilding_1',['HisBuilding',['../class_n_p_c.html#a74d744278c22deaebac035cdcf2bb099',1,'NPC']]],
+  ['hismaintile_2',['HisMainTile',['../class_building_data.html#af4d958c71f4d49302a32d465be7bfe84',1,'BuildingData']]],
+  ['hismaintilegridposition_3',['HisMainTileGridPosition',['../class_building_data.html#a4b0f13aa61d42a13fbf8440ffcf60d41',1,'BuildingData']]],
+  ['hisnpc_4',['HisNPC',['../class_building_data.html#ae9ad7f9ffbbed457a9461804a61326b1',1,'BuildingData']]],
+  ['histilecount_5',['HisTileCount',['../class_building_data.html#a7e79c565a41abb23bf06a738f8c675a6',1,'BuildingData']]],
+  ['histiles_6',['HisTiles',['../class_building_data.html#ad989569e27d85d9b5e652032f66b5479',1,'BuildingData']]],
+  ['historygenerated_7',['HistoryGenerated',['../class_game_manager.html#af397141122e1bc9655a8d09313ba08ba',1,'GameManager']]],
+  ['histype_8',['HisType',['../class_building_data.html#a23b807d1ff996853e905406766b9817c',1,'BuildingData']]],
+  ['hunger_9',['Hunger',['../class_n_p_c.html#a719104a230907490f98e0d936cf896f5',1,'NPC']]]
 ];

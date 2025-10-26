@@ -1,14 +1,13 @@
 var searchData=
 [
-  ['healthy_0',['healthy',['../class_status_d_t_o.html#a17d7185e52779043a17ffcc64a6afcae',1,'StatusDTO']]],
-  ['here_2e_1',['here.',['../_game_manager_8cs.html#a99fa5c5da617913dd715252342924df4',1,'GameManager.cs']]],
-  ['hisbuilding_2',['HisBuilding',['../class_n_p_c.html#a74d744278c22deaebac035cdcf2bb099',1,'NPC']]],
-  ['hismaintile_3',['HisMainTile',['../class_building_data.html#af4d958c71f4d49302a32d465be7bfe84',1,'BuildingData']]],
-  ['hismaintilegridposition_4',['HisMainTileGridPosition',['../class_building_data.html#a4b0f13aa61d42a13fbf8440ffcf60d41',1,'BuildingData']]],
-  ['hisnpc_5',['HisNPC',['../class_building_data.html#ae9ad7f9ffbbed457a9461804a61326b1',1,'BuildingData']]],
-  ['histilecount_6',['HisTileCount',['../class_building_data.html#a7e79c565a41abb23bf06a738f8c675a6',1,'BuildingData']]],
-  ['histiles_7',['HisTiles',['../class_building_data.html#ad989569e27d85d9b5e652032f66b5479',1,'BuildingData']]],
-  ['historygenerated_8',['HistoryGenerated',['../class_game_manager.html#af397141122e1bc9655a8d09313ba08ba',1,'GameManager']]],
-  ['histype_9',['HisType',['../class_building_data.html#a23b807d1ff996853e905406766b9817c',1,'BuildingData']]],
-  ['hunger_10',['Hunger',['../class_n_p_c.html#a719104a230907490f98e0d936cf896f5',1,'NPC']]]
+  ['iftheetectivewasirectlyaskingthecharactertodosomething_0',['IftheetectivewasIRECTLYaskingthecharactertodosomething',['../_n_p_c_8cs.html#af054cef64c8e375788d38150c26ca61f',1,'NPC.cs']]],
+  ['importance_1',['importance',['../class_obtained_memory.html#ad6a4c4ef0773f6f75d792989473c1ae3',1,'ObtainedMemory']]],
+  ['instance_2',['Instance',['../class_camera_follow.html#a3925ad6664c644f424efa59e1df14f84',1,'CameraFollow.Instance()'],['../class_game_manager.html#ad3e717f4fb0f378b969f4457de81f23e',1,'GameManager.Instance()'],['../class_llm_manager.html#a7b05153ac2c55c7747c382971bdb50ac',1,'LlmManager.Instance()'],['../class_player_controller.html#a9bec1b62de6e46a4cd2bcb332da2b7b5',1,'PlayerController.Instance()']]],
+  ['interactionoffset_3',['interactionOffset',['../class_camera_follow.html#a8c4a1d87efb3c27c0ac00061fcab67ba',1,'CameraFollow']]],
+  ['interactionrotation_4',['interactionRotation',['../class_camera_follow.html#a499d39cf54707eb903dcd3d5e72d39c4',1,'CameraFollow']]],
+  ['isbuilding_5',['IsBuilding',['../class_tile.html#a10507d64269a71aba70c8bad814201a9',1,'Tile']]],
+  ['isclue_6',['IsClue',['../class_tile.html#af21dac7eb432830ec7be23f7931cae8a',1,'Tile']]],
+  ['isdecoration_7',['IsDecoration',['../class_tile.html#aacef5edb3eea6133f82e4795b6aa4612',1,'Tile']]],
+  ['ispartofbuilding_8',['IsPartOfBuilding',['../class_tile.html#a2e13765c703f058c66e287aa80985d22',1,'Tile']]],
+  ['ispath_9',['IsPath',['../class_tile.html#af83411d40165370c275d923e5410812f',1,'Tile']]]
 ];

@@ -1,6 +1,8 @@
 var class_game_manager =
 [
     [ "GetEntityID", "class_game_manager.html#a7148ad990dacf2866cb8229ce5fd67ed", null ],
+    [ "DisableDecisionMaking", "class_game_manager.html#a6e4402658ba1b74bbbc910c2bb229cda", null ],
+    [ "DisableServerConnection", "class_game_manager.html#aa2c09a08453ee6de68d1d9c6ee6926cf", null ],
     [ "generatedHistory", "class_game_manager.html#a9fc9b145368645a6b13c736fefd9c65e", null ],
     [ "HistoryGenerated", "class_game_manager.html#af397141122e1bc9655a8d09313ba08ba", null ],
     [ "LlmServerReady", "class_game_manager.html#a134211005c0f35e2430849a32012a6ec", null ],
@@ -10,7 +12,5 @@ var class_game_manager =
     [ "npcs", "class_game_manager.html#aa95c1de6ccfe5a73aa74108640c4667d", null ],
     [ "Seed", "class_game_manager.html#aca8a6d312e1832516afc9b9a4fd20f05", null ],
     [ "SkipConslusions", "class_game_manager.html#afef9e156bd9ba1c5476efd22e5369b3c", null ],
-    [ "SkipRelevance", "class_game_manager.html#a828576c16489608497711c8120a500ed", null ],
-    [ "storyBlocks", "class_game_manager.html#aa2794ad3ee121793b23e974083ad1aba", null ],
-    [ "gameConfig", "class_game_manager.html#a3da0f49598f151231f2602021e934eed", null ]
+    [ "SkipRelevance", "class_game_manager.html#a828576c16489608497711c8120a500ed", null ]
 ];

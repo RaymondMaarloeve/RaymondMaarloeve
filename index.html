@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Raymond Maarloeve: Raymond Maarloeve sp. z o.o.</title>
+<title>Raymond Maarloeve: Raymond Maarloeve sp. z o.o. 2nd term</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Raymond Maarloeve sp. z o.o. </div></div>
+  <div class="headertitle"><div class="title">Raymond Maarloeve sp. z o.o. 2nd term </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a> <img src="https://img.shields.io/badge/Engine-Unity%206-3c3c3c?logo=unity" alt="Unity" class="inline"/> <img src="https://img.shields.io/badge/Language-C%23%20%7C%20Python-blue?logo=csharp&amp;logoColor=white" alt="Language" class="inline"/> <img src="https://img.shields.io/badge/AI-LLM--powered-brightgreen" alt="AI" class="inline"/> <img src="https://img.shields.io/badge/LLM-Llama%203.2%203B%20Instruct-blueviolet" alt="Model" class="inline"/> <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-lightgrey?logo=windows&amp;logoColor=white&amp;labelColor=gray&amp;style=flat" alt="Platform" class="inline"/></p>
@@ -192,104 +192,99 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </ul>
 <hr  />
 <h1><a class="anchor" id="autotoc_md8"></a>
-🎮 Assumptions</h1>
-<h2><a class="anchor" id="autotoc_md9"></a>
-🕹️ Gameplay</h2>
-<ul>
-<li><b>Game Objective:</b> <br  />
- The player takes on the role of a detective investigating a murder case in a small <a class="el" href="class_n_p_c.html" title="Represents a Non-Player Character (NPC) in the game world. Handles decision making,...">NPC</a> community. The investigation is based on analyzing clues and conversing with AI-controlled NPCs. In the end, the player reconstructs the sequence of events, determining their success or failure.</li>
-<li><b>Success Metrics:</b> <br  />
-<ul>
-<li>The game allows free world exploration and interactions with NPCs. <br  />
-</li>
-<li>There are at least two sources of clues (e.g., <a class="el" href="class_n_p_c.html" title="Represents a Non-Player Character (NPC) in the game world. Handles decision making,...">NPC</a> conversations + physical evidence). <br  />
-</li>
-<li>The player can present their theory in the game's finale through an interactive sequence-building system.</li>
-</ul>
-</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md10"></a>
-🧍 NPC Characters</h2>
-<ul>
-<li><b>Behavior:</b> <br  />
- NPCs have unique personalities, daily schedules, and the ability to dynamically react to player actions.</li>
-<li><b>Success Metrics:</b> <br  />
-<ul>
-<li>Minimum number of NPCs: 6, target: 10 <br  />
-</li>
-<li>NPCs generate responses and make decisions using LLM <br  />
-</li>
-<li>NPCs can dynamically change their routes in response to player interactions (eventually, also in response to interactions with other NPCs)</li>
-</ul>
-</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md11"></a>
-🗺️ Map</h2>
-<ul>
-<li><b>Appearance:</b> <br  />
- Each <a class="el" href="class_n_p_c.html" title="Represents a Non-Player Character (NPC) in the game world. Handles decision making,...">NPC</a> in the game has their own home, and their placement is procedurally generated.</li>
-</ul>
+Introduction to development plan</h1>
+<p>The main goal of the project’s development is to improve the LLM system through collaboration with the PG server. <br  />
+ Additionally, some minor gameplay improvements and fixes are planned. <br  />
+ The server will primarily be used to train the model, but it will also serve as a platform for running more powerful models during testing.</p>
 <hr  />
-<h1><a class="anchor" id="autotoc_md13"></a>
-🎯 Development Goals</h1>
-<h2><a class="anchor" id="autotoc_md14"></a>
-👨‍🔧 Task Distribution</h2>
-<h3><a class="anchor" id="autotoc_md15"></a>
-Unity:</h3>
-<ul>
-<li>Paweł Reich <br  />
+<h1><a class="anchor" id="autotoc_md10"></a>
+Assumptions</h1>
+<h2><a class="anchor" id="autotoc_md11"></a>
+1. PG Server</h2>
+<ol type="1">
+<li>Connect to the PG server. <br  />
 </li>
-<li>Marek Nijakowski <br  />
+<li>Select the best model, taking into account the server’s capabilities and the average user’s hardware. <br  />
 </li>
-<li>Paweł Dolak</li>
-</ul>
+<li>Create a new LLM manager that allows multiple models to operate in parallel. <br  />
+</li>
+<li>Distill a large LLM into smaller, specialized versions.</li>
+</ol>
+<hr  />
+<h2><a class="anchor" id="autotoc_md13"></a>
+2. Narrator</h2>
+<p>A more advanced model will be chosen for the narrator to reduce story generation errors. <br  />
+ A new mechanism for generating a chronological timeline of events on the day of the crime will be added. <br  />
+ This will make the investigation and fact-connecting process more engaging for the player. <br  />
+ Furthermore, the murderer will be forced to lie, introducing the need for comparing facts and testimonies.</p>
+<hr  />
+<h2><a class="anchor" id="autotoc_md15"></a>
+3. Game</h2>
 <h3><a class="anchor" id="autotoc_md16"></a>
-LLM:</h3>
-<ul>
-<li>Maciej Pitucha <br  />
-</li>
-<li>Maciej Włudarski <br  />
-</li>
-<li>Karol Rzepiński <br  />
-</li>
-<li>Kamil Włodarczyk <br  />
-</li>
-<li>Łukasz Jastrzębski <br  />
-</li>
-<li>Michał Eisler <br  />
-</li>
-<li>Łukasz Czarzasty</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md17"></a>
-📍 Milestones</h2>
+3.1 Final Minigame</h3>
+<p>The final minigame system will be redesigned. <br  />
+ Currently, solving the case involves selecting correct facts and identifying the killer. <br  />
+ In this new version, the player will have to <b>verbally describe the sequence of events</b> and <b>convince the LLM</b> who the murderer is during a dialogue.</p>
+<h3><a class="anchor" id="autotoc_md17"></a>
+3.2 Launcher</h3>
+<p>The launcher’s functionality will be moved into the in-game menu. <br  />
+ From the menu, players will be able to <b>download models</b> and <b>define <a class="el" href="class_n_p_c.html" title="Represents a Non-Player Character (NPC) in the game world. Handles decision making,...">NPC</a> personalities</b>.</p>
 <h3><a class="anchor" id="autotoc_md18"></a>
-1st Milestone – Game Prototype (without LLM)</h3>
-<ul>
-<li>A game base exists where characters move around <br  />
+3.3 Gameplay</h3>
+<ol type="1">
+<li>Implement a better camera system to enhance immersion and fix <a class="el" href="class_n_p_c.html" title="Represents a Non-Player Character (NPC) in the game world. Handles decision making,...">NPC</a> visibility issues. <br  />
 </li>
-<li><a class="el" href="class_n_p_c.html" title="Represents a Non-Player Character (NPC) in the game world. Handles decision making,...">NPC</a> actions are taken randomly or follow predefined patterns</li>
-</ul>
-<h3><a class="anchor" id="autotoc_md19"></a>
-2nd Milestone – LLM Integration with Unity</h3>
-<ul>
-<li>A day and night system is introduced <br  />
+<li>Add new character models and associated actions. <br  />
 </li>
-<li>The dataset contains 50% of the intended prompts</li>
-</ul>
-<h3><a class="anchor" id="autotoc_md20"></a>
-3rd Milestone – Final Touches</h3>
-<ul>
-<li>Main menu <br  />
+<li>Display a small speech bubble above each <a class="el" href="class_n_p_c.html" title="Represents a Non-Player Character (NPC) in the game world. Handles decision making,...">NPC</a> showing their current activity. <br  />
 </li>
-<li>Soundtrack <br  />
+<li>Allow NPCs to engage in conversations with each other. <br  />
 </li>
-<li>Credits <br  />
+<li>Introduce a detective notebook system for recording notes about each <a class="el" href="class_n_p_c.html" title="Represents a Non-Player Character (NPC) in the game world. Handles decision making,...">NPC</a>. <br  />
 </li>
-<li>Fine-tuning of the LLM model completed</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md21"></a>
-🗓️ Task Schedule</h2>
-<p>📌 <a href="https://docs.google.com/spreadsheets/d/1uFGMCmiO6wAubyI_MKR1ynXz4QdD-30tejBS1lcy7w8/edit?usp=sharing">Gantt Schedule (polish language)</a> </p>
+<li>Improve the minimap to better indicate <a class="el" href="class_n_p_c.html" title="Represents a Non-Player Character (NPC) in the game world. Handles decision making,...">NPC</a> positions.</li>
+</ol>
+<hr  />
+<h2><a class="anchor" id="autotoc_md20"></a>
+4. Publication</h2>
+<p>The game will be published on a selected gaming platform.</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md22"></a>
+5. Deliverables</h1>
+<h2><a class="anchor" id="autotoc_md23"></a>
+First Milestone</h2>
+<ol type="1">
+<li>Working infrastructure for model communication with the PG server. <br  />
+</li>
+<li>Distilled <a class="el" href="class_n_p_c.html" title="Represents a Non-Player Character (NPC) in the game world. Handles decision making,...">NPC</a> model. <br  />
+</li>
+<li>Improved narrator model. <br  />
+</li>
+<li>NPCs capable of conversing with one another. <br  />
+</li>
+<li>Some new character models and actions. <br  />
+</li>
+<li>Detective notebook system for <a class="el" href="class_n_p_c.html" title="Represents a Non-Player Character (NPC) in the game world. Handles decision making,...">NPC</a> tracking. <br  />
+</li>
+<li>Improved minimap and <a class="el" href="class_n_p_c.html" title="Represents a Non-Player Character (NPC) in the game world. Handles decision making,...">NPC</a> indicators.</li>
+</ol>
+<h2><a class="anchor" id="autotoc_md24"></a>
+Second Milestone / Final Submission</h2>
+<ol type="1">
+<li>Launcher functionality moved into the main menu. <br  />
+</li>
+<li>Additional character models and actions. <br  />
+</li>
+<li><a class="el" href="class_n_p_c.html" title="Represents a Non-Player Character (NPC) in the game world. Handles decision making,...">NPC</a> action indicator (speech bubble). <br  />
+</li>
+<li>Fixed and improved camera system. <br  />
+</li>
+<li><a class="el" href="class_n_p_c.html" title="Represents a Non-Player Character (NPC) in the game world. Handles decision making,...">NPC</a> personality descriptions transmitted to the model via embeddings. <br  />
+</li>
+<li>New final minigame system. <br  />
+</li>
+<li>Public release of the game. </li>
+</ol>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->

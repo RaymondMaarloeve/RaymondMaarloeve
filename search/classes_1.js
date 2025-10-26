@@ -7,7 +7,6 @@ var searchData=
   ['chatresponsedto_4',['ChatResponseDTO',['../class_chat_response_d_t_o.html',1,'']]],
   ['cluesetup_5',['ClueSetup',['../class_clue_setup.html',1,'']]],
   ['cluespawner_6',['ClueSpawner',['../class_clue_spawner.html',1,'']]],
-  ['converthistorytoblocksdto_7',['ConvertHistoryToBlocksDTO',['../class_convert_history_to_blocks_d_t_o.html',1,'']]],
-  ['currentenvironment_8',['CurrentEnvironment',['../class_current_environment.html',1,'']]],
-  ['currentenvironmentdto_9',['CurrentEnvironmentDTO',['../class_current_environment_d_t_o.html',1,'']]]
+  ['currentenvironment_7',['CurrentEnvironment',['../class_current_environment.html',1,'']]],
+  ['currentenvironmentdto_8',['CurrentEnvironmentDTO',['../class_current_environment_d_t_o.html',1,'']]]
 ];

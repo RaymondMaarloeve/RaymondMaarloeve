@@ -1,5 +1,11 @@
 var searchData=
 [
-  ['obtained_5fmemories_0',['obtained_memories',['../class_calculate_relevance_d_t_o.html#ad1533ee6bcf4d1a95ac22a2d5e4b734d',1,'CalculateRelevanceDTO.obtained_memories()'],['../class_idle_d_t_o.html#a230ad807c9f89ec9f4126d8b7fcf7ad3',1,'IdleDTO.obtained_memories()']]],
-  ['outputthesesentencesintoajsonobjectstructure_1',['OutputthesesentencesintoaJSONObjectstructure',['../_game_manager_8cs.html#a76216be52d03202858a73d829340a2f2',1,'GameManager.cs']]]
+  ['randomidlenames_0',['RandomIdleNames',['../class_idle_decision.html#ad4023e12743cb96aee4b489689c19889',1,'IdleDecision']]],
+  ['ready_1',['Ready',['../class_wait_for_l_l_m_decision.html#aca28b62e8cc4db345d2adca2f154bd26',1,'WaitForLLMDecision']]],
+  ['recency_2',['recency',['../class_obtained_memory.html#ad41325745478738cf27b2b2414be592d',1,'ObtainedMemory']]],
+  ['relevance_3',['relevance',['../class_obtained_memory.html#a782f47c427878640b6920a8c5107fcba',1,'ObtainedMemory']]],
+  ['requiredsleepingnpcpercentage_4',['requiredSleepingNPCPercentage',['../class_day_night_cycle.html#aa0520234b1fa9f49ed38b271bc8eec98',1,'DayNightCycle']]],
+  ['response_5',['response',['../class_chat_response_d_t_o.html#a89abc4a4cee0fc6ff1e229cec63c6593',1,'ChatResponseDTO']]],
+  ['role_6',['role',['../class_message.html#a14eb12b1a78d6757757ecfcfa883146b',1,'Message']]],
+  ['running_7',['running',['../classfootstep__manager__npc.html#aa9fd4083ab4a8829bb43d09f34de6159',1,'footstep_manager_npc']]]
 ];
