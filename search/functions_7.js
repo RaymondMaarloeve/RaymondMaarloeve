@@ -14,5 +14,6 @@ var searchData=
   ['getentityid_11',['GetEntityID',['../class_game_manager.html#a7148ad990dacf2866cb8229ce5fd67ed',1,'GameManager']]],
   ['getseed_12',['GetSeed',['../class_game_manager.html#a4892479c7cf11a4bb97c91e8dcedd0bf',1,'GameManager']]],
   ['getwaterdecision_13',['GetWaterDecision',['../class_get_water_decision.html#ac7394d1cbd8bb612469e0382e08056c2',1,'GetWaterDecision']]],
-  ['gotosleepdecision_14',['GoToSleepDecision',['../class_go_to_sleep_decision.html#ab3fd03873665af6fd672df20fb2a441e',1,'GoToSleepDecision']]]
+  ['gossipatwelldecision_14',['GossipAtWellDecision',['../class_gossip_at_well_decision.html#ac7e4384f2516a43e2118fec6692a1280',1,'GossipAtWellDecision']]],
+  ['gotosleepdecision_15',['GoToSleepDecision',['../class_go_to_sleep_decision.html#ab3fd03873665af6fd672df20fb2a441e',1,'GoToSleepDecision']]]
 ];

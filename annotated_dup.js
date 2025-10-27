@@ -17,12 +17,16 @@ var annotated_dup =
     [ "DayNightCycle", "class_day_night_cycle.html", "class_day_night_cycle" ],
     [ "DecorationSpawner", "class_decoration_spawner.html", "class_decoration_spawner" ],
     [ "DialogBoxManager", "class_dialog_box_manager.html", "class_dialog_box_manager" ],
+    [ "DiceGameDecision", "class_dice_game_decision.html", "class_dice_game_decision" ],
     [ "DrawConclusionsResponseDTO", "class_draw_conclusions_response_d_t_o.html", "class_draw_conclusions_response_d_t_o" ],
+    [ "EavesdropDecision", "class_eavesdrop_decision.html", "class_eavesdrop_decision" ],
+    [ "FetchFirewoodDecision", "class_fetch_firewood_decision.html", "class_fetch_firewood_decision" ],
     [ "footstep_manager_npc", "classfootstep__manager__npc.html", "classfootstep__manager__npc" ],
     [ "GameManager", "class_game_manager.html", "class_game_manager" ],
     [ "GeneratedHistoryDTO", "class_generated_history_d_t_o.html", "class_generated_history_d_t_o" ],
     [ "GetAleDecision", "class_get_ale_decision.html", "class_get_ale_decision" ],
     [ "GetWaterDecision", "class_get_water_decision.html", "class_get_water_decision" ],
+    [ "GossipAtWellDecision", "class_gossip_at_well_decision.html", "class_gossip_at_well_decision" ],
     [ "GoToSleepDecision", "class_go_to_sleep_decision.html", "class_go_to_sleep_decision" ],
     [ "IDecision", "interface_i_decision.html", "interface_i_decision" ],
     [ "IDecisionSystem", "interface_i_decision_system.html", "interface_i_decision_system" ],
@@ -52,5 +56,6 @@ var annotated_dup =
     [ "WaitForLLMReadyDecision", "class_wait_for_l_l_m_ready_decision.html", "class_wait_for_l_l_m_ready_decision" ],
     [ "WalkDecision", "class_walk_decision.html", "class_walk_decision" ],
     [ "WallSpawner", "class_wall_spawner.html", "class_wall_spawner" ],
-    [ "WallsSetup", "class_walls_setup.html", "class_walls_setup" ]
+    [ "WallsSetup", "class_walls_setup.html", "class_walls_setup" ],
+    [ "WarmHandsDecision", "class_warm_hands_decision.html", "class_warm_hands_decision" ]
 ];
