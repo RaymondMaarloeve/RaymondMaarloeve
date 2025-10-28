@@ -409,7 +409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &330165695
 RectTransform:
   m_ObjectHideFlags: 0
@@ -990,7 +990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   smoothSpeed: 5
-  normalOffset: {x: -3, y: 4, z: -5}
+  normalOffset: {x: -4.5, y: 5, z: -6}
   interactionOffset: {x: 0, y: 1.48, z: -0.84}
   interactionRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &867119583
@@ -1907,7 +1907,7 @@ MonoBehaviour:
   markTiles: 0
   WallsMargin: 10
   buildings:
-  - prefab: {fileID: 5083285615235793076, guid: 147ab689729ac2e49b82aac972788668, type: 3}
+  - prefab: {fileID: 2383180022313477787, guid: 6c7ee9f6ebc716642962aa6d66845e78, type: 3}
     weight: 0.2
     maxCount: 1
     currentCount: 0
@@ -1915,15 +1915,15 @@ MonoBehaviour:
     weight: 1
     maxCount: 1
     currentCount: 0
-  - prefab: {fileID: 4128734955017319067, guid: d1afe98c64fbce847b4bb993ad9a349f, type: 3}
+  - prefab: {fileID: 601464189446122069, guid: 36f811f31e7c86c47a174c429ea4ad4f, type: 3}
     weight: 0.2
     maxCount: 3
     currentCount: 0
-  - prefab: {fileID: 1869102301479979069, guid: 6f8f8f50cef4e5672ace240d64134866, type: 3}
+  - prefab: {fileID: 3582345801408207906, guid: e0f3d464f1dd03b42a0718e3c2f84425, type: 3}
     weight: 0.2
     maxCount: 3
     currentCount: 0
-  - prefab: {fileID: 9012655438019880852, guid: dd61dcfce8cdfb1b9b2e09368a5c9e67, type: 3}
+  - prefab: {fileID: 3173726743450232605, guid: 7275e7e90324dc041974f1d284ea6e2c, type: 3}
     weight: 0.2
     maxCount: 3
     currentCount: 0
@@ -1931,7 +1931,7 @@ MonoBehaviour:
     weight: 1
     maxCount: 1
     currentCount: 0
-  - prefab: {fileID: 8097970678501141546, guid: 2728991a092826047ac869844385d4fe, type: 3}
+  - prefab: {fileID: 458162214607014686, guid: d02ead1cf1619a74ba1aa67f42f8ff98, type: 3}
     weight: 0.2
     maxCount: 3
     currentCount: 0
@@ -2128,7 +2128,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6c3879dbdce0c20e092ebf59554e5eb4, type: 3}
   m_Resource: {fileID: 8300000, guid: 6c3879dbdce0c20e092ebf59554e5eb4, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
