@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using System.Collections;
 
 /// <summary>
 /// Manages the dialog box UI for player interactions with NPCs.
@@ -154,7 +155,7 @@ public class DialogBoxManager : MonoBehaviour
     /// Waits for a short time before allowing the player to dismiss the dialog box.
     /// </summary>
     /// <returns>An enumerator for coroutine execution.</returns>
-    private System.Collections.IEnumerator WaitForDismiss()
+    private IEnumerator WaitForDismiss()
     {
         // Wait for a short time before allowing the player to dismiss the dialog box
         // Without this, system dismisses the dialog box immediately after the NPC response is shown
