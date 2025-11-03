@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['waitforllmdecision_2ecs_0',['WaitForLLMDecision.cs',['../_wait_for_l_l_m_decision_8cs.html',1,'']]],
-  ['waitforllmreadydecision_2ecs_1',['WaitForLLMReadyDecision.cs',['../_wait_for_l_l_m_ready_decision_8cs.html',1,'']]],
-  ['walkdecision_2ecs_2',['WalkDecision.cs',['../_walk_decision_8cs.html',1,'']]],
-  ['wallspawner_2ecs_3',['WallSpawner.cs',['../_wall_spawner_8cs.html',1,'']]],
-  ['warmhandsdecision_2ecs_4',['WarmHandsDecision.cs',['../_warm_hands_decision_8cs.html',1,'']]]
+  ['visitbuildingdecision_2ecs_0',['VisitBuildingDecision.cs',['../_visit_building_decision_8cs.html',1,'']]]
 ];

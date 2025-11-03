@@ -1,5 +1,6 @@
 var annotated_dup =
 [
+    [ "BlacksmithWorkDecision", "class_blacksmith_work_decision.html", "class_blacksmith_work_decision" ],
     [ "BuildInfoUI", "class_build_info_u_i.html", null ],
     [ "BuildingData", "class_building_data.html", "class_building_data" ],
     [ "BuildingSetup", "class_building_setup.html", "class_building_setup" ],
@@ -9,6 +10,7 @@ var annotated_dup =
     [ "CharacterDTO", "class_character_d_t_o.html", "class_character_d_t_o" ],
     [ "ChatRequestDTO", "class_chat_request_d_t_o.html", "class_chat_request_d_t_o" ],
     [ "ChatResponseDTO", "class_chat_response_d_t_o.html", "class_chat_response_d_t_o" ],
+    [ "ChopWoodDecision", "class_chop_wood_decision.html", "class_chop_wood_decision" ],
     [ "ClueSetup", "class_clue_setup.html", "class_clue_setup" ],
     [ "ClueSpawner", "class_clue_spawner.html", "class_clue_spawner" ],
     [ "CurrentEnvironment", "class_current_environment.html", "class_current_environment" ],
@@ -48,8 +50,10 @@ var annotated_dup =
     [ "ObtainedMemoryDTO", "class_obtained_memory_d_t_o.html", "class_obtained_memory_d_t_o" ],
     [ "PlayerController", "class_player_controller.html", "class_player_controller" ],
     [ "PrayDecision", "class_pray_decision.html", "class_pray_decision" ],
+    [ "ReadNoticeBoardDecision", "class_read_notice_board_decision.html", "class_read_notice_board_decision" ],
     [ "SmartMeshColliderAdder", "class_smart_mesh_collider_adder.html", null ],
     [ "StatusDTO", "class_status_d_t_o.html", "class_status_d_t_o" ],
+    [ "TendGardenDecision", "class_tend_garden_decision.html", "class_tend_garden_decision" ],
     [ "Tile", "class_tile.html", "class_tile" ],
     [ "VisitBuildingDecision", "class_visit_building_decision.html", "class_visit_building_decision" ],
     [ "WaitForLLMDecision", "class_wait_for_l_l_m_decision.html", "class_wait_for_l_l_m_decision" ],

@@ -16,6 +16,8 @@ var hierarchy =
     [ "IDecision", "interface_i_decision.html", [
       [ "IdleDecision", "class_idle_decision.html", null ],
       [ "VisitBuildingDecision", "class_visit_building_decision.html", [
+        [ "BlacksmithWorkDecision", "class_blacksmith_work_decision.html", null ],
+        [ "ChopWoodDecision", "class_chop_wood_decision.html", null ],
         [ "DiceGameDecision", "class_dice_game_decision.html", null ],
         [ "EavesdropDecision", "class_eavesdrop_decision.html", null ],
         [ "FetchFirewoodDecision", "class_fetch_firewood_decision.html", null ],
@@ -24,6 +26,8 @@ var hierarchy =
         [ "GoToSleepDecision", "class_go_to_sleep_decision.html", null ],
         [ "GossipAtWellDecision", "class_gossip_at_well_decision.html", null ],
         [ "PrayDecision", "class_pray_decision.html", null ],
+        [ "ReadNoticeBoardDecision", "class_read_notice_board_decision.html", null ],
+        [ "TendGardenDecision", "class_tend_garden_decision.html", null ],
         [ "WarmHandsDecision", "class_warm_hands_decision.html", null ]
       ] ],
       [ "WaitForLLMDecision", "class_wait_for_l_l_m_decision.html", null ],

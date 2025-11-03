@@ -53,9 +53,9 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_build_info_u_i_8cs.html",
-"class_get_water_decision.html#acc10da6232e6adc975b98e07b7d2d8f2",
-"functions_h.html"
+"_blacksmith_work_decision_8cs.html",
+"class_game_manager.html#afef9e156bd9ba1c5476efd22e5369b3c",
+"class_warm_hands_decision.html#a515f75f6a994574acf239e517220ec1e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

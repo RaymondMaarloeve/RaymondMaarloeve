@@ -2,8 +2,9 @@ var searchData=
 [
   ['calculaterelevance_0',['CalculateRelevance',['../interface_i_decision_system.html#ad2bbded2ec76d4be316ec26e2cf509c8',1,'IDecisionSystem.CalculateRelevance()'],['../class_llm_decision_maker.html#a7966e7db30b1f4644a25b76b1e7edf5e',1,'LlmDecisionMaker.CalculateRelevance()'],['../class_null_decision_system.html#afe4674ee15f621d59076f76e20b3fd04',1,'NullDecisionSystem.CalculateRelevance()']]],
   ['chat_1',['Chat',['../class_llm_manager.html#ab64735d2b7617475c1b9f7466d6521ff',1,'LlmManager']]],
-  ['cluespawner_2',['ClueSpawner',['../class_clue_spawner.html#ada266e77d1024da0675c34b3b1ce2609',1,'ClueSpawner']]],
-  ['connect_3',['Connect',['../class_llm_manager.html#a16ee38ba51ddab349c04ad0b9bce0630',1,'LlmManager']]],
-  ['currentenvironment_4',['CurrentEnvironment',['../class_current_environment.html#aa1d06a75d40d0048d91c5cc5062c1427',1,'CurrentEnvironment']]],
-  ['currentenvironmentdto_5',['CurrentEnvironmentDTO',['../class_current_environment_d_t_o.html#ad5a91d9b3b9a356ed90ea932658403a8',1,'CurrentEnvironmentDTO']]]
+  ['chopwooddecision_2',['ChopWoodDecision',['../class_chop_wood_decision.html#a7302f9306aeab3f5c7a106510c405c80',1,'ChopWoodDecision']]],
+  ['cluespawner_3',['ClueSpawner',['../class_clue_spawner.html#ada266e77d1024da0675c34b3b1ce2609',1,'ClueSpawner']]],
+  ['connect_4',['Connect',['../class_llm_manager.html#a16ee38ba51ddab349c04ad0b9bce0630',1,'LlmManager']]],
+  ['currentenvironment_5',['CurrentEnvironment',['../class_current_environment.html#aa1d06a75d40d0048d91c5cc5062c1427',1,'CurrentEnvironment']]],
+  ['currentenvironmentdto_6',['CurrentEnvironmentDTO',['../class_current_environment_d_t_o.html#ad5a91d9b3b9a356ed90ea932658403a8',1,'CurrentEnvironmentDTO']]]
 ];
