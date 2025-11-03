@@ -149,28 +149,14 @@ public class PlayerController : MonoBehaviour
 
         characterMesh.enabled = false;
         GameManager.Instance.MinimapGameObject.SetActive(false);
+        CameraFollow.Instance.SetTarget(npc.transform, true);
+        DialogBoxManager.Instance.ShowDialogBox();
 
         npc.OnInteraction();
         
         currentlyInteractingNPC = npc;
         
-        if (CameraFollow.Instance != null)
-        {
-            CameraFollow.Instance.SetTarget(npc.transform, true); // Kamera przybliza sie do NPC
-        }
-        else
-        {
-            Debug.LogError("CameraFollow.Instance is NULL!");
-        }
 
-        if (DialogBoxManager.Instance != null)
-        {
-            DialogBoxManager.Instance.ShowDialogBox(); // Pokazanie okna dialogowego
-        }
-        else
-        {
-            Debug.LogError("DialogBoxManager.Instance is NULL!");
-        }
 
         Debug.Log("Started interaction with: " + npc.name);
     }
@@ -194,23 +180,8 @@ public class PlayerController : MonoBehaviour
         
         Instance.currentlyInteractingNPC = null;
         
-        if (CameraFollow.Instance != null)
-        {
-            CameraFollow.Instance.SetTarget(transform, false); // Kamera wraca do gracza
-        }
-        else
-        {
-            Debug.LogError("CameraFollow.Instance is NULL!");
-        }
-
-        if (DialogBoxManager.Instance != null)
-        {
-            DialogBoxManager.Instance.HideDialogBox(); // Ukrycie okna dialogowego
-        }
-        else
-        {
-            Debug.LogError("DialogBoxManager.Instance is NULL!");
-        }
+        CameraFollow.Instance.SetTarget(transform, false);
+        DialogBoxManager.Instance.HideDialogBox();
 
         Debug.Log("Ended interaction");
     }
