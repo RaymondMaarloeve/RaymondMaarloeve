@@ -85,7 +85,7 @@ public class LlmDecisionMaker : IDecisionSystem
       string prompt =
         $"It it currently {DayNightCycle.Instance.GetCurrentTimeText()}, day {DayNightCycle.Instance.GetCurrentDay()}.\n" +
         $"Take needs into account.\n" +
-        $"What should {npc.NpcName} do now? Choose from CurrentEnvironment.\n" +
+        $"What should {npc.Name} do now? Choose from CurrentEnvironment.\n" +
         $"Respond ONLY with the action index (1-{dto.current_environment.Count}).";
       
       var content = JsonUtility.ToJson(dto);
@@ -99,7 +99,7 @@ public class LlmDecisionMaker : IDecisionSystem
         {
           if (npc.GetCurrentDecision() is not WaitForLLMDecision)
           {
-            Debug.LogWarning($"{npc.NpcName}: Received new action but not waiting for it anymore!");
+            Debug.LogWarning($"{npc.Name}: Received new action but not waiting for it anymore!");
             return;
           }
           waitingResponse = response;
@@ -124,18 +124,18 @@ public class LlmDecisionMaker : IDecisionSystem
 
       if (int.TryParse(result, out int response) == false)
       {
-        Debug.LogError($"{npc.NpcName}: Idle response error: invalid response: {chatResponseDto.response}");
+        Debug.LogError($"{npc.Name}: Idle response error: invalid response: {chatResponseDto.response}");
         return new IdleDecision();
       }
 
       if (response < 0 || response > currentEnvironment.Count)
       {
-        Debug.LogError($"{npc.NpcName}: Idle response error: index out of bounds (currentEnvironment.Count: {currentEnvironment.Count}): {chatResponseDto.response}");
+        Debug.LogError($"{npc.Name}: Idle response error: index out of bounds (currentEnvironment.Count: {currentEnvironment.Count}): {chatResponseDto.response}");
         return new IdleDecision();
       }
       
       var action = currentEnvironment[response - 1];
-      Debug.Log($"{npc.NpcName}: Idle response, selected action: {action.decision.DebugInfo()} (result: {result})");
+      Debug.Log($"{npc.Name}: Idle response, selected action: {action.decision.DebugInfo()} (result: {result})");
 
       return action.decision;
     }
@@ -146,7 +146,7 @@ public class LlmDecisionMaker : IDecisionSystem
     /// <param name="error">The error message.</param>
     private void OnChatError(string error)
     {
-      Debug.LogError($"{npc.NpcName}: Idle error: {error}");
+      Debug.LogError($"{npc.Name}: Idle error: {error}");
     }
 
     /// <summary>
@@ -214,7 +214,7 @@ Output format must be **EXACTLY AND ONLY** an integer. Do not explain your reaso
           
           int relevance = 5;
           if (!int.TryParse(result, out relevance))
-            Debug.LogWarning($"{npc.NpcName} Wrong relevance response: '{response.response}'");
+            Debug.LogWarning($"{npc.Name} Wrong relevance response: '{response.response}'");
           relevanceFunc(relevance);
         },
         OnChatError

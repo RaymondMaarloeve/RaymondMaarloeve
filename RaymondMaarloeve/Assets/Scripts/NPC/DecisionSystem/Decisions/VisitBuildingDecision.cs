@@ -87,7 +87,7 @@ public abstract class VisitBuildingDecision : IDecision
         }
         else
         {
-            Debug.LogWarning(npc.NpcName + ": NavMesh point for the building not found!");
+            Debug.LogWarning(npc.Name + ": NavMesh point for the building not found!");
             finished = true;
         }
     }

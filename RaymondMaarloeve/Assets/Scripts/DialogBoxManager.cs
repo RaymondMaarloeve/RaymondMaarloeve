@@ -199,7 +199,7 @@ public class DialogBoxManager : MonoBehaviour
         string prompt =
             $"You are now playing the role of a medieval character.\n" +
             $"You will chat with a Detective named Raymond Maarloeve (<user>).\n" +
-            $"Your name is {PlayerController.Instance.currentlyInteractingNPC.NpcName} (<assistant>).\n" +
+            $"Your name is {PlayerController.Instance.currentlyInteractingNPC.Name} (<assistant>).\n" +
             $"Below is your story:\n{PlayerController.Instance.currentlyInteractingNPC.SystemPrompt}.\n" +
             $"It is {DayNightCycle.Instance.GetCurrentDay()} days after the murder of {GameManager.Instance.generatedHistory.characters.Find(x => x.dead).name}.\n";
         if (PlayerController.Instance.currentlyInteractingNPC.CharacterData.murderer)
@@ -213,7 +213,7 @@ public class DialogBoxManager : MonoBehaviour
 
         if (PlayerController.Instance != null && PlayerController.Instance.currentlyInteractingNPC != null)
         {
-            npcNameText.text = PlayerController.Instance.currentlyInteractingNPC.NpcName;
+            npcNameText.text = PlayerController.Instance.currentlyInteractingNPC.Name;
         }
         else
         {

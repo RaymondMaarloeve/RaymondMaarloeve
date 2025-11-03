@@ -68,7 +68,7 @@ public class NPC : MonoBehaviour
     /// <summary>
     /// The name of the NPC.
     /// </summary>
-    public string NpcName { get; private set; } = null;
+    public string Name { get; private set; } = null;
 
     /// <summary>
     /// The list of memories obtained by the NPC.
@@ -177,9 +177,9 @@ public class NPC : MonoBehaviour
         ModelID = modelId;
 
         CharacterData = characterDTO;
-        NpcName = characterDTO.name;
+        Name = characterDTO.name;
         SystemPrompt = characterDTO.description;
-        name = "NPC: " + NpcName;
+        name = "NPC: " + Name;
     }
 
     /// <summary>
@@ -210,7 +210,7 @@ public class NPC : MonoBehaviour
 
         if (!PlayerController.Instance.currentlyInteractingNPC == this && !isConcluding && (currentDecision == null || !currentDecision.Tick()))
         {
-            Debug.Log($"{NpcName}: Current decision finished");
+            Debug.Log($"{Name}: Current decision finished");
             if (DayNightCycle.Instance.timeOfDay > 20.5f || DayNightCycle.Instance.timeOfDay < 7f)
             {
                 currentDecision = new GoToSleepDecision(HisBuilding, this);
@@ -220,7 +220,7 @@ public class NPC : MonoBehaviour
                 currentDecision = decisionSystem.Decide();
             }
             currentDecision.Start();
-            Debug.Log($"{NpcName}: New decision: {currentDecision.DebugInfo()}");
+            Debug.Log($"{Name}: New decision: {currentDecision.DebugInfo()}");
             NpcEventBus.Publish(new NpcActionEvent(
                 sourceId: EntityID,
                 action: currentDecision?.PrettyName ?? IdleDecision.RandomPrettyName,
@@ -292,7 +292,7 @@ public class NPC : MonoBehaviour
                             {
                                 lastObservedActions[npc.EntityID] = currentAction;
 
-                                string newMemory = $"Saw {npc.NpcName} {currentAction} at {DayNightCycle.Instance.GetCurrentTimeText()}, day {DayNightCycle.Instance.GetCurrentDay()}";
+                                string newMemory = $"Saw {npc.Name} {currentAction} at {DayNightCycle.Instance.GetCurrentTimeText()}, day {DayNightCycle.Instance.GetCurrentDay()}";
 
                                 decisionSystem.CalculateRelevance(newMemory, relevance =>
                                 {
@@ -303,7 +303,7 @@ public class NPC : MonoBehaviour
                                         importance = 5,
                                         recency = 10
                                     });
-                                    Debug.Log($"{NpcName}: immediately observed {npc.NpcName} doing {currentAction}. Assigned relevance value: {relevance}");
+                                    Debug.Log($"{Name}: immediately observed {npc.Name} doing {currentAction}. Assigned relevance value: {relevance}");
                                 });
 
                             }
@@ -331,7 +331,7 @@ public class NPC : MonoBehaviour
         {
             lastObservedActions[observedNpc.EntityID] = e.Action;
 
-            string newMemory = $"Saw {observedNpc.NpcName} doing {e.Action}"; // TODO add hour
+            string newMemory = $"Saw {observedNpc.Name} doing {e.Action}"; // TODO add hour
 
             decisionSystem.CalculateRelevance(newMemory, relevance =>
             {
@@ -343,7 +343,7 @@ public class NPC : MonoBehaviour
                     recency = 10
                 });
 
-                Debug.Log($"{NpcName}: observed {observedNpc.NpcName} doing {e.Action}. Assigned relevance value: {relevance}");
+                Debug.Log($"{Name}: observed {observedNpc.Name} doing {e.Action}. Assigned relevance value: {relevance}");
             });
         }
     }
@@ -356,7 +356,7 @@ public class NPC : MonoBehaviour
     /// <param name="targetTransform">The transform of the target to look at. If null, the NPC resets its rotation.</param>
     public void LookAt(Transform targetTransform)
     {
-        Debug.Log($"{NpcName}: Looking at {(targetTransform == null ? "null" : targetTransform.name)}");
+        Debug.Log($"{Name}: Looking at {(targetTransform == null ? "null" : targetTransform.name)}");
         if (targetTransform != null)
         {
             oldLookTarget = transform.eulerAngles;
@@ -478,7 +478,7 @@ public class NPC : MonoBehaviour
                         $"Actions to choose from: [\n" +
                         $"['none'\n{string.Join('\n', env.ConvertAll(x => $"'{x.decision.PrettyName} {(x.associatedGameObject != null ? $"at {x.associatedGameObject?.name.ToLower().Replace("(clone)", "")}'" : "'")}"))}]\n" +
                         $"Conversation: [\n" +
-                        string.Join(',', conversation.ConvertAll(x => $"{(x.role == "user" ? "Raymond Maarloeve" : NpcName)}: {x.content}")) +
+                        string.Join(',', conversation.ConvertAll(x => $"{(x.role == "user" ? "Raymond Maarloeve" : Name)}: {x.content}")) +
                         $"]\n" +
                         $"Your response must be ONLY this EXACT CORRECT JSON object:\n" +
                         $"{{\n\"paragraph\": \"generated paragraph here\",\n\"action:\", <action index (1-{env.Count + 1})>\n}}";
@@ -498,7 +498,7 @@ public class NPC : MonoBehaviour
             resp = result.response;
         }, (error) =>
         {
-            Debug.LogError($"{NpcName}: DrawConclusions error: {error}");
+            Debug.LogError($"{Name}: DrawConclusions error: {error}");
             callbackCalled = true;
         }, 0.95f, 0.5f);
 
@@ -508,13 +508,13 @@ public class NPC : MonoBehaviour
 
         if (resp == null)
         {
-            Debug.LogError($"{NpcName}: DrawConclusions error: resp is null");
+            Debug.LogError($"{Name}: DrawConclusions error: resp is null");
             yield break;
         }
 
         if (!resp.Contains('{') || !resp.Contains('}'))
         {
-            Debug.LogError($"{NpcName}: DrawConclusions error: missing JSON brackets\n{resp}");
+            Debug.LogError($"{Name}: DrawConclusions error: missing JSON brackets\n{resp}");
             yield break;
         }
 
@@ -528,24 +528,24 @@ public class NPC : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogError($"{NpcName}: DrawConclusions error: {e.Message}:\nFull response:{resp}\n\nStripped response:{strippedResp}");
+            Debug.LogError($"{Name}: DrawConclusions error: {e.Message}:\nFull response:{resp}\n\nStripped response:{strippedResp}");
             yield break;
         }
 
         if (conclusions.action < 1 || conclusions.action > env.Count + 1)
         {
-            Debug.LogError($"{NpcName}: DrawConclusions error: wrong action selected: {conclusions.action}\nFull response:{resp}\n\nStripped response:{strippedResp}");
+            Debug.LogError($"{Name}: DrawConclusions error: wrong action selected: {conclusions.action}\nFull response:{resp}\n\nStripped response:{strippedResp}");
             yield break;
         }
 
-        Debug.Log($"{NpcName}: DrawConclusions complete:\nSelected action (1->): {conclusions.action}\nParagraph:{conclusions.paragraph}");
+        Debug.Log($"{Name}: DrawConclusions complete:\nSelected action (1->): {conclusions.action}\nParagraph:{conclusions.paragraph}");
 
         if (conclusions.action > 1)
         {
             currentDecision?.Finish();
             currentDecision = env[conclusions.action - 2].decision;
             currentDecision.Start();
-            Debug.Log($"{NpcName}: Concluded and selected decision: {currentDecision.DebugInfo()}");
+            Debug.Log($"{Name}: Concluded and selected decision: {currentDecision.DebugInfo()}");
         }
         ObtainedMemories.Add(new ObtainedMemory()
         {
