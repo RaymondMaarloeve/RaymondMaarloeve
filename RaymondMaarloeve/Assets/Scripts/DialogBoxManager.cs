@@ -132,8 +132,6 @@ public class DialogBoxManager : MonoBehaviour
         // Add AI's response to conversation history
         currentConversation.Add(new Message { role = "assistant", content = response.response });
         
-        Debug.Log($"Chat response, took {response.generation_time}, total_tokens: {response.total_tokens}: {response.response}");
-        
         npcResponseText.text = response.response + "\nPress Enter to continue...";
         npcResponseText.gameObject.SetActive(true);
         StartCoroutine(WaitForDismiss());
