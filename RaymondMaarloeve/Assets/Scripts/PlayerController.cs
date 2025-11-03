@@ -1,12 +1,6 @@
 using Gitmanik.Console;
 using UnityEngine;
 
-public enum PlayerState
-{
-    Moving,     // Gracz moze sie poruszac
-    Interacting // Gracz jest w interakcji z NPC
-}
-
 /// <summary>
 /// Manages player movement, interaction with NPCs, and state transitions.
 /// Handles gravity, animations, and camera behavior during interactions.
@@ -38,10 +32,6 @@ public class PlayerController : MonoBehaviour, IChattable
     /// </summary>
     private Vector3 moveDirection;
 
-    /// <summary>
-    /// Current state of the player (e.g., Moving or Interacting).
-    /// </summary>
-    private PlayerState currentState = PlayerState.Moving;
     /// <summary>
     /// Transform of the NPC the player is targeting for interaction.
     /// </summary>
@@ -109,21 +99,21 @@ public class PlayerController : MonoBehaviour, IChattable
     {
         if (GitmanikConsole.Visible)
             return;
-        
-        if (currentState == PlayerState.Moving)
+
+        if (ShouldMove)
         {
             HandleMovement();
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (currentState == PlayerState.Moving && targetNPC != null)
+            if (ShouldMove && targetNPC != null)
             {
                 StartInteraction(targetNPC.GetComponent<NPC>());
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && currentState == PlayerState.Interacting)
+        if (Input.GetKeyDown(KeyCode.Escape) && ChattingWith != null)
         {
             ChattingWith.FinishChatting();
             FinishChatting();
@@ -166,7 +156,6 @@ public class PlayerController : MonoBehaviour, IChattable
     /// <param name="npc">The NPC to interact with.</param>
     public void StartInteraction(NPC npc)
     {
-        currentState = PlayerState.Interacting;
         npc.StartChatting(this);
         StartChatting(npc);
     }
@@ -193,8 +182,6 @@ public class PlayerController : MonoBehaviour, IChattable
     /// </summary>
     public void FinishChatting()
     {
-        currentState = PlayerState.Moving;
-
         characterMesh.enabled = true;
         GameManager.Instance.MinimapGameObject.SetActive(true);
         CameraFollow.Instance.SetTarget(transform, false);
