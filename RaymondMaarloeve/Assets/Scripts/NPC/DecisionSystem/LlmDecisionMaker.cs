@@ -97,13 +97,13 @@ public class LlmDecisionMaker : IDecisionSystem
           currentConversation,
           (response) =>
           {
-              if (npc.GetCurrentDecision() is not WaitForLLMDecision)
+              if (npc.CurrentDecision is not WaitForLLMDecision)
               {
                   Debug.LogWarning($"{npc.Name}: Received new action but not waiting for it anymore!");
                   return;
               }
               waitingResponse = response;
-              (npc.GetCurrentDecision() as WaitForLLMDecision).Ready = true;
+              (npc.CurrentDecision as WaitForLLMDecision).Ready = true;
           },
           OnChatError,
           0.95f,

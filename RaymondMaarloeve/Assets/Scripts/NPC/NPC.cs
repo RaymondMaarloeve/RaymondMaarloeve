@@ -23,7 +23,7 @@ public class NPC : MonoBehaviour
     /// <summary>
     /// The current decision being executed by the NPC.
     /// </summary>
-    private IDecision currentDecision;
+    public IDecision CurrentDecision { get; private set; }
 
     /// <summary>
     /// Interrupted Decision, see <see cref="OnInteraction"/>
@@ -183,12 +183,6 @@ public class NPC : MonoBehaviour
     }
 
     /// <summary>
-    /// Gets the current decision being executed by the NPC.
-    /// </summary>
-    /// <returns>The current decision.</returns>
-    public IDecision GetCurrentDecision() => currentDecision;
-
-    /// <summary>
     /// Gets the decision system used by the NPC.
     /// </summary>
     /// <returns>The decision system.</returns>
@@ -208,22 +202,20 @@ public class NPC : MonoBehaviour
         if (lookTarget != null)
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, lookTarget.eulerAngles.y - 180, transform.eulerAngles.z);
 
-        if (!PlayerController.Instance.currentlyInteractingNPC == this && !isConcluding && (currentDecision == null || !currentDecision.Tick()))
+        if (!PlayerController.Instance.currentlyInteractingNPC == this && !isConcluding && (CurrentDecision == null || !CurrentDecision.Tick()))
         {
             Debug.Log($"{Name}: Current decision finished");
             if (DayNightCycle.Instance.timeOfDay > 20.5f || DayNightCycle.Instance.timeOfDay < 7f)
             {
-                currentDecision = new GoToSleepDecision(HisBuilding, this);
+                SetCurrentDecision(new GoToSleepDecision(HisBuilding, this));
             }
             else
             {
-                currentDecision = decisionSystem.Decide();
+                SetCurrentDecision(decisionSystem.Decide());
             }
-            currentDecision.Start();
-            Debug.Log($"{Name}: New decision: {currentDecision.DebugInfo()}");
             NpcEventBus.Publish(new NpcActionEvent(
                 sourceId: EntityID,
-                action: currentDecision?.PrettyName ?? IdleDecision.RandomPrettyName,
+                action: CurrentDecision?.PrettyName ?? IdleDecision.RandomPrettyName,
                 position: transform.position
             ));
         }
@@ -285,7 +277,7 @@ public class NPC : MonoBehaviour
                     {
                         if (!visibleNpcs.Contains(npc))
                         {
-                            string currentAction = npc.currentDecision?.PrettyName ?? IdleDecision.RandomPrettyName;
+                            string currentAction = npc.CurrentDecision?.PrettyName ?? IdleDecision.RandomPrettyName;
 
                             // Check if we have already observed this NPC doing the same action
                             if (!lastObservedActions.ContainsKey(npc.EntityID) || lastObservedActions[npc.EntityID] != currentAction)
@@ -444,14 +436,12 @@ public class NPC : MonoBehaviour
 
     /// <summary>
     /// Called when Player starts interacting with NPC, see <see cref="PlayerController::StartInteraction"/>
-    /// NPC will look at Player and <see cref="StoppedDecision"/> will be set to <see cref="currentDecision"/>
+    /// NPC will look at Player and <see cref="StoppedDecision"/> will be set to <see cref="CurrentDecision"/>
     /// </summary>
     public void OnInteraction()
     {
         LookAt(CameraFollow.Instance.transform);
-        currentDecision?.Finish();
-        StoppedDecision = currentDecision;
-        currentDecision = null;
+        SetCurrentDecision(null);
         agent.ResetPath();
     }
 
@@ -542,10 +532,10 @@ public class NPC : MonoBehaviour
 
         if (conclusions.action > 1)
         {
-            currentDecision?.Finish();
-            currentDecision = env[conclusions.action - 2].decision;
-            currentDecision.Start();
-            Debug.Log($"{Name}: Concluded and selected decision: {currentDecision.DebugInfo()}");
+            CurrentDecision?.Finish();
+            CurrentDecision = env[conclusions.action - 2].decision;
+            CurrentDecision.Start();
+            Debug.Log($"{Name}: Concluded and selected decision: {CurrentDecision.DebugInfo()}");
         }
         ObtainedMemories.Add(new ObtainedMemory()
         {
@@ -557,5 +547,24 @@ public class NPC : MonoBehaviour
         isConcluding = false;
     }
 
+    /// <summary>
+    /// Sets <see cref="StoppedDecision"> and starts new decision
+    /// </summary>
+    public void InterruptDecision(IDecision decision)
+    {
+        Debug.Log("{Name}: Interrupting decision");
+        StoppedDecision = CurrentDecision;
+        SetCurrentDecision(decision);
+    }
 
+    /// <summary>
+    /// Finishes current decision and starts up new one.
+    /// </summary>
+    public void SetCurrentDecision(IDecision decision)
+    {
+        CurrentDecision?.Finish();
+        CurrentDecision = decision;
+        CurrentDecision?.Start();
+        Debug.Log($"{Name}: New decision: {CurrentDecision.DebugInfo()}");
+    }
 }

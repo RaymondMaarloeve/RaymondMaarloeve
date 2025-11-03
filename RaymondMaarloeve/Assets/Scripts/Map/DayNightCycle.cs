@@ -227,9 +227,9 @@ public class DayNightCycle : MonoBehaviour
             int sleepingNPCs = 0;
             foreach (NPC npc in allNPCs)
             {
-                if (npc.GetCurrentDecision() is GoToSleepDecision)
+                if (npc.CurrentDecision is GoToSleepDecision)
                 {
-                    if (((VisitBuildingDecision)npc.GetCurrentDecision()).reachedBuilding)
+                    if (((VisitBuildingDecision)npc.CurrentDecision).reachedBuilding)
                         sleepingNPCs++;
                 }
             }
