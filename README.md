@@ -42,7 +42,7 @@ What sets this game apart is the lack of traditional, rigid scripting for events
 Whether you're on Windows or Linux, the game runs seamlessly, so you can enjoy the experience regardless of your operating system.
 
 ### ⚙️ Technology Stack
-- **Game Engine:** Unity 6 (6000.0.38f1) + C#
+- **Game Engine:** Unity 6 (6000.0.60f1) + C#
 - **Artificial Intelligence:**  
   - Large Language Model (LLM), pathfinding with NavMesh  
   - We use **Llama 3.2 3B Instruct** for all in-game LLM-driven behaviors, including NPC dialogue and decision-making.
