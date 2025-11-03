@@ -2085,7 +2085,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c04617c2079cb82429ab6d82791d04ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentConversation: []
   dialogBoxParent: {fileID: 703017318}
   dialogInputField: {fileID: 1280728995}
   npcResponseText: {fileID: 936493702}

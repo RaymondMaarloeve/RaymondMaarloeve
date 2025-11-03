@@ -1,4 +1,3 @@
-using System.Linq;
 using Gitmanik.Console;
 using UnityEngine;
 
@@ -12,7 +11,7 @@ public enum PlayerState
 /// Manages player movement, interaction with NPCs, and state transitions.
 /// Handles gravity, animations, and camera behavior during interactions.
 /// </summary>
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IChattable
 {
     /// <summary>
     /// Singleton instance of the PlayerController class.
@@ -23,14 +22,17 @@ public class PlayerController : MonoBehaviour
     /// Speed at which the player moves.
     /// </summary>
     public float moveSpeed = 5f;
+
     /// <summary>
     /// Gravity applied to the player.
     /// </summary>
     public float gravity = 9.81f;
+
     /// <summary>
     /// Reference to the CharacterController component.
     /// </summary>
     private CharacterController characterController;
+
     /// <summary>
     /// Direction of player movement.
     /// </summary>
@@ -44,21 +46,41 @@ public class PlayerController : MonoBehaviour
     /// Transform of the NPC the player is targeting for interaction.
     /// </summary>
     private Transform targetNPC = null;
+
     /// <summary>
     /// Reference to the player's SkinnedMeshRenderer.
     /// </summary>
     private SkinnedMeshRenderer characterMesh;
 
     /// <summary>
-    /// Reference to the NPC the player is currently interacting with.
-    /// </summary>
-    public NPC currentlyInteractingNPC = null;
-
-    /// <summary>
     /// Reference to the Animator component for player animations.
     /// </summary>
     private Animator animator;
 
+    /// <summary>
+    /// Reference to chatee. NULL if talking with noone.
+    /// </summary>
+    public IChattable ChattingWith { get; private set; }
+
+    /// <summary>
+    /// Whether player can move.
+    /// </summary>
+    private bool ShouldMove => ChattingWith == null;
+
+    /// <summary>
+    /// Name of the Player.
+    /// </summary>
+    public string Name => "Detective Raymond Maarloeve";
+
+    /// <summary>
+    /// Look target for chatee.
+    /// </summary>
+    public Transform LookTarget => CameraFollow.Instance.transform;
+
+    /// <summary>
+    /// Whether Player is available to char.
+    /// </summary>
+    public bool AvailableToChat => ChattingWith == null;
 
     /// <summary>
     /// Initializes the singleton instance.
@@ -103,7 +125,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape) && currentState == PlayerState.Interacting)
         {
-            EndInteraction();
+            ChattingWith.FinishChatting();
+            FinishChatting();
         }
     }
 
@@ -126,12 +149,11 @@ public class PlayerController : MonoBehaviour
             moveDirection.y -= gravity * Time.deltaTime;
         }
 
-
         characterController.Move(moveDirection * Time.deltaTime);
         if (animator != null)
         {
             Vector3 horizontalMove = moveDirection;
-            horizontalMove.y = 0f; 
+            horizontalMove.y = 0f;
             animator.SetFloat("Speed", horizontalMove.magnitude);
         }
 
@@ -145,45 +167,49 @@ public class PlayerController : MonoBehaviour
     public void StartInteraction(NPC npc)
     {
         currentState = PlayerState.Interacting;
-        moveDirection = Vector3.zero; // Zatrzymanie gracza
+        npc.StartChatting(this);
+        StartChatting(npc);
+    }
 
+    /// <summary>
+    /// Hides game UI and enables chatting dialog.
+    /// </summary>
+    public void StartChatting(IChattable chattable)
+    {
+        ChattingWith = chattable;
+
+        moveDirection = Vector3.zero;
         characterMesh.enabled = false;
         GameManager.Instance.MinimapGameObject.SetActive(false);
-        CameraFollow.Instance.SetTarget(npc.transform, true);
+        CameraFollow.Instance.SetTarget(chattable.LookTarget, true);
         DialogBoxManager.Instance.ShowDialogBox();
 
-        npc.OnInteraction();
-        
-        currentlyInteractingNPC = npc;
-        
-
-
-        Debug.Log("Started interaction with: " + npc.name);
+        Debug.Log("Started chatting with: " + ChattingWith.Name);
     }
 
     /// <summary>
     /// Ends interaction with the currently interacting NPC.
     /// Resets camera and player state.
     /// </summary>
-    public void EndInteraction()
+    public void FinishChatting()
     {
         currentState = PlayerState.Moving;
 
         characterMesh.enabled = true;
         GameManager.Instance.MinimapGameObject.SetActive(true);
-        currentlyInteractingNPC.LookAt(null);
-
-        var conv = DialogBoxManager.Instance.currentConversation.ToList();
-        
-        StartCoroutine(
-            Instance.currentlyInteractingNPC?.DrawConclusions(conv));
-        
-        Instance.currentlyInteractingNPC = null;
-        
         CameraFollow.Instance.SetTarget(transform, false);
         DialogBoxManager.Instance.HideDialogBox();
 
-        Debug.Log("Ended interaction");
+        Debug.Log($"Finished chatting with: {ChattingWith.Name}");
+        ChattingWith = null;
+    }
+
+    /// <summary>
+    /// Redirects response from NPC to DialogBoxManager.
+    /// </summary>
+    public void Chat(string message)
+    {
+        DialogBoxManager.Instance.ShowResponse(message);
     }
 
     /// <summary>

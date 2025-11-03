@@ -8,7 +8,7 @@ using UnityEngine.AI;
 /// Represents a Non-Player Character (NPC) in the game world.
 /// Handles decision making, vision, memory, and interaction logic for the NPC.
 /// </summary>
-public class NPC : MonoBehaviour
+public class NPC : MonoBehaviour, IChattable
 {
     /// <summary>
     /// The current target the NPC is looking at.
@@ -131,11 +131,6 @@ public class NPC : MonoBehaviour
     private float gameHourTimer = 0f;
 
     /// <summary>
-    /// Whether the NPC is currently concluding
-    /// </summary>
-    private bool isConcluding = false;
-
-    /// <summary>
     /// The factor by which memory weight decays each game hour.
     /// </summary>
     private const float decayFactorPerHour = 0.9f;
@@ -144,6 +139,16 @@ public class NPC : MonoBehaviour
     /// The weight threshold below which a memory is removed.
     /// </summary>
     private const float removalThreshold = 0.01f;
+
+    /// <summary>
+    /// Whether the NPC is available to chat with other chatters, see <see cref="IChattable">.
+    /// </summary>
+    public bool AvailableToChat => !(CurrentDecision is ChatDecision);
+
+    /// <summary>
+    /// The look target for <see cref="IChattable">.
+    /// </summary>
+    public Transform LookTarget => transform;
 
     /// <summary>
     /// Initializes the NPC, sets up the entity ID, animator, and subscribes to the NPC event bus.
@@ -202,7 +207,7 @@ public class NPC : MonoBehaviour
         if (lookTarget != null)
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, lookTarget.eulerAngles.y - 180, transform.eulerAngles.z);
 
-        if (!PlayerController.Instance.currentlyInteractingNPC == this && !isConcluding && (CurrentDecision == null || !CurrentDecision.Tick()))
+        if (CurrentDecision == null || !CurrentDecision.Tick())
         {
             Debug.Log($"{Name}: Current decision finished");
             if (DayNightCycle.Instance.timeOfDay > 20.5f || DayNightCycle.Instance.timeOfDay < 7f)
@@ -438,113 +443,38 @@ public class NPC : MonoBehaviour
     /// Called when Player starts interacting with NPC, see <see cref="PlayerController::StartInteraction"/>
     /// NPC will look at Player and <see cref="StoppedDecision"/> will be set to <see cref="CurrentDecision"/>
     /// </summary>
-    public void OnInteraction()
+    public void StartChatting(IChattable otherChatter)
     {
-        LookAt(CameraFollow.Instance.transform);
-        SetCurrentDecision(null);
-        agent.ResetPath();
+        LookAt(otherChatter.LookTarget);
+        InterruptDecision(new ChatDecision(this, otherChatter, true));
+        Debug.Log($"Started chatting with {otherChatter.Name}");
     }
 
     /// <summary>
-    /// Coroutine that draws conclusions from conversation using Narrator LLM Model,
+    /// Chat function implementation for <see cref="IChattable">.
     /// </summary>
-    /// <returns>IEnumerator for coroutine execution.</returns>
-    public IEnumerator DrawConclusions(List<Message> conversation)
+    public void Chat(string message)
     {
-        if (GameManager.Instance.SkipConslusions)
-            yield break;
-
-        isConcluding = true;
-        var env = GetCurrentEnvironment();
-
-        string prompt = $"You will be given a conversation between a medieval character and Raymond Maarloeve, a detective.\n" +
-                        $"You will write a summary of given conversation and insert it into 'paragraph'.\n" +
-                        $"If the Detective was DIRECTLY asking the character to do something, write an index of selected action (1-{env.Count + 1}) into 'action'\n" +
-                        $"If not, select 'none'\n" +
-                        $"Use simple reasoning and focus only on what is directly said or implied in the conversation.\n" +
-                        $"Do not invent information.\n" +
-                        $"Do not repeat the entire conversation.\n" +
-                        $"Pick only one action.\n" +
-                        $"Actions to choose from: [\n" +
-                        $"['none'\n{string.Join('\n', env.ConvertAll(x => $"'{x.decision.PrettyName} {(x.associatedGameObject != null ? $"at {x.associatedGameObject?.name.ToLower().Replace("(clone)", "")}'" : "'")}"))}]\n" +
-                        $"Conversation: [\n" +
-                        string.Join(',', conversation.ConvertAll(x => $"{(x.role == "user" ? "Raymond Maarloeve" : Name)}: {x.content}")) +
-                        $"]\n" +
-                        $"Your response must be ONLY this EXACT CORRECT JSON object:\n" +
-                        $"{{\n\"paragraph\": \"generated paragraph here\",\n\"action:\", <action index (1-{env.Count + 1})>\n}}";
-
-        List<Message> messages = new List<Message>();
-        messages.Add(new Message { role = "system", content = prompt });
-        messages.Add(new Message { role = "user", content = JsonUtility.ToJson(conversation) });
-
-        bool callbackCalled = false;
-        string resp = null;
-
-        Debug.Log("Drawing conclusions...");
-
-        LlmManager.Instance.Chat("", messages, result =>
+        if (CurrentDecision is not ChatDecision chatDecision)
         {
-            callbackCalled = true;
-            resp = result.response;
-        }, (error) =>
-        {
-            Debug.LogError($"{Name}: DrawConclusions error: {error}");
-            callbackCalled = true;
-        }, 0.95f, 0.5f);
-
-        // Wait for the callback to be called
-        while (!callbackCalled)
-            yield return null;
-
-        if (resp == null)
-        {
-            Debug.LogError($"{Name}: DrawConclusions error: resp is null");
-            yield break;
+            Debug.LogError("Tried to chat but currently not in chat");
+            return;
         }
+        chatDecision.Chat(message);
+    }
 
-        if (!resp.Contains('{') || !resp.Contains('}'))
+    /// <summary>
+    /// Chat finish function implementation for <see cref="IChattable">.
+    /// </summary>
+    public void FinishChatting()
+    {
+        if (CurrentDecision is not ChatDecision chatDecision)
         {
-            Debug.LogError($"{Name}: DrawConclusions error: missing JSON brackets\n{resp}");
-            yield break;
+            Debug.LogError("Tried to finish chatting but currently not in chat");
+            return;
         }
-
-        string strippedResp = resp.Substring(resp.IndexOf('{'));
-        strippedResp = strippedResp.Substring(0, strippedResp.LastIndexOf('}') + 1);
-
-        DrawConclusionsResponseDTO conclusions;
-        try
-        {
-            conclusions = JsonUtility.FromJson<DrawConclusionsResponseDTO>(strippedResp);
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"{Name}: DrawConclusions error: {e.Message}:\nFull response:{resp}\n\nStripped response:{strippedResp}");
-            yield break;
-        }
-
-        if (conclusions.action < 1 || conclusions.action > env.Count + 1)
-        {
-            Debug.LogError($"{Name}: DrawConclusions error: wrong action selected: {conclusions.action}\nFull response:{resp}\n\nStripped response:{strippedResp}");
-            yield break;
-        }
-
-        Debug.Log($"{Name}: DrawConclusions complete:\nSelected action (1->): {conclusions.action}\nParagraph:{conclusions.paragraph}");
-
-        if (conclusions.action > 1)
-        {
-            CurrentDecision?.Finish();
-            CurrentDecision = env[conclusions.action - 2].decision;
-            CurrentDecision.Start();
-            Debug.Log($"{Name}: Concluded and selected decision: {CurrentDecision.DebugInfo()}");
-        }
-        ObtainedMemories.Add(new ObtainedMemory()
-        {
-            recency = 10,
-            relevance = 10,
-            importance = 10,
-            memory = conclusions.paragraph
-        });
-        isConcluding = false;
+        LookAt(null);
+        chatDecision.FinishChatting();
     }
 
     /// <summary>
