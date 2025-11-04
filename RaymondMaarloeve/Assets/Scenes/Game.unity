@@ -2046,6 +2046,7 @@ GameObject:
   - component: {fileID: 1191064609}
   - component: {fileID: 1191064611}
   - component: {fileID: 1191064610}
+  - component: {fileID: 1191064612}
   m_Layer: 5
   m_Name: Minimap
   m_TagString: Untagged
@@ -2065,7 +2066,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 447810722}
+  - {fileID: 2035828077}
+  - {fileID: 981547065}
   m_Father: {fileID: 330165695}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
@@ -4978,11 +4980,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 447810722}
+  m_Father: {fileID: 1191064609}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -150.00005, y: 150}
+  m_AnchoredPosition: {x: -160.00046, y: 160.00002}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2035828078
