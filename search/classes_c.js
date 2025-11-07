@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['readnoticeboarddecision_0',['ReadNoticeBoardDecision',['../class_read_notice_board_decision.html',1,'']]]
+  ['playercontroller_0',['PlayerController',['../class_player_controller.html',1,'']]],
+  ['praydecision_1',['PrayDecision',['../class_pray_decision.html',1,'']]]
 ];

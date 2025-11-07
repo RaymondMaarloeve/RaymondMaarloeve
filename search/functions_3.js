@@ -5,6 +5,7 @@ var searchData=
   ['chopwooddecision_2',['ChopWoodDecision',['../class_chop_wood_decision.html#a7302f9306aeab3f5c7a106510c405c80',1,'ChopWoodDecision']]],
   ['cluespawner_3',['ClueSpawner',['../class_clue_spawner.html#ada266e77d1024da0675c34b3b1ce2609',1,'ClueSpawner']]],
   ['connect_4',['Connect',['../class_llm_manager.html#a16ee38ba51ddab349c04ad0b9bce0630',1,'LlmManager']]],
-  ['currentenvironment_5',['CurrentEnvironment',['../class_current_environment.html#aa1d06a75d40d0048d91c5cc5062c1427',1,'CurrentEnvironment']]],
-  ['currentenvironmentdto_6',['CurrentEnvironmentDTO',['../class_current_environment_d_t_o.html#ad5a91d9b3b9a356ed90ea932658403a8',1,'CurrentEnvironmentDTO']]]
+  ['cookstewdecision_5',['CookStewDecision',['../class_cook_stew_decision.html#a7215ce6a933cb1889128e2b4ae072927',1,'CookStewDecision']]],
+  ['currentenvironment_6',['CurrentEnvironment',['../class_current_environment.html#aa1d06a75d40d0048d91c5cc5062c1427',1,'CurrentEnvironment']]],
+  ['currentenvironmentdto_7',['CurrentEnvironmentDTO',['../class_current_environment_d_t_o.html#ad5a91d9b3b9a356ed90ea932658403a8',1,'CurrentEnvironmentDTO']]]
 ];

@@ -8,6 +8,7 @@ var searchData=
   ['chopwooddecision_5',['ChopWoodDecision',['../class_chop_wood_decision.html',1,'']]],
   ['cluesetup_6',['ClueSetup',['../class_clue_setup.html',1,'']]],
   ['cluespawner_7',['ClueSpawner',['../class_clue_spawner.html',1,'']]],
-  ['currentenvironment_8',['CurrentEnvironment',['../class_current_environment.html',1,'']]],
-  ['currentenvironmentdto_9',['CurrentEnvironmentDTO',['../class_current_environment_d_t_o.html',1,'']]]
+  ['cookstewdecision_8',['CookStewDecision',['../class_cook_stew_decision.html',1,'']]],
+  ['currentenvironment_9',['CurrentEnvironment',['../class_current_environment.html',1,'']]],
+  ['currentenvironmentdto_10',['CurrentEnvironmentDTO',['../class_current_environment_d_t_o.html',1,'']]]
 ];
