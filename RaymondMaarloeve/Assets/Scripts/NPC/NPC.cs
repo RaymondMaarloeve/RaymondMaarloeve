@@ -8,7 +8,7 @@ using UnityEngine.AI;
 /// Represents a Non-Player Character (NPC) in the game world.
 /// Handles decision making, vision, memory, and interaction logic for the NPC.
 /// </summary>
-public class NPC : MonoBehaviour
+public class NPC : MonoBehaviour, IChattable
 {
     /// <summary>
     /// The current target the NPC is looking at.
@@ -23,7 +23,7 @@ public class NPC : MonoBehaviour
     /// <summary>
     /// The current decision being executed by the NPC.
     /// </summary>
-    private IDecision currentDecision;
+    public IDecision CurrentDecision { get; private set; }
 
     /// <summary>
     /// Interrupted Decision, see <see cref="OnInteraction"/>
@@ -68,7 +68,7 @@ public class NPC : MonoBehaviour
     /// <summary>
     /// The name of the NPC.
     /// </summary>
-    public string NpcName { get; private set; } = null;
+    public string Name { get; private set; } = null;
 
     /// <summary>
     /// The list of memories obtained by the NPC.
@@ -131,11 +131,6 @@ public class NPC : MonoBehaviour
     private float gameHourTimer = 0f;
 
     /// <summary>
-    /// Whether the NPC is currently concluding
-    /// </summary>
-    private bool isConcluding = false;
-
-    /// <summary>
     /// The factor by which memory weight decays each game hour.
     /// </summary>
     private const float decayFactorPerHour = 0.9f;
@@ -144,6 +139,16 @@ public class NPC : MonoBehaviour
     /// The weight threshold below which a memory is removed.
     /// </summary>
     private const float removalThreshold = 0.01f;
+
+    /// <summary>
+    /// Whether the NPC is available to chat with other chatters, see <see cref="IChattable">.
+    /// </summary>
+    public bool AvailableToChat => !(CurrentDecision is ChatDecision);
+
+    /// <summary>
+    /// The look target for <see cref="IChattable">.
+    /// </summary>
+    public Transform LookTarget => transform;
 
     /// <summary>
     /// Initializes the NPC, sets up the entity ID, animator, and subscribes to the NPC event bus.
@@ -177,16 +182,10 @@ public class NPC : MonoBehaviour
         ModelID = modelId;
 
         CharacterData = characterDTO;
-        NpcName = characterDTO.name;
+        Name = characterDTO.name;
         SystemPrompt = characterDTO.description;
-        name = "NPC: " + NpcName;
+        name = "NPC: " + Name;
     }
-
-    /// <summary>
-    /// Gets the current decision being executed by the NPC.
-    /// </summary>
-    /// <returns>The current decision.</returns>
-    public IDecision GetCurrentDecision() => currentDecision;
 
     /// <summary>
     /// Gets the decision system used by the NPC.
@@ -208,22 +207,20 @@ public class NPC : MonoBehaviour
         if (lookTarget != null)
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, lookTarget.eulerAngles.y - 180, transform.eulerAngles.z);
 
-        if (!PlayerController.Instance.currentlyInteractingNPC == this && !isConcluding && (currentDecision == null || !currentDecision.Tick()))
+        if (CurrentDecision == null || !CurrentDecision.Tick())
         {
-            Debug.Log($"{NpcName}: Current decision finished");
+            Debug.Log($"{Name}: Current decision finished");
             if (DayNightCycle.Instance.timeOfDay > 20.5f || DayNightCycle.Instance.timeOfDay < 7f)
             {
-                currentDecision = new GoToSleepDecision(HisBuilding, this);
+                SetCurrentDecision(new GoToSleepDecision(HisBuilding, this));
             }
             else
             {
-                currentDecision = decisionSystem.Decide();
+                SetCurrentDecision(decisionSystem.Decide());
             }
-            currentDecision.Start();
-            Debug.Log($"{NpcName}: New decision: {currentDecision.DebugInfo()}");
             NpcEventBus.Publish(new NpcActionEvent(
                 sourceId: EntityID,
-                action: currentDecision?.PrettyName ?? IdleDecision.RandomPrettyName,
+                action: CurrentDecision?.PrettyName ?? IdleDecision.RandomPrettyName,
                 position: transform.position
             ));
         }
@@ -285,14 +282,14 @@ public class NPC : MonoBehaviour
                     {
                         if (!visibleNpcs.Contains(npc))
                         {
-                            string currentAction = npc.currentDecision?.PrettyName ?? IdleDecision.RandomPrettyName;
+                            string currentAction = npc.CurrentDecision?.PrettyName ?? IdleDecision.RandomPrettyName;
 
                             // Check if we have already observed this NPC doing the same action
                             if (!lastObservedActions.ContainsKey(npc.EntityID) || lastObservedActions[npc.EntityID] != currentAction)
                             {
                                 lastObservedActions[npc.EntityID] = currentAction;
 
-                                string newMemory = $"Saw {npc.NpcName} {currentAction} at {DayNightCycle.Instance.GetCurrentTimeText()}, day {DayNightCycle.Instance.GetCurrentDay()}";
+                                string newMemory = $"Saw {npc.Name} {currentAction} at {DayNightCycle.Instance.GetCurrentTimeText()}, day {DayNightCycle.Instance.GetCurrentDay()}";
 
                                 decisionSystem.CalculateRelevance(newMemory, relevance =>
                                 {
@@ -303,7 +300,7 @@ public class NPC : MonoBehaviour
                                         importance = 5,
                                         recency = 10
                                     });
-                                    Debug.Log($"{NpcName}: immediately observed {npc.NpcName} doing {currentAction}. Assigned relevance value: {relevance}");
+                                    Debug.Log($"{Name}: immediately observed {npc.Name} doing {currentAction}. Assigned relevance value: {relevance}");
                                 });
 
                             }
@@ -331,7 +328,7 @@ public class NPC : MonoBehaviour
         {
             lastObservedActions[observedNpc.EntityID] = e.Action;
 
-            string newMemory = $"Saw {observedNpc.NpcName} doing {e.Action}"; // TODO add hour
+            string newMemory = $"Saw {observedNpc.Name} doing {e.Action}"; // TODO add hour
 
             decisionSystem.CalculateRelevance(newMemory, relevance =>
             {
@@ -343,7 +340,7 @@ public class NPC : MonoBehaviour
                     recency = 10
                 });
 
-                Debug.Log($"{NpcName}: observed {observedNpc.NpcName} doing {e.Action}. Assigned relevance value: {relevance}");
+                Debug.Log($"{Name}: observed {observedNpc.Name} doing {e.Action}. Assigned relevance value: {relevance}");
             });
         }
     }
@@ -356,7 +353,7 @@ public class NPC : MonoBehaviour
     /// <param name="targetTransform">The transform of the target to look at. If null, the NPC resets its rotation.</param>
     public void LookAt(Transform targetTransform)
     {
-        Debug.Log($"{NpcName}: Looking at {(targetTransform == null ? "null" : targetTransform.name)}");
+        Debug.Log($"{Name}: Looking at {(targetTransform == null ? "null" : targetTransform.name)}");
         if (targetTransform != null)
         {
             oldLookTarget = transform.eulerAngles;
@@ -444,176 +441,60 @@ public class NPC : MonoBehaviour
 
     /// <summary>
     /// Called when Player starts interacting with NPC, see <see cref="PlayerController::StartInteraction"/>
-    /// NPC will look at Player and <see cref="StoppedDecision"/> will be set to <see cref="currentDecision"/>
+    /// NPC will look at Player and <see cref="StoppedDecision"/> will be set to <see cref="CurrentDecision"/>
     /// </summary>
-    public void OnInteraction()
+    public void StartChatting(IChattable otherChatter)
     {
-        LookAt(CameraFollow.Instance.transform);
-        currentDecision?.Finish();
-        StoppedDecision = currentDecision;
-        currentDecision = null;
-        agent.ResetPath();
+        LookAt(otherChatter.LookTarget);
+        InterruptDecision(new ChatDecision(this, otherChatter, true));
+        Debug.Log($"Started chatting with {otherChatter.Name}");
     }
 
     /// <summary>
-    /// Coroutine that draws conclusions from conversation using Narrator LLM Model,
+    /// Chat function implementation for <see cref="IChattable">.
     /// </summary>
-    /// <returns>IEnumerator for coroutine execution.</returns>
-    public IEnumerator DrawConclusions(List<Message> conversation)
+    public void Chat(string message)
     {
-        if (GameManager.Instance.SkipConslusions)
-            yield break;
-
-        isConcluding = true;
-        var env = GetCurrentEnvironment();
-
-        string prompt = $"You will be given a conversation between a medieval character and Raymond Maarloeve, a detective.\n" +
-                        $"You will write a summary of given conversation and insert it into 'paragraph'.\n" +
-                        $"If the Detective was DIRECTLY asking the character to do something, write an index of selected action (1-{env.Count + 1}) into 'action'\n" +
-                        $"If not, select 'none'\n" +
-                        $"Use simple reasoning and focus only on what is directly said or implied in the conversation.\n" +
-                        $"Do not invent information.\n" +
-                        $"Do not repeat the entire conversation.\n" +
-                        $"Pick only one action.\n" +
-                        $"Actions to choose from: [\n" +
-                        $"['none'\n{string.Join('\n', env.ConvertAll(x => $"'{x.decision.PrettyName} {(x.associatedGameObject != null ? $"at {x.associatedGameObject?.name.ToLower().Replace("(clone)", "")}'" : "'")}"))}]\n" +
-                        $"Conversation: [\n" +
-                        string.Join(',', conversation.ConvertAll(x => $"{(x.role == "user" ? "Raymond Maarloeve" : NpcName)}: {x.content}")) +
-                        $"]\n" +
-                        $"Your response must be ONLY this EXACT CORRECT JSON object:\n" +
-                        $"{{\n\"paragraph\": \"generated paragraph here\",\n\"action:\", <action index (1-{env.Count + 1})>\n}}";
-
-        List<Message> messages = new List<Message>();
-        messages.Add(new Message { role = "system", content = prompt });
-        messages.Add(new Message { role = "user", content = JsonUtility.ToJson(conversation) });
-
-        bool callbackCalled = false;
-        string resp = null;
-
-        Debug.Log("Drawing conclusions...");
-
-        LlmManager.Instance.Chat("", messages, result =>
+        if (CurrentDecision is not ChatDecision chatDecision)
         {
-            callbackCalled = true;
-            resp = result.response;
-        }, (error) =>
-        {
-            Debug.LogError($"{NpcName}: DrawConclusions error: {error}");
-            callbackCalled = true;
-        }, 0.95f, 0.5f);
-
-        // Wait for the callback to be called
-        while (!callbackCalled)
-            yield return null;
-
-        if (resp == null)
-        {
-            Debug.LogError($"{NpcName}: DrawConclusions error: resp is null");
-            yield break;
+            Debug.LogError("Tried to chat but currently not in chat");
+            return;
         }
-
-        if (!resp.Contains('{') || !resp.Contains('}'))
-        {
-            Debug.LogError($"{NpcName}: DrawConclusions error: missing JSON brackets\n{resp}");
-            yield break;
-        }
-
-        string strippedResp = resp.Substring(resp.IndexOf('{'));
-        strippedResp = strippedResp.Substring(0, strippedResp.LastIndexOf('}') + 1);
-
-        DrawConclusionsResponseDTO conclusions;
-        try
-        {
-            conclusions = JsonUtility.FromJson<DrawConclusionsResponseDTO>(strippedResp);
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"{NpcName}: DrawConclusions error: {e.Message}:\nFull response:{resp}\n\nStripped response:{strippedResp}");
-            yield break;
-        }
-
-        if (conclusions.action < 1 || conclusions.action > env.Count + 1)
-        {
-            Debug.LogError($"{NpcName}: DrawConclusions error: wrong action selected: {conclusions.action}\nFull response:{resp}\n\nStripped response:{strippedResp}");
-            yield break;
-        }
-
-        Debug.Log($"{NpcName}: DrawConclusions complete:\nSelected action (1->): {conclusions.action}\nParagraph:{conclusions.paragraph}");
-
-        if (conclusions.action > 1)
-        {
-            currentDecision?.Finish();
-            currentDecision = env[conclusions.action - 2].decision;
-            currentDecision.Start();
-            Debug.Log($"{NpcName}: Concluded and selected decision: {currentDecision.DebugInfo()}");
-        }
-        ObtainedMemories.Add(new ObtainedMemory()
-        {
-            recency = 10,
-            relevance = 10,
-            importance = 10,
-            memory = conclusions.paragraph
-        });
-        isConcluding = false;
+        chatDecision.Chat(message);
     }
-}
-
-/// <summary>
-/// Represents an event describing an action performed by an NPC.
-/// </summary>
-public class NpcActionEvent
-{
-    /// <summary>
-    /// The source NPC's entity ID.
-    /// </summary>
-    public int SourceId;
 
     /// <summary>
-    /// The action performed by the NPC.
+    /// Chat finish function implementation for <see cref="IChattable">.
     /// </summary>
-    public string Action;
-
-    /// <summary>
-    /// The position where the action was performed.
-    /// </summary>
-    public Vector3 Position;
-
-    /// <summary>
-    /// The timestamp when the event was created.
-    /// </summary>
-    public float Timestamp;
-
-    /// <summary>
-    /// Constructs a new NpcActionEvent.
-    /// </summary>
-    /// <param name="sourceId">The source NPC's entity ID.</param>
-    /// <param name="action">The action performed.</param>
-    /// <param name="position">The position of the action.</param>
-    public NpcActionEvent(int sourceId, string action, Vector3 position)
+    public void FinishChatting()
     {
-        SourceId = sourceId;
-        Action = action;
-        Position = position;
-        Timestamp = Time.time;
+        if (CurrentDecision is not ChatDecision chatDecision)
+        {
+            Debug.LogError("Tried to finish chatting but currently not in chat");
+            return;
+        }
+        LookAt(null);
+        chatDecision.FinishChatting();
     }
-}
-
-/// <summary>
-/// Event bus for publishing and subscribing to NPC action events.
-/// </summary>
-public static class NpcEventBus
-{
-    /// <summary>
-    /// Event triggered when an NPC action occurs.
-    /// </summary>
-    public static event Action<NpcActionEvent> OnNpcAction;
 
     /// <summary>
-    /// Publishes an NPC action event to all subscribers.
+    /// Sets <see cref="StoppedDecision"> and starts new decision
     /// </summary>
-    /// <param name="e">The event to publish.</param>
-    public static void Publish(NpcActionEvent e)
+    public void InterruptDecision(IDecision decision)
     {
-        OnNpcAction?.Invoke(e);
+        Debug.Log("{Name}: Interrupting decision");
+        StoppedDecision = CurrentDecision;
+        SetCurrentDecision(decision);
+    }
+
+    /// <summary>
+    /// Finishes current decision and starts up new one.
+    /// </summary>
+    public void SetCurrentDecision(IDecision decision)
+    {
+        CurrentDecision?.Finish();
+        CurrentDecision = decision;
+        CurrentDecision?.Start();
+        Debug.Log($"{Name}: New decision: {CurrentDecision.DebugInfo()}");
     }
 }

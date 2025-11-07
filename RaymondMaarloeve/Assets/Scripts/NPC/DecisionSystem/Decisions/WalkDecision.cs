@@ -89,7 +89,7 @@ public class WalkDecision : IDecision
             }
             else
             {
-                Debug.LogWarning(npc.NpcName + ": Not found point on NavMesh!");
+                Debug.LogWarning(npc.Name + ": Not found point on NavMesh!");
             }
         }
     }

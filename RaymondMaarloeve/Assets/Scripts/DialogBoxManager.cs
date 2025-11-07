@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using System.Collections;
 
 /// <summary>
 /// Manages the dialog box UI for player interactions with NPCs.
@@ -12,11 +13,6 @@ public class DialogBoxManager : MonoBehaviour
     /// Singleton instance of the DialogBoxManager class.
     /// </summary>
     public static DialogBoxManager Instance { get; private set; }
-
-    /// <summary>
-    /// List of messages forming the current conversation.
-    /// </summary>
-    [HideInInspector] public List<Message> currentConversation = new List<Message>();
 
     /// <summary>
     /// Parent GameObject for the dialog box UI.
@@ -97,57 +93,17 @@ public class DialogBoxManager : MonoBehaviour
     {
         Debug.Log("Player entered and confirmed: " + input);
         dialogInputField.gameObject.SetActive(false);
-
-        // Add player's message to conversation
-        currentConversation.Add(new Message { role = "user", content = input });
-
-        // Send to LLM and get response
-        if (GameManager.Instance.LlmServerReady)
-        {
-            Debug.Log("Sending to LLM...");
-            LlmManager.Instance.Chat(
-                PlayerController.Instance.currentlyInteractingNPC.ModelID,
-                currentConversation,
-                OnChatResponse,
-                OnChatError
-            );
-        }
-        else
-        {
-            Debug.LogError("LLM Manager is not connected!");
-            npcResponseText.text = "Sorry, I cannot respond right now.\nPress Enter to continue...";
-            npcResponseText.gameObject.SetActive(true);
-            StartCoroutine(WaitForDismiss());
-        }
+        PlayerController.Instance.ChattingWith.Chat(input);
     }
     
 
     /// <summary>
-    /// Handles the response from the LLM server.
     /// Updates the NPC response text and waits for player dismissal.
     /// </summary>
     /// <param name="response">The response from the LLM server.</param>
-    private void OnChatResponse(ChatResponseDTO response)
+    public void ShowResponse(string response)
     {
-        // Add AI's response to conversation history
-        currentConversation.Add(new Message { role = "assistant", content = response.response });
-        
-        Debug.Log($"Chat response, took {response.generation_time}, total_tokens: {response.total_tokens}: {response.response}");
-        
-        npcResponseText.text = response.response + "\nPress Enter to continue...";
-        npcResponseText.gameObject.SetActive(true);
-        StartCoroutine(WaitForDismiss());
-    }
-
-    /// <summary>
-    /// Handles errors from the LLM server.
-    /// Displays an error message in the NPC response text.
-    /// </summary>
-    /// <param name="error">The error message from the LLM server.</param>
-    private void OnChatError(string error)
-    {
-        Debug.LogError($"Chat error: {error}");
-        npcResponseText.text = "Sorry, I'm having trouble responding.\nPress Enter to continue...";
+        npcResponseText.text = response + "\nPress Enter to continue...";
         npcResponseText.gameObject.SetActive(true);
         StartCoroutine(WaitForDismiss());
     }
@@ -156,7 +112,7 @@ public class DialogBoxManager : MonoBehaviour
     /// Waits for a short time before allowing the player to dismiss the dialog box.
     /// </summary>
     /// <returns>An enumerator for coroutine execution.</returns>
-    private System.Collections.IEnumerator WaitForDismiss()
+    private IEnumerator WaitForDismiss()
     {
         // Wait for a short time before allowing the player to dismiss the dialog box
         // Without this, system dismisses the dialog box immediately after the NPC response is shown
@@ -192,37 +148,9 @@ public class DialogBoxManager : MonoBehaviour
     {
         dialogBoxParent.SetActive(true);
         npcResponseText.gameObject.SetActive(false);
+        npcNameText.text = PlayerController.Instance.ChattingWith.Name;
 
         dialogInputField.text = "";
-
-        // Clear previous conversation and add system prompt
-        currentConversation.Clear();
-
-        string prompt =
-            $"You are now playing the role of a medieval character.\n" +
-            $"You will chat with a Detective named Raymond Maarloeve (<user>).\n" +
-            $"Your name is {PlayerController.Instance.currentlyInteractingNPC.NpcName} (<assistant>).\n" +
-            $"Below is your story:\n{PlayerController.Instance.currentlyInteractingNPC.SystemPrompt}.\n" +
-            $"It is {DayNightCycle.Instance.GetCurrentDay()} days after the murder of {GameManager.Instance.generatedHistory.characters.Find(x => x.dead).name}.\n";
-        if (PlayerController.Instance.currentlyInteractingNPC.CharacterData.murderer)
-            prompt +=
-                "You are the murderer. Try to deflect uneasy questions about the murder. Try to not get caught. Don't EVER tell anyone you are the murderer.";
-        else
-            prompt +=
-                "Try to help the detective with finding the murderer. Answer given questions as best as you can with given information in your story. Don't EVER fabricate or make up new informations about ANYONE or ANYTHING.";
-        
-        currentConversation.Add(new Message { role = "system", content = prompt});
-
-        if (PlayerController.Instance != null && PlayerController.Instance.currentlyInteractingNPC != null)
-        {
-            npcNameText.text = PlayerController.Instance.currentlyInteractingNPC.NpcName;
-        }
-        else
-        {
-            Debug.LogError("PlayerController.Instance or currentlyInteractingNPC is null!");
-            npcNameText.text = "Unknown NPC"; // Fallback text
-        }
-
         dialogInputField.gameObject.SetActive(true);
         dialogInputField.ActivateInputField();
     }
