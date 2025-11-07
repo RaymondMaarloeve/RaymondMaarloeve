@@ -15,5 +15,6 @@ var searchData=
   ['loadsettings_12',['LoadSettings',['../class_main_menu_manager.html#a7ba5130e5f702a248b1673f701bfc110',1,'MainMenuManager']]],
   ['loadsettingsscene_13',['LoadSettingsScene',['../class_main_menu_manager.html#ab2ca944e70f592de7f114c150d8fa892',1,'MainMenuManager']]],
   ['logdebug_14',['LogDebug',['../class_llm_manager.html#aabdea52995036d70d49980b004a0dfd5',1,'LlmManager']]],
-  ['lookat_15',['LookAt',['../class_n_p_c.html#a0078f5eaa3f92ce03b6d68989312eef1',1,'NPC']]]
+  ['lookat_15',['LookAt',['../class_n_p_c.html#a0078f5eaa3f92ce03b6d68989312eef1',1,'NPC']]],
+  ['looktarget_16',['LookTarget',['../interface_i_chattable.html#a9dc58b641022bed4226bfc026cbaad1e',1,'IChattable.LookTarget()'],['../class_n_p_c.html#a8015af1ad97365c702b01660340fc083',1,'NPC.LookTarget()'],['../class_player_controller.html#a7c74c4ecd31169e6548d6863b19405e2',1,'PlayerController.LookTarget()']]]
 ];

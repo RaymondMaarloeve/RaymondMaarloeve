@@ -26,6 +26,7 @@ var NAVTREE =
 [
   [ "Raymond Maarloeve", "index.html", [
     [ "Raymond Maarloeve sp. z o.o. 2nd term", "index.html", "index" ],
+    [ "Todo List", "todo.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -44,8 +45,7 @@ var NAVTREE =
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
         [ "Variables", "globals_vars.html", null ],
-        [ "Typedefs", "globals_type.html", null ],
-        [ "Enumerations", "globals_enum.html", null ]
+        [ "Typedefs", "globals_type.html", null ]
       ] ]
     ] ]
   ] ]
@@ -54,8 +54,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_blacksmith_work_decision_8cs.html",
-"class_game_manager.html",
-"class_tile.html#af21dac7eb432830ec7be23f7931cae8a"
+"class_fetch_firewood_decision.html#a17c79176e6a46a96653c2ce47a3b1461",
+"class_tend_garden_decision.html#a1ed0284753b02f8ee756da750d89b51c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

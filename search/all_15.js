@@ -16,9 +16,8 @@ var searchData=
   ['wanderradius_13',['wanderRadius',['../class_walk_decision.html#adc5ad2baa7672e2a3b7606a03a92e68f',1,'WalkDecision']]],
   ['warmhandsdecision_14',['WarmHandsDecision',['../class_warm_hands_decision.html',1,'WarmHandsDecision'],['../class_warm_hands_decision.html#a3c7bf7481a707c1a2679ef462df7328f',1,'WarmHandsDecision.WarmHandsDecision()']]],
   ['warmhandsdecision_2ecs_15',['WarmHandsDecision.cs',['../_warm_hands_decision_8cs.html',1,'']]],
-  ['weight_16',['weight',['../class_building_setup.html#a6ba25c0f49c955cee4094b4ed19ea93d',1,'BuildingSetup.weight()'],['../class_need_d_t_o.html#a254fb8cb1172ad868ff250fe53006731',1,'NeedDTO.weight()'],['../class_obtained_memory_d_t_o.html#accaf980ea7a4d8008940150123acafa1',1,'ObtainedMemoryDTO.weight()']]],
-  ['weight_17',['Weight',['../class_obtained_memory.html#a1c0f578cb1291b41454026b1a1107717',1,'ObtainedMemory']]],
+  ['weight_16',['Weight',['../class_obtained_memory.html#a1c0f578cb1291b41454026b1a1107717',1,'ObtainedMemory']]],
+  ['weight_17',['weight',['../class_building_setup.html#a6ba25c0f49c955cee4094b4ed19ea93d',1,'BuildingSetup.weight()'],['../class_need_d_t_o.html#a254fb8cb1172ad868ff250fe53006731',1,'NeedDTO.weight()'],['../class_obtained_memory_d_t_o.html#accaf980ea7a4d8008940150123acafa1',1,'ObtainedMemoryDTO.weight()']]],
   ['well_18',['Well',['../class_building_data.html#afc07932823f7b925d75c838070aa4556a13bd94a2e0d36d81cdb52d7cf450401a',1,'BuildingData']]],
-  ['writeanindexofselectedaction_19',['writeanindexofselectedaction',['../_n_p_c_8cs.html#a9a912237bdf2565690d52bdccda511cd',1,'NPC.cs']]],
-  ['writeonlyavlijsonobjectwithbodyspecifiedbelow_20',['WriteONLYaVLIJSONobjectwithbodyspecifiedbelow',['../_game_manager_8cs.html#aed8648dccaa515b279e5daf1542b9d74',1,'GameManager.cs']]]
+  ['writeonlyavlijsonobjectwithbodyspecifiedbelow_19',['WriteONLYaVLIJSONobjectwithbodyspecifiedbelow',['../_game_manager_8cs.html#aed8648dccaa515b279e5daf1542b9d74',1,'GameManager.cs']]]
 ];

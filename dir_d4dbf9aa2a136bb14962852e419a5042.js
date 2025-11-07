@@ -1,6 +1,7 @@
 var dir_d4dbf9aa2a136bb14962852e419a5042 =
 [
     [ "BlacksmithWorkDecision.cs", "_blacksmith_work_decision_8cs.html", "_blacksmith_work_decision_8cs" ],
+    [ "ChatDecision.cs", "_chat_decision_8cs.html", "_chat_decision_8cs" ],
     [ "ChopWoodDecision.cs", "_chop_wood_decision_8cs.html", "_chop_wood_decision_8cs" ],
     [ "CookStewDecision.cs", "_cook_stew_decision_8cs.html", "_cook_stew_decision_8cs" ],
     [ "DiceGameDecision.cs", "_dice_game_decision_8cs.html", "_dice_game_decision_8cs" ],

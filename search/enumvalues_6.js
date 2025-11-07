@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['interacting_0',['Interacting',['../_player_controller_8cs.html#a3c730f37b1b3a893159bada67637fdb1af023446a52e84d38f186937dad1d8f76',1,'PlayerController.cs']]]
+  ['none_0',['None',['../class_building_data.html#afc07932823f7b925d75c838070aa4556a6adf97f83acf6453d4a6a4b1070f3754',1,'BuildingData']]]
 ];

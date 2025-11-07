@@ -95,6 +95,7 @@ $(document).ready(function(){initNavTree('class_player_controller.html',''); ini
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#properties">Properties</a> &#124;
 <a href="class_player_controller-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">PlayerController Class Reference</div></div>
 </div><!--header-->
@@ -108,9 +109,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6be26eccca2cb2a979c44fdedf25c77d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_controller.html#a6be26eccca2cb2a979c44fdedf25c77d">StartInteraction</a> (<a class="el" href="class_n_p_c.html">NPC</a> npc)</td></tr>
 <tr class="memdesc:a6be26eccca2cb2a979c44fdedf25c77d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts interaction with the specified <a class="el" href="class_n_p_c.html" title="Represents a Non-Player Character (NPC) in the game world. Handles decision making,...">NPC</a>. Adjusts camera and player state for interaction.  <br /></td></tr>
 <tr class="separator:a6be26eccca2cb2a979c44fdedf25c77d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77e1247e81d849cb7288b0f8caf2a471"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_controller.html#a77e1247e81d849cb7288b0f8caf2a471">EndInteraction</a> ()</td></tr>
-<tr class="memdesc:a77e1247e81d849cb7288b0f8caf2a471"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ends interaction with the currently interacting <a class="el" href="class_n_p_c.html" title="Represents a Non-Player Character (NPC) in the game world. Handles decision making,...">NPC</a>. Resets camera and player state.  <br /></td></tr>
-<tr class="separator:a77e1247e81d849cb7288b0f8caf2a471"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58b5444a05b5f8e81db3c967d27b39d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_controller.html#a58b5444a05b5f8e81db3c967d27b39d0">StartChatting</a> (<a class="el" href="interface_i_chattable.html">IChattable</a> chattable)</td></tr>
+<tr class="memdesc:a58b5444a05b5f8e81db3c967d27b39d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hides game UI and enables chatting dialog.  <br /></td></tr>
+<tr class="separator:a58b5444a05b5f8e81db3c967d27b39d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c260a7b05bd2032fcd4dfbb19d7d349"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_controller.html#a1c260a7b05bd2032fcd4dfbb19d7d349">FinishChatting</a> ()</td></tr>
+<tr class="memdesc:a1c260a7b05bd2032fcd4dfbb19d7d349"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ends interaction with the currently interacting <a class="el" href="class_n_p_c.html" title="Represents a Non-Player Character (NPC) in the game world. Handles decision making,...">NPC</a>. Resets camera and player state.  <br /></td></tr>
+<tr class="separator:a1c260a7b05bd2032fcd4dfbb19d7d349"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9f46946477ee2af720625ae08c2cba2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_controller.html#aa9f46946477ee2af720625ae08c2cba2">Chat</a> (string message)</td></tr>
+<tr class="memdesc:aa9f46946477ee2af720625ae08c2cba2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Redirects response from <a class="el" href="class_n_p_c.html" title="Represents a Non-Player Character (NPC) in the game world. Handles decision making,...">NPC</a> to <a class="el" href="class_dialog_box_manager.html" title="Manages the dialog box UI for player interactions with NPCs. Handles input, output,...">DialogBoxManager</a>.  <br /></td></tr>
+<tr class="separator:aa9f46946477ee2af720625ae08c2cba2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6242d1674de804c8f5dee4e413af78f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_i_chattable.html#aa6242d1674de804c8f5dee4e413af78f">StartChatting</a> (<a class="el" href="interface_i_chattable.html">IChattable</a> otherChatter)</td></tr>
+<tr class="separator:aa6242d1674de804c8f5dee4e413af78f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2f98945c881d411768bc950ead47efd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_i_chattable.html#ad2f98945c881d411768bc950ead47efd">FinishChatting</a> ()</td></tr>
+<tr class="separator:ad2f98945c881d411768bc950ead47efd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af29711ed42441dabf788b4be2dbe0674"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_i_chattable.html#af29711ed42441dabf788b4be2dbe0674">Chat</a> (string message)</td></tr>
+<tr class="separator:af29711ed42441dabf788b4be2dbe0674"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -120,27 +133,68 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a0a8e0eb9de4ccc5bd5f4cc5b44469b01"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_controller.html#a0a8e0eb9de4ccc5bd5f4cc5b44469b01">gravity</a> = 9.81f</td></tr>
 <tr class="memdesc:a0a8e0eb9de4ccc5bd5f4cc5b44469b01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gravity applied to the player.  <br /></td></tr>
 <tr class="separator:a0a8e0eb9de4ccc5bd5f4cc5b44469b01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45d4ce5921bc176818801e44f3fa0e8a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_p_c.html">NPC</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_controller.html#a45d4ce5921bc176818801e44f3fa0e8a">currentlyInteractingNPC</a> = null</td></tr>
-<tr class="memdesc:a45d4ce5921bc176818801e44f3fa0e8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to the <a class="el" href="class_n_p_c.html" title="Represents a Non-Player Character (NPC) in the game world. Handles decision making,...">NPC</a> the player is currently interacting with.  <br /></td></tr>
-<tr class="separator:a45d4ce5921bc176818801e44f3fa0e8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a9bec1b62de6e46a4cd2bcb332da2b7b5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_player_controller.html">PlayerController</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_controller.html#a9bec1b62de6e46a4cd2bcb332da2b7b5">Instance</a></td></tr>
 <tr class="memdesc:a9bec1b62de6e46a4cd2bcb332da2b7b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singleton instance of the <a class="el" href="class_player_controller.html" title="Manages player movement, interaction with NPCs, and state transitions. Handles gravity,...">PlayerController</a> class.  <br /></td></tr>
 <tr class="separator:a9bec1b62de6e46a4cd2bcb332da2b7b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
+Properties</h2></td></tr>
+<tr class="memitem:a5809c799130b6e124c48e9417aae4d33"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interface_i_chattable.html">IChattable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_controller.html#a5809c799130b6e124c48e9417aae4d33">ChattingWith</a><code> [get]</code></td></tr>
+<tr class="memdesc:a5809c799130b6e124c48e9417aae4d33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to chatee. NULL if talking with noone.  <br /></td></tr>
+<tr class="separator:a5809c799130b6e124c48e9417aae4d33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c1f05882566228facf570b09d54af10"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_controller.html#a5c1f05882566228facf570b09d54af10">Name</a><code> [get]</code></td></tr>
+<tr class="memdesc:a5c1f05882566228facf570b09d54af10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Name of the Player.  <br /></td></tr>
+<tr class="separator:a5c1f05882566228facf570b09d54af10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c74c4ecd31169e6548d6863b19405e2"><td class="memItemLeft" align="right" valign="top">Transform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_controller.html#a7c74c4ecd31169e6548d6863b19405e2">LookTarget</a><code> [get]</code></td></tr>
+<tr class="memdesc:a7c74c4ecd31169e6548d6863b19405e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Look target for chatee.  <br /></td></tr>
+<tr class="separator:a7c74c4ecd31169e6548d6863b19405e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc69c5e97d8946e4b97e35a448fd73af"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_controller.html#afc69c5e97d8946e4b97e35a448fd73af">AvailableToChat</a><code> [get]</code></td></tr>
+<tr class="memdesc:afc69c5e97d8946e4b97e35a448fd73af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether Player is available to char.  <br /></td></tr>
+<tr class="separator:afc69c5e97d8946e4b97e35a448fd73af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_interface_i_chattable"><td colspan="2" onclick="javascript:toggleInherit('properties_interface_i_chattable')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interface_i_chattable.html">IChattable</a></td></tr>
+<tr class="memitem:a9dc58b641022bed4226bfc026cbaad1e inherit properties_interface_i_chattable"><td class="memItemLeft" align="right" valign="top">Transform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_i_chattable.html#a9dc58b641022bed4226bfc026cbaad1e">LookTarget</a><code> [get]</code></td></tr>
+<tr class="separator:a9dc58b641022bed4226bfc026cbaad1e inherit properties_interface_i_chattable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b48445e7504dac4252aacd15d04f9d4 inherit properties_interface_i_chattable"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_i_chattable.html#a9b48445e7504dac4252aacd15d04f9d4">Name</a><code> [get]</code></td></tr>
+<tr class="separator:a9b48445e7504dac4252aacd15d04f9d4 inherit properties_interface_i_chattable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e17fc4d40877d73555424ff337add6b inherit properties_interface_i_chattable"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_i_chattable.html#a0e17fc4d40877d73555424ff337add6b">AvailableToChat</a><code> [get]</code></td></tr>
+<tr class="separator:a0e17fc4d40877d73555424ff337add6b inherit properties_interface_i_chattable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Manages player movement, interaction with NPCs, and state transitions. Handles gravity, animations, and camera behavior during interactions. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a77e1247e81d849cb7288b0f8caf2a471" name="a77e1247e81d849cb7288b0f8caf2a471"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a77e1247e81d849cb7288b0f8caf2a471">&#9670;&#160;</a></span>EndInteraction()</h2>
+<a id="aa9f46946477ee2af720625ae08c2cba2" name="aa9f46946477ee2af720625ae08c2cba2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9f46946477ee2af720625ae08c2cba2">&#9670;&#160;</a></span>Chat()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void PlayerController.EndInteraction </td>
+          <td class="memname">void PlayerController.Chat </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Redirects response from <a class="el" href="class_n_p_c.html" title="Represents a Non-Player Character (NPC) in the game world. Handles decision making,...">NPC</a> to <a class="el" href="class_dialog_box_manager.html" title="Manages the dialog box UI for player interactions with NPCs. Handles input, output,...">DialogBoxManager</a>. </p>
+
+<p>Implements <a class="el" href="interface_i_chattable.html#af29711ed42441dabf788b4be2dbe0674">IChattable</a>.</p>
+
+</div>
+</div>
+<a id="a1c260a7b05bd2032fcd4dfbb19d7d349" name="a1c260a7b05bd2032fcd4dfbb19d7d349"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c260a7b05bd2032fcd4dfbb19d7d349">&#9670;&#160;</a></span>FinishChatting()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PlayerController.FinishChatting </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -149,6 +203,30 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Ends interaction with the currently interacting <a class="el" href="class_n_p_c.html" title="Represents a Non-Player Character (NPC) in the game world. Handles decision making,...">NPC</a>. Resets camera and player state. </p>
+
+<p>Implements <a class="el" href="interface_i_chattable.html#ad2f98945c881d411768bc950ead47efd">IChattable</a>.</p>
+
+</div>
+</div>
+<a id="a58b5444a05b5f8e81db3c967d27b39d0" name="a58b5444a05b5f8e81db3c967d27b39d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58b5444a05b5f8e81db3c967d27b39d0">&#9670;&#160;</a></span>StartChatting()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PlayerController.StartChatting </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="interface_i_chattable.html">IChattable</a>&#160;</td>
+          <td class="paramname"><em>chattable</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Hides game UI and enables chatting dialog. </p>
+
+<p>Implements <a class="el" href="interface_i_chattable.html#aa6242d1674de804c8f5dee4e413af78f">IChattable</a>.</p>
 
 </div>
 </div>
@@ -179,22 +257,6 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a45d4ce5921bc176818801e44f3fa0e8a" name="a45d4ce5921bc176818801e44f3fa0e8a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a45d4ce5921bc176818801e44f3fa0e8a">&#9670;&#160;</a></span>currentlyInteractingNPC</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_n_p_c.html">NPC</a> PlayerController.currentlyInteractingNPC = null</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Reference to the <a class="el" href="class_n_p_c.html" title="Represents a Non-Player Character (NPC) in the game world. Handles decision making,...">NPC</a> the player is currently interacting with. </p>
-
-</div>
-</div>
 <a id="a0a8e0eb9de4ccc5bd5f4cc5b44469b01" name="a0a8e0eb9de4ccc5bd5f4cc5b44469b01"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0a8e0eb9de4ccc5bd5f4cc5b44469b01">&#9670;&#160;</a></span>gravity</h2>
 
@@ -248,6 +310,109 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Speed at which the player moves. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="afc69c5e97d8946e4b97e35a448fd73af" name="afc69c5e97d8946e4b97e35a448fd73af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc69c5e97d8946e4b97e35a448fd73af">&#9670;&#160;</a></span>AvailableToChat</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PlayerController.AvailableToChat</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Whether Player is available to char. </p>
+
+<p>Implements <a class="el" href="interface_i_chattable.html#a0e17fc4d40877d73555424ff337add6b">IChattable</a>.</p>
+
+</div>
+</div>
+<a id="a5809c799130b6e124c48e9417aae4d33" name="a5809c799130b6e124c48e9417aae4d33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5809c799130b6e124c48e9417aae4d33">&#9670;&#160;</a></span>ChattingWith</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="interface_i_chattable.html">IChattable</a> PlayerController.ChattingWith</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reference to chatee. NULL if talking with noone. </p>
+
+</div>
+</div>
+<a id="a7c74c4ecd31169e6548d6863b19405e2" name="a7c74c4ecd31169e6548d6863b19405e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c74c4ecd31169e6548d6863b19405e2">&#9670;&#160;</a></span>LookTarget</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Transform PlayerController.LookTarget</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Look target for chatee. </p>
+
+<p>Implements <a class="el" href="interface_i_chattable.html#a9dc58b641022bed4226bfc026cbaad1e">IChattable</a>.</p>
+
+</div>
+</div>
+<a id="a5c1f05882566228facf570b09d54af10" name="a5c1f05882566228facf570b09d54af10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c1f05882566228facf570b09d54af10">&#9670;&#160;</a></span>Name</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string PlayerController.Name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Name of the Player. </p>
+
+<p>Implements <a class="el" href="interface_i_chattable.html#a9b48445e7504dac4252aacd15d04f9d4">IChattable</a>.</p>
 
 </div>
 </div>

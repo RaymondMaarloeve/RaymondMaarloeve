@@ -7,7 +7,7 @@ var searchData=
   ['daynightcycle_2ecs_4',['DayNightCycle.cs',['../_day_night_cycle_8cs.html',1,'']]],
   ['daysky_5',['daySky',['../class_day_night_cycle.html#aa8d01dbe2196385b703469971684aad6',1,'DayNightCycle']]],
   ['dead_6',['dead',['../class_character_d_t_o.html#a019f107536c4ceeed215f8c50f5b75a8',1,'CharacterDTO']]],
-  ['debuginfo_7',['DebugInfo',['../class_wait_for_l_l_m_decision.html#ad3d218489ec637b811bb5c231040090a',1,'WaitForLLMDecision.DebugInfo()'],['../class_walk_decision.html#a0a70b208d7c4fedb482db75300090224',1,'WalkDecision.DebugInfo()'],['../class_wait_for_l_l_m_ready_decision.html#ada824c6aa8c20765d2880f4a2d45d71c',1,'WaitForLLMReadyDecision.DebugInfo()'],['../class_visit_building_decision.html#ad0319d02e8f7aad4f401ee067aee5d90',1,'VisitBuildingDecision.DebugInfo()'],['../class_idle_decision.html#afbd018886aa03e7115989bbe5a5293b8',1,'IdleDecision.DebugInfo()'],['../interface_i_decision.html#ae090e91b36d6dab9bca309ef32a2d507',1,'IDecision.DebugInfo()']]],
+  ['debuginfo_7',['DebugInfo',['../class_visit_building_decision.html#ad0319d02e8f7aad4f401ee067aee5d90',1,'VisitBuildingDecision.DebugInfo()'],['../class_walk_decision.html#a0a70b208d7c4fedb482db75300090224',1,'WalkDecision.DebugInfo()'],['../class_wait_for_l_l_m_ready_decision.html#ada824c6aa8c20765d2880f4a2d45d71c',1,'WaitForLLMReadyDecision.DebugInfo()'],['../class_wait_for_l_l_m_decision.html#ad3d218489ec637b811bb5c231040090a',1,'WaitForLLMDecision.DebugInfo()'],['../class_idle_decision.html#afbd018886aa03e7115989bbe5a5293b8',1,'IdleDecision.DebugInfo()'],['../interface_i_decision.html#ae090e91b36d6dab9bca309ef32a2d507',1,'IDecision.DebugInfo()'],['../class_chat_decision.html#a6472fe106fd70d121205da949da6f4dd',1,'ChatDecision.DebugInfo()']]],
   ['debugtilesinconsole_8',['DebugTilesInConsole',['../class_map_generator.html#a25bb86d1cb5943ffd824b2aaace1d8e3',1,'MapGenerator']]],
   ['decide_9',['Decide',['../interface_i_decision_system.html#ac45e7479d2a6c4f776c464250774143c',1,'IDecisionSystem.Decide()'],['../class_llm_decision_maker.html#a8db905b2318507fcb3f04c098dac96e9',1,'LlmDecisionMaker.Decide()'],['../class_null_decision_system.html#a21d581e76feaf72caa14a0bbd82468f4',1,'NullDecisionSystem.Decide()']]],
   ['decision_10',['decision',['../class_current_environment.html#a2a6259a88b5da56411f734fb9479a4d6',1,'CurrentEnvironment']]],
@@ -23,8 +23,7 @@ var searchData=
   ['disabledecisionmaking_20',['DisableDecisionMaking',['../class_game_manager.html#a6e4402658ba1b74bbbc910c2bb229cda',1,'GameManager']]],
   ['disableserverconnection_21',['DisableServerConnection',['../class_game_manager.html#aa2c09a08453ee6de68d1d9c6ee6926cf',1,'GameManager']]],
   ['distance_22',['distance',['../class_current_environment_d_t_o.html#af12c11e73d1d1a651465003cd1bf16e0',1,'CurrentEnvironmentDTO']]],
-  ['drawconclusions_23',['DrawConclusions',['../class_n_p_c.html#a8e208f04917ea2d45627623396f5d4e7',1,'NPC']]],
-  ['drawconclusionsresponsedto_24',['DrawConclusionsResponseDTO',['../class_draw_conclusions_response_d_t_o.html',1,'']]],
-  ['drawconclusionsresponsedto_2ecs_25',['DrawConclusionsResponseDTO.cs',['../_draw_conclusions_response_d_t_o_8cs.html',1,'']]],
-  ['dumpstory_26',['DumpStory',['../class_game_manager.html#ad829644ce96d9d68ee71a10b2cbf9060',1,'GameManager']]]
+  ['drawconclusionsresponsedto_23',['DrawConclusionsResponseDTO',['../class_draw_conclusions_response_d_t_o.html',1,'']]],
+  ['drawconclusionsresponsedto_2ecs_24',['DrawConclusionsResponseDTO.cs',['../_draw_conclusions_response_d_t_o_8cs.html',1,'']]],
+  ['dumpstory_25',['DumpStory',['../class_game_manager.html#ad829644ce96d9d68ee71a10b2cbf9060',1,'GameManager']]]
 ];

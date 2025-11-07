@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['scaffold_0',['Scaffold',['../class_building_data.html#afc07932823f7b925d75c838070aa4556a877eaa140ad42c5ac0c1dd6b754cb7fc',1,'BuildingData']]],
-  ['small_5fdecoration_1',['Small_Decoration',['../class_building_data.html#afc07932823f7b925d75c838070aa4556aef5134d29a2e1dc77730f06b1df74888',1,'BuildingData']]],
-  ['stone_2',['Stone',['../class_building_data.html#afc07932823f7b925d75c838070aa4556a2ff4ab1d379832d3edee28194fb4e7b2',1,'BuildingData']]]
+  ['wall_0',['Wall',['../class_building_data.html#afc07932823f7b925d75c838070aa4556a94e8a499539d1a472f3b5dbbb85508c0',1,'BuildingData']]],
+  ['well_1',['Well',['../class_building_data.html#afc07932823f7b925d75c838070aa4556a13bd94a2e0d36d81cdb52d7cf450401a',1,'BuildingData']]]
 ];

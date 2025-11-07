@@ -13,7 +13,12 @@ var hierarchy =
     [ "DecorationSpawner", "class_decoration_spawner.html", null ],
     [ "DrawConclusionsResponseDTO", "class_draw_conclusions_response_d_t_o.html", null ],
     [ "GeneratedHistoryDTO", "class_generated_history_d_t_o.html", null ],
+    [ "IChattable", "interface_i_chattable.html", [
+      [ "NPC", "class_n_p_c.html", null ],
+      [ "PlayerController", "class_player_controller.html", null ]
+    ] ],
     [ "IDecision", "interface_i_decision.html", [
+      [ "ChatDecision", "class_chat_decision.html", null ],
       [ "IdleDecision", "class_idle_decision.html", null ],
       [ "VisitBuildingDecision", "class_visit_building_decision.html", [
         [ "BlacksmithWorkDecision", "class_blacksmith_work_decision.html", null ],
