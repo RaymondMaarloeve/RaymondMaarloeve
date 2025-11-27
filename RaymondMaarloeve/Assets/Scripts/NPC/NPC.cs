@@ -399,6 +399,8 @@ public class NPC : MonoBehaviour, IChattable
                     break;
                 case BuildingData.BuildingType.Well:
                     environments.Add(new CurrentEnvironment(new GetWaterDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new GossipAtWellDecision(buildingGO, this), buildingGO));
+
                     break;
                 case BuildingData.BuildingType.Blacksmith:
                     break;
