@@ -7,18 +7,18 @@ public class SettingsTab : MonoBehaviour
 
     private void Start()
     {
-        ShowGeneral();
+        ShowGeneral();   // na starcie poka¿ ogólne
     }
 
     public void ShowGeneral()
     {
-        generalPanel.SetActive(true);
-        npcPanel.SetActive(false);
+        if (generalPanel != null) generalPanel.SetActive(true);
+        if (npcPanel != null) npcPanel.SetActive(false);
     }
 
     public void ShowNpc()
     {
-        generalPanel.SetActive(false);
-        npcPanel.SetActive(true);
+        if (generalPanel != null) generalPanel.SetActive(false);
+        if (npcPanel != null) npcPanel.SetActive(true);
     }
 }
