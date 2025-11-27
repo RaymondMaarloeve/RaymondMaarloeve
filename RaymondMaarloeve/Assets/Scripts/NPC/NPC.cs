@@ -389,6 +389,7 @@ public class NPC : MonoBehaviour, IChattable
                 case BuildingData.BuildingType.None:
                     break;
                 case BuildingData.BuildingType.House:
+                    environments.Add(new CurrentEnvironment(new RepairRoofDecision(buildingGO, this), buildingGO));
                     break;
                 case BuildingData.BuildingType.Church:
                     environments.Add(new CurrentEnvironment(new PrayDecision(buildingGO, this), buildingGO));
