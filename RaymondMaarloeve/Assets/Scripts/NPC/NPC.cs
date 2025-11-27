@@ -392,6 +392,7 @@ public class NPC : MonoBehaviour, IChattable
                     environments.Add(new CurrentEnvironment(new RepairRoofDecision(buildingGO, this), buildingGO));
                     environments.Add(new CurrentEnvironment(new SweepYardDecision(buildingGO, this), buildingGO));
                     environments.Add(new CurrentEnvironment(new CookStewDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new WarmHandsDecision(buildingGO, this), buildingGO));
                     break;
                 case BuildingData.BuildingType.Church:
                     environments.Add(new CurrentEnvironment(new PrayDecision(buildingGO, this), buildingGO));
@@ -403,6 +404,7 @@ public class NPC : MonoBehaviour, IChattable
                     break;
                 case BuildingData.BuildingType.Tavern:
                     environments.Add(new CurrentEnvironment(new GetAleDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new WarmHandsDecision(buildingGO, this), buildingGO));
                     break;
                 case BuildingData.BuildingType.Scaffold:
                     break;
