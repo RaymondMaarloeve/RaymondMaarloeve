@@ -403,6 +403,7 @@ public class NPC : MonoBehaviour, IChattable
 
                     break;
                 case BuildingData.BuildingType.Blacksmith:
+                    environments.Add(new CurrentEnvironment(new BlacksmithWorkDecision(buildingGO, this), buildingGO));
                     break;
                 case BuildingData.BuildingType.Tavern:
                     environments.Add(new CurrentEnvironment(new GetAleDecision(buildingGO, this), buildingGO));
