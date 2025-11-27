@@ -410,6 +410,7 @@ public class NPC : MonoBehaviour, IChattable
                 case BuildingData.BuildingType.Tavern:
                     environments.Add(new CurrentEnvironment(new GetAleDecision(buildingGO, this), buildingGO));
                     environments.Add(new CurrentEnvironment(new WarmHandsDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new DiceGameDecision(buildingGO, this), buildingGO));
                     break;
                 case BuildingData.BuildingType.Scaffold:
                     break;
