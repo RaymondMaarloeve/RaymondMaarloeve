@@ -143,7 +143,7 @@ public class NPC : MonoBehaviour, IChattable
     /// <summary>
     /// Whether the NPC is available to chat with other chatters, see <see cref="IChattable">.
     /// </summary>
-    public bool AvailableToChat => !(CurrentDecision is ChatDecision);
+    public bool AvailableToChat => !(CurrentDecision is IChatDecision);
 
     /// <summary>
     /// The look target for <see cref="IChattable">.
@@ -494,7 +494,7 @@ public class NPC : MonoBehaviour, IChattable
     /// </summary>
     public void Chat(string message)
     {
-        if (CurrentDecision is not ChatDecision chatDecision)
+        if (CurrentDecision is not IChatDecision chatDecision)
         {
             Debug.LogError("Tried to chat but currently not in chat");
             return;
@@ -507,7 +507,7 @@ public class NPC : MonoBehaviour, IChattable
     /// </summary>
     public void FinishChatting()
     {
-        if (CurrentDecision is not ChatDecision chatDecision)
+        if (CurrentDecision is not IChatDecision chatDecision)
         {
             Debug.LogError("Tried to finish chatting but currently not in chat");
             return;

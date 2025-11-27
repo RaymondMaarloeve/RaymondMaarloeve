@@ -7,7 +7,7 @@ using UnityEngine;
 /// <summary>
 /// Represents a decision for an NPC to walk to a random destination within a specified radius.
 /// </summary>
-public class ChatDecision : IDecision
+public class ChatDecision : IChatDecision
 {
     /// <summary>
     /// System prompt for generating responses.
