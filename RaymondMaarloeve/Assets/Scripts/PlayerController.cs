@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour, IChattable
     /// <summary>
     /// Whether player can move.
     /// </summary>
-    private bool ShouldMove => ChattingWith == null;
+    private bool ShouldMove => ChattingWith == null && !notesParent.activeSelf;
 
     /// <summary>
     /// Name of the Player.
@@ -71,6 +71,10 @@ public class PlayerController : MonoBehaviour, IChattable
     /// Whether Player is available to char.
     /// </summary>
     public bool AvailableToChat => ChattingWith == null;
+
+    [SerializeField] private NotesManager notesManager;
+    [SerializeField] private GameObject notesParent;
+
 
     /// <summary>
     /// Initializes the singleton instance.
@@ -90,6 +94,8 @@ public class PlayerController : MonoBehaviour, IChattable
         characterMesh = GetComponentInChildren<SkinnedMeshRenderer>();
         animator = GetComponentInChildren<Animator>();
 
+        if (notesParent != null)
+            notesParent.SetActive(false);
     }
 
     /// <summary>
@@ -99,6 +105,11 @@ public class PlayerController : MonoBehaviour, IChattable
     {
         if (GitmanikConsole.Visible)
             return;
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            ToggleNotes();
+        }
 
         if (ShouldMove)
         {
@@ -220,6 +231,33 @@ public class PlayerController : MonoBehaviour, IChattable
         if (other.CompareTag("NPC"))
         {
             targetNPC = null;
+        }
+    }
+
+    private void ToggleNotes()
+    {
+        if (notesParent == null || notesManager == null)
+        {
+            Debug.LogError("Brakuje referencji do notesParent lub notesManager!");
+            return;
+        }
+
+        bool nowActive = !notesParent.activeSelf;
+        notesParent.SetActive(nowActive);
+
+        if (nowActive)
+        {
+            moveDirection = Vector3.zero;
+
+            characterMesh.enabled = false;
+            GameManager.Instance.MinimapGameObject.SetActive(false);
+
+            notesManager.ActivateInputAtEnd();
+        }
+        else
+        {
+            characterMesh.enabled = true;
+            GameManager.Instance.MinimapGameObject.SetActive(true);
         }
     }
 }
