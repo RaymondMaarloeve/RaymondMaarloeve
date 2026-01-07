@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,27 +7,24 @@ using UnityEngine.UI;
 public class NpcSettingsUI : MonoBehaviour
 {
     [Header("UI References")]
-    [SerializeField] private TMP_InputField narratorInputField;
+    [SerializeField] private TMP_InputField llmApiInputField; // Nowe pole na adres API
     [SerializeField] private Transform npcListContainer;
     [SerializeField] private GameObject npcRowPrefab;
     [SerializeField] private Button addNpcButton;
+    [SerializeField] private Button saveConfigButton;
 
     private readonly List<GameObject> npcRows = new List<GameObject>();
 
-    private string defaultModel = "Describe npc character";
-
     private void Start()
     {
-        SetupNarratorInput();
         addNpcButton.onClick.AddListener(OnAddNpcClicked);
+        saveConfigButton.onClick.AddListener(SaveConfig);
 
-        AddNpcRow("NPC1");
-        AddNpcRow("NPC2");
-    }
+        if (llmApiInputField != null)
+            llmApiInputField.text = "http://127.0.0.1:5000/";
 
-    private void SetupNarratorInput()
-    {
-        narratorInputField.text = defaultModel;
+        AddNpcRow("NPC 1");
+        AddNpcRow("NPC 2");
     }
 
     private void AddNpcRow(string npcName)
@@ -37,8 +35,8 @@ public class NpcSettingsUI : MonoBehaviour
         var label = row.transform.Find("NpcLabel").GetComponent<TMP_Text>();
         label.text = npcName;
 
-        var modelInput = row.transform.Find("ModelInputField").GetComponent<TMP_InputField>();
-        modelInput.text = defaultModel;
+        var descriptionInput = row.transform.Find("ModelInputField").GetComponent<TMP_InputField>();
+        descriptionInput.text = "Wpisz opis modelu...";
 
         var deleteButton = row.transform.Find("DeleteButton").GetComponent<Button>();
         deleteButton.onClick.AddListener(() => RemoveNpcRow(row));
@@ -52,18 +50,56 @@ public class NpcSettingsUI : MonoBehaviour
 
     private void OnAddNpcClicked()
     {
-        string npcName = $"NPC{npcRows.Count + 1}";
+        string npcName = $"NPC {npcRows.Count + 1}";
         AddNpcRow(npcName);
     }
 
-    public void LogCurrentSettings()
+    public void SaveConfig()
     {
-        Debug.Log($"Narrator Model: {narratorInputField.text}");
-        foreach (var row in npcRows)
+        NpcSettingsConfig config = new NpcSettingsConfig();
+
+        // Pobieramy adres API z pola tekstowego
+        config.LlmServerApi = llmApiInputField.text;
+
+        // Pakujemy listê NPC
+        for (int i = 0; i < npcRows.Count; i++)
         {
-            var name = row.transform.Find("NpcLabel").GetComponent<TMP_Text>().text;
-            var model = row.transform.Find("ModelInputField").GetComponent<TMP_InputField>().text;
-            Debug.Log($"NPC: {name}, Model: {model}");
+            var descriptionInput = npcRows[i].transform.Find("ModelInputField").GetComponent<TMP_InputField>();
+
+            config.Models.Add(new NpcModelData
+            {
+                Id = i,
+                Description = descriptionInput.text
+            });
         }
+
+        string json = JsonUtility.ToJson(config, true);
+        string filePath = Path.Combine(Application.persistentDataPath, "game_config.json");
+
+        File.WriteAllText(filePath, json);
+
+        Debug.Log($"<b>[Zapisano]</b> {filePath}");
+        Debug.Log(json);
     }
+}
+
+// --- KLASY DANYCH ---
+
+[System.Serializable]
+public class NpcModelData
+{
+    public int Id;
+    public string Description;
+}
+
+[System.Serializable]
+public class NpcSettingsConfig
+{
+    public int Revision = 1;
+    public string LlmServerApi; // Wartoœæ pobierana z UI
+    public bool Localhost = true;
+    public bool FullScreen = false;
+    public int GameWindowWidth = 1920;
+    public int GameWindowHeight = 1080;
+    public List<NpcModelData> Models = new List<NpcModelData>();
 }
