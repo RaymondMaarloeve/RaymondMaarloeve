@@ -394,6 +394,8 @@ public class NPC : MonoBehaviour, IChattable
                     environments.Add(new CurrentEnvironment(new CookStewDecision(buildingGO, this), buildingGO));
                     environments.Add(new CurrentEnvironment(new WarmHandsDecision(buildingGO, this), buildingGO));
                     environments.Add(new CurrentEnvironment(new GoToSleepDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new SobbingQuietlyDecision(buildingGO, this), buildingGO));
+
                     break;
                 case BuildingData.BuildingType.Church:
                     environments.Add(new CurrentEnvironment(new PrayDecision(buildingGO, this), buildingGO));
