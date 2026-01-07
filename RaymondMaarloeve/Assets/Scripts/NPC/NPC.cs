@@ -414,6 +414,8 @@ public class NPC : MonoBehaviour, IChattable
                     environments.Add(new CurrentEnvironment(new SingingDrunkDecision(buildingGO, this), buildingGO));
                     environments.Add(new CurrentEnvironment(new DrunkenRuckusDecision(buildingGO, this), buildingGO));
                     environments.Add(new CurrentEnvironment(new SobbingQuietlyDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new CountingCoinsDecision(buildingGO, this), buildingGO));
+
 
 
 
