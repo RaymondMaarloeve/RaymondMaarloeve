@@ -413,6 +413,8 @@ public class NPC : MonoBehaviour, IChattable
                     environments.Add(new CurrentEnvironment(new DiceGameDecision(buildingGO, this), buildingGO));
                     environments.Add(new CurrentEnvironment(new SingingDrunkDecision(buildingGO, this), buildingGO));
                     environments.Add(new CurrentEnvironment(new DrunkenRuckusDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new SobbingQuietlyDecision(buildingGO, this), buildingGO));
+
 
 
                     break;
