@@ -6,36 +6,27 @@ using UnityEngine.UI;
 public class NpcSettingsUI : MonoBehaviour
 {
     [Header("UI References")]
-    [SerializeField] private TMP_Dropdown narratorDropdown;
+    [SerializeField] private TMP_InputField narratorInputField;
     [SerializeField] private Transform npcListContainer;
     [SerializeField] private GameObject npcRowPrefab;
     [SerializeField] private Button addNpcButton;
 
     private readonly List<GameObject> npcRows = new List<GameObject>();
 
-    // przyk³adowe nazwy modeli – póŸniej podmienisz na swoje
-    private readonly List<string> modelOptions = new List<string>
-    {
-        "unsloth.Q4_K_M.gguf",
-        "model_2.gguf",
-        "model_3.gguf"
-    };
+    private string defaultModel = "Describe npc character";
 
     private void Start()
     {
-        SetupNarratorDropdown();
+        SetupNarratorInput();
         addNpcButton.onClick.AddListener(OnAddNpcClicked);
 
-        // Na start dodajmy np. dwa NPC jak na screenie
         AddNpcRow("NPC1");
         AddNpcRow("NPC2");
     }
 
-    private void SetupNarratorDropdown()
+    private void SetupNarratorInput()
     {
-        narratorDropdown.ClearOptions();
-        narratorDropdown.AddOptions(modelOptions);
-        narratorDropdown.value = 0;
+        narratorInputField.text = defaultModel;
     }
 
     private void AddNpcRow(string npcName)
@@ -43,16 +34,12 @@ public class NpcSettingsUI : MonoBehaviour
         var row = Instantiate(npcRowPrefab, npcListContainer);
         npcRows.Add(row);
 
-        // Ustaw label
         var label = row.transform.Find("NpcLabel").GetComponent<TMP_Text>();
         label.text = npcName;
 
-        // Ustaw dropdown z modelami
-        var dropdown = row.transform.Find("ModelDropdown").GetComponent<TMP_Dropdown>();
-        dropdown.ClearOptions();
-        dropdown.AddOptions(modelOptions);
+        var modelInput = row.transform.Find("ModelInputField").GetComponent<TMP_InputField>();
+        modelInput.text = defaultModel;
 
-        // Pod³¹cz przycisk kasowania
         var deleteButton = row.transform.Find("DeleteButton").GetComponent<Button>();
         deleteButton.onClick.AddListener(() => RemoveNpcRow(row));
     }
@@ -67,5 +54,16 @@ public class NpcSettingsUI : MonoBehaviour
     {
         string npcName = $"NPC{npcRows.Count + 1}";
         AddNpcRow(npcName);
+    }
+
+    public void LogCurrentSettings()
+    {
+        Debug.Log($"Narrator Model: {narratorInputField.text}");
+        foreach (var row in npcRows)
+        {
+            var name = row.transform.Find("NpcLabel").GetComponent<TMP_Text>().text;
+            var model = row.transform.Find("ModelInputField").GetComponent<TMP_InputField>().text;
+            Debug.Log($"NPC: {name}, Model: {model}");
+        }
     }
 }
