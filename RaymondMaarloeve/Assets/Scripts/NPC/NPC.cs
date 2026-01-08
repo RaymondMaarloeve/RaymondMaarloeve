@@ -429,6 +429,8 @@ public class NPC : MonoBehaviour, IChattable
                 case BuildingData.BuildingType.Scaffold:
                     break;
                 case BuildingData.BuildingType.Obelisk:
+                    environments.Add(new CurrentEnvironment(new PaganPrayDecision(buildingGO, this), buildingGO));
+
                     break;
                 case BuildingData.BuildingType.Notice_Board:
                     environments.Add(new CurrentEnvironment(new ReadNoticeBoardDecision(buildingGO, this), buildingGO));
