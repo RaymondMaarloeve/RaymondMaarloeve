@@ -430,7 +430,9 @@ public class NPC : MonoBehaviour, IChattable
                     break;
                 case BuildingData.BuildingType.Obelisk:
                     break;
-
+                case BuildingData.BuildingType.Notice_Board:
+                    environments.Add(new CurrentEnvironment(new ReadNoticeBoardDecision(buildingGO, this), buildingGO));
+                    break;
                 case BuildingData.BuildingType.Other:
                     break;
                 default:
