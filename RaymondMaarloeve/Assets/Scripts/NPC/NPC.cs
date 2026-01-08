@@ -428,6 +428,9 @@ public class NPC : MonoBehaviour, IChattable
                     break;
                 case BuildingData.BuildingType.Scaffold:
                     break;
+                case BuildingData.BuildingType.Obelisk:
+                    break;
+
                 case BuildingData.BuildingType.Other:
                     break;
                 default:
