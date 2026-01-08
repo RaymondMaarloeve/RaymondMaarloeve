@@ -431,6 +431,8 @@ public class NPC : MonoBehaviour, IChattable
                 case BuildingData.BuildingType.Obelisk:
                     environments.Add(new CurrentEnvironment(new PaganPrayDecision(buildingGO, this), buildingGO));
                     environments.Add(new CurrentEnvironment(new LeavingStrangeMarkingsDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new OfferingSacrificeDecision(buildingGO, this), buildingGO));
+
 
 
                     break;
