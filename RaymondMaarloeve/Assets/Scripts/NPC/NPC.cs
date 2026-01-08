@@ -421,10 +421,6 @@ public class NPC : MonoBehaviour, IChattable
                     environments.Add(new CurrentEnvironment(new DrunkenRuckusDecision(buildingGO, this), buildingGO));
                     environments.Add(new CurrentEnvironment(new SobbingQuietlyDecision(buildingGO, this), buildingGO));
                     environments.Add(new CurrentEnvironment(new CountingCoinsDecision(buildingGO, this), buildingGO));
-
-
-
-
                     break;
                 case BuildingData.BuildingType.Scaffold:
                     break;
@@ -432,9 +428,7 @@ public class NPC : MonoBehaviour, IChattable
                     environments.Add(new CurrentEnvironment(new PaganPrayDecision(buildingGO, this), buildingGO));
                     environments.Add(new CurrentEnvironment(new LeavingStrangeMarkingsDecision(buildingGO, this), buildingGO));
                     environments.Add(new CurrentEnvironment(new OfferingSacrificeDecision(buildingGO, this), buildingGO));
-
-
-
+                    environments.Add(new CurrentEnvironment(new PerformingRitualDecision(buildingGO, this), buildingGO));
                     break;
                 case BuildingData.BuildingType.Notice_Board:
                     environments.Add(new CurrentEnvironment(new ReadNoticeBoardDecision(buildingGO, this), buildingGO));
