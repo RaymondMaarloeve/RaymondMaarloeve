@@ -12,6 +12,7 @@ public abstract class VisitBuildingDecision : IDecision
     /// </summary>
     private GameObject buildingGO;
 
+    private GameObject Emoji;
     /// <summary>
     /// Indicates whether the decision is finished.
     /// </summary>
@@ -51,6 +52,8 @@ public abstract class VisitBuildingDecision : IDecision
     /// Indicates whether the NPC should disappear upon reaching the building.
     /// </summary>
     protected abstract bool NpcShouldDisappear { get; }
+
+
 
     /// <summary>
     /// Private constructor to prevent instantiation without parameters.

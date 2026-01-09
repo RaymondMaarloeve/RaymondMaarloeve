@@ -150,6 +150,10 @@ public class NPC : MonoBehaviour, IChattable
     /// </summary>
     public Transform LookTarget => transform;
 
+    public bool DecisionEmojiVisibility = false;
+
+    [Header("Visuals")]
+    [SerializeField] private NpcEmojiController emojiController;
     /// <summary>
     /// Initializes the NPC, sets up the entity ID, animator, and subscribes to the NPC event bus.
     /// </summary>
@@ -203,6 +207,10 @@ public class NPC : MonoBehaviour, IChattable
             bool isWalking = agent.velocity.magnitude > 0.1f;
             animator.SetBool("isWalking", isWalking);
         }
+        if (DecisionEmojiVisibility)
+        {
+            //ShowDecisionEmoji(CurrentDecision.Emoji);
+        }
 
         if (lookTarget != null)
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, lookTarget.eulerAngles.y - 180, transform.eulerAngles.z);
@@ -210,6 +218,7 @@ public class NPC : MonoBehaviour, IChattable
         if (CurrentDecision == null || !CurrentDecision.Tick())
         {
             Debug.Log($"{Name}: Current decision finished");
+            DecisionEmojiVisibility = false;
             if (DayNightCycle.Instance.timeOfDay > 20.5f || DayNightCycle.Instance.timeOfDay < 7f)
             {
                 SetCurrentDecision(new GoToSleepDecision(HisBuilding, this));
@@ -492,9 +501,49 @@ public class NPC : MonoBehaviour, IChattable
     /// </summary>
     public void SetCurrentDecision(IDecision decision)
     {
+        // LOG: Skończenie poprzedniej czynności
+        if (CurrentDecision != null)
+        {
+            Debug.Log($"<color=red>[KONIEC]</color> {Name} skończył: {CurrentDecision.PrettyName}");
+        }
+
         CurrentDecision?.Finish();
         CurrentDecision = decision;
         CurrentDecision?.Start();
+
+        // LOG: Rozpoczęcie nowej czynności
+        if (CurrentDecision != null)
+        {
+            Debug.Log($"<color=green>[START]</color> {Name} zaczyna: {CurrentDecision.PrettyName}");
+        }
+        DecisionEmojiVisibility = true;
         Debug.Log($"{Name}: New decision: {CurrentDecision.DebugInfo()}");
+
+        if (emojiController != null && CurrentDecision != null)
+        {
+            // Przekazujemy PrettyName (np. "Chop Wood") lub nazwę typu
+            emojiController.UpdateEmoji(CurrentDecision.PrettyName);
+        }
     }
+
+    //public void ShowDecisionEmoji(GameObject emojiPrefab)
+    //{
+    //    var emojiHolder = transform.Find("EmojiHolder");
+    //    if (emojiHolder == null)
+    //    {
+    //        Debug.LogWarning($"{Name}: No EmojiHolder found!");
+    //        return;
+    //    }
+    //    // Remove existing emoji
+    //    foreach (Transform child in emojiHolder)
+    //    {
+    //        Destroy(child.gameObject);
+    //    }
+    //    if (emojiPrefab != null)
+    //    {
+    //        var emojiInstance = Instantiate(emojiPrefab, emojiHolder);
+    //        emojiInstance.transform.localPosition = Vector3.zero;
+    //        emojiInstance.transform.localRotation = Quaternion.identity;
+    //    }
+    //}
 }
