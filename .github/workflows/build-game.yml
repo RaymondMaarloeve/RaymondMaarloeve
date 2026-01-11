@@ -19,6 +19,9 @@ jobs:
           - StandaloneLinux64
     
     steps:
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
