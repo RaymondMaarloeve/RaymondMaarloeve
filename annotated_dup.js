@@ -56,6 +56,8 @@ var annotated_dup =
     [ "NeedDTO", "class_need_d_t_o.html", "class_need_d_t_o" ],
     [ "NPC", "class_n_p_c.html", "class_n_p_c" ],
     [ "NpcActionEvent", "class_npc_action_event.html", "class_npc_action_event" ],
+    [ "NpcActionIcons", "class_npc_action_icons.html", "class_npc_action_icons" ],
+    [ "NpcEmojiController", "class_npc_emoji_controller.html", "class_npc_emoji_controller" ],
     [ "NullDecisionSystem", "class_null_decision_system.html", "class_null_decision_system" ],
     [ "ObtainedMemory", "class_obtained_memory.html", "class_obtained_memory" ],
     [ "ObtainedMemoryDTO", "class_obtained_memory_d_t_o.html", "class_obtained_memory_d_t_o" ],

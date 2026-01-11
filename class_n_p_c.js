@@ -12,6 +12,7 @@ var class_n_p_c =
     [ "Setup", "class_n_p_c.html#ab5d57aa6b90b616e67156a20537be01a", null ],
     [ "StartChatting", "class_n_p_c.html#aa9abc98cac4fe3766989069f74aadef8", null ],
     [ "agent", "class_n_p_c.html#a8b21044a35e6b231ed328d3350c4ad3b", null ],
+    [ "DecisionEmojiVisibility", "class_n_p_c.html#a4e85c1ddd8c9c81668e28a32df217528", null ],
     [ "HisBuilding", "class_n_p_c.html#a74d744278c22deaebac035cdcf2bb099", null ],
     [ "Hunger", "class_n_p_c.html#a719104a230907490f98e0d936cf896f5", null ],
     [ "speed", "class_n_p_c.html#a1ff4c824759ae05a03c0d1a10e14c626", null ],

@@ -1,5 +1,15 @@
 var NAVTREEINDEX3 =
 {
+"functions_m.html":[2,3,0,10],
+"functions_n.html":[2,3,0,11],
+"functions_o.html":[2,3,0,12],
+"functions_p.html":[2,3,0,13],
+"functions_prop.html":[2,3,4],
+"functions_q.html":[2,3,0,14],
+"functions_r.html":[2,3,0,15],
+"functions_s.html":[2,3,0,16],
+"functions_t.html":[2,3,0,17],
+"functions_u.html":[2,3,0,18],
 "functions_v.html":[2,3,0,19],
 "functions_vars.html":[2,3,2],
 "functions_w.html":[2,3,0,20],
@@ -8,8 +18,8 @@ var NAVTREEINDEX3 =
 "globals_type.html":[3,1,3],
 "globals_vars.html":[3,1,2],
 "hierarchy.html":[2,2],
-"index.html":[],
 "index.html":[0],
+"index.html":[],
 "index.html#autotoc_md10":[0,3],
 "index.html#autotoc_md11":[0,3,0],
 "index.html#autotoc_md13":[0,3,1],
@@ -44,5 +54,8 @@ var NAVTREEINDEX3 =
 "interface_i_decision_system.html#ac45e7479d2a6c4f776c464250774143c":[2,0,39,1],
 "interface_i_decision_system.html#ad2bbded2ec76d4be316ec26e2cf509c8":[2,0,39,0],
 "pages.html":[],
+"struct_npc_action_icons_1_1_action_icon.html":[2,0,56,0],
+"struct_npc_action_icons_1_1_action_icon.html#a3d507ade046229eebf7ff3c42f43770c":[2,0,56,0,0],
+"struct_npc_action_icons_1_1_action_icon.html#ae5f68be170deff8164ad36e66ebaa74c":[2,0,56,0,1],
 "todo.html":[1]
 };

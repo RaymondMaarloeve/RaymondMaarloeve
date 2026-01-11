@@ -1,5 +1,6 @@
 var hierarchy =
 [
+    [ "NpcActionIcons.ActionIcon", "struct_npc_action_icons_1_1_action_icon.html", null ],
     [ "BuildingSetup", "class_building_setup.html", null ],
     [ "BuildingSpawner", "class_building_spawner.html", null ],
     [ "CalculateRelevanceDTO", "class_calculate_relevance_d_t_o.html", null ],
@@ -78,6 +79,7 @@ var hierarchy =
       [ "MapGenerator", "class_map_generator.html", null ],
       [ "MinimapCameraScript", "class_minimap_camera_script.html", null ],
       [ "NPC", "class_n_p_c.html", null ],
+      [ "NpcEmojiController", "class_npc_emoji_controller.html", null ],
       [ "PlayerController", "class_player_controller.html", null ],
       [ "SmartMeshColliderAdder", "class_smart_mesh_collider_adder.html", null ]
     ] ],
@@ -85,6 +87,9 @@ var hierarchy =
     [ "NpcActionEvent", "class_npc_action_event.html", null ],
     [ "ObtainedMemory", "class_obtained_memory.html", null ],
     [ "ObtainedMemoryDTO", "class_obtained_memory_d_t_o.html", null ],
+    [ "ScriptableObject", null, [
+      [ "NpcActionIcons", "class_npc_action_icons.html", null ]
+    ] ],
     [ "StateMachineBehaviour", null, [
       [ "footstep_manager_npc", "classfootstep__manager__npc.html", null ]
     ] ],
