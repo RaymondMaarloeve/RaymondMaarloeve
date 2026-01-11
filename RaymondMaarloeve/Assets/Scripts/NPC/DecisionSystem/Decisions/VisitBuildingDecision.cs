@@ -12,6 +12,7 @@ public abstract class VisitBuildingDecision : IDecision
     /// </summary>
     private GameObject buildingGO;
 
+    private GameObject Emoji;
     /// <summary>
     /// Indicates whether the decision is finished.
     /// </summary>
@@ -52,6 +53,8 @@ public abstract class VisitBuildingDecision : IDecision
     /// </summary>
     protected abstract bool NpcShouldDisappear { get; }
 
+
+
     /// <summary>
     /// Private constructor to prevent instantiation without parameters.
     /// </summary>
@@ -87,7 +90,7 @@ public abstract class VisitBuildingDecision : IDecision
         }
         else
         {
-            Debug.LogWarning(npc.NpcName + ": NavMesh point for the building not found!");
+            Debug.LogWarning(npc.Name + ": NavMesh point for the building not found!");
             finished = true;
         }
     }

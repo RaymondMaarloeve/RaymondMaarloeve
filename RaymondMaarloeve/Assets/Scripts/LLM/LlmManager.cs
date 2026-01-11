@@ -187,6 +187,7 @@ public class LlmManager : MonoBehaviour
     /// <param name="maxTokens">Max tokens to generate</param>
     public void Chat(string modelID, List<Message> messages, Action<ChatResponseDTO> onComplete, Action<string> onError, float top_p = 0.95f, float temperature = 0.8f, int maxTokens = 4096)
     {
+
         var data = new ChatRequestDTO()
         {
             model_id = modelID,
@@ -200,7 +201,11 @@ public class LlmManager : MonoBehaviour
             temperature = temperature, // Default temperature for generation
             top_p = top_p // Default top_p for generation
         };
-        QueuePostRequest<ChatResponseDTO, ChatRequestDTO>("chat", data, onComplete, onError);
+        void onResponse(ChatResponseDTO response) {
+            Debug.Log($"Chat response, took {response.generation_time}, total_tokens: {response.total_tokens}: {response.response}");
+            onComplete(response);
+        }
+        QueuePostRequest<ChatResponseDTO, ChatRequestDTO>("chat", data, onResponse, onError);
     }
     #endregion
 
