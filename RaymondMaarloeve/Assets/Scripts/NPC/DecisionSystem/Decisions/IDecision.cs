@@ -1,4 +1,6 @@
-﻿/// <summary>
+﻿using UnityEngine;
+
+/// <summary>
 /// Defines the Decision for the NPC Decision System.
 /// </summary>
 public interface IDecision
@@ -31,4 +33,6 @@ public interface IDecision
     /// </summary>
     /// <returns>A string containing debugging information.</returns>
     public string DebugInfo();
+
+    //public GameObject Emoji { get; }
 }
