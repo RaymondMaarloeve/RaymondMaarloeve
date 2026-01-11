@@ -16,5 +16,7 @@ var searchData=
   ['buildingspawner_13',['BuildingSpawner',['../class_building_spawner.html',1,'BuildingSpawner'],['../class_building_spawner.html#a6071cc8dd1d4f9a79299ecc1083dd633',1,'BuildingSpawner.BuildingSpawner()']]],
   ['buildingtype_14',['BuildingType',['../class_building_data.html#afc07932823f7b925d75c838070aa4556',1,'BuildingData']]],
   ['builidingspawner_2ecs_15',['BuilidingSpawner.cs',['../_builiding_spawner_8cs.html',1,'']]],
-  ['bush_16',['Bush',['../class_building_data.html#afc07932823f7b925d75c838070aa4556ac7174dc75237a0361780548a1af6872b',1,'BuildingData']]]
+  ['buryingsomethingdecision_16',['BuryingSomethingDecision',['../class_burying_something_decision.html',1,'BuryingSomethingDecision'],['../class_burying_something_decision.html#a3125db08bc03a1a0f786864522db94db',1,'BuryingSomethingDecision.BuryingSomethingDecision()']]],
+  ['buryingsomethingdecision_2ecs_17',['BuryingSomethingDecision.cs',['../_burying_something_decision_8cs.html',1,'']]],
+  ['bush_18',['Bush',['../class_building_data.html#afc07932823f7b925d75c838070aa4556ac7174dc75237a0361780548a1af6872b',1,'BuildingData']]]
 ];

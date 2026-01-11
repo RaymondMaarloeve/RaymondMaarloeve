@@ -33,7 +33,7 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", null ],
+        [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ],
         [ "Enumerations", "functions_enum.html", null ],
         [ "Properties", "functions_prop.html", null ]
@@ -54,8 +54,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_blacksmith_work_decision_8cs.html",
-"class_fetch_firewood_decision.html#a17c79176e6a46a96653c2ce47a3b1461",
-"class_tend_garden_decision.html#a1ed0284753b02f8ee756da750d89b51c"
+"class_day_night_cycle.html#a816c4c58400c9cc914dd0a2e472e96b6",
+"class_null_decision_system.html#a68488822e4c02cc13ec4341f8e5387c5",
+"functions_v.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

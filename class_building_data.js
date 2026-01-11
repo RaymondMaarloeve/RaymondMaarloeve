@@ -19,6 +19,8 @@ var class_building_data =
       [ "Stone", "class_building_data.html#afc07932823f7b925d75c838070aa4556a2ff4ab1d379832d3edee28194fb4e7b2", null ],
       [ "Small_Decoration", "class_building_data.html#afc07932823f7b925d75c838070aa4556aef5134d29a2e1dc77730f06b1df74888", null ],
       [ "Clue", "class_building_data.html#afc07932823f7b925d75c838070aa4556afb48a85b84e9f12b985bde09b2c0b29f", null ],
+      [ "Obelisk", "class_building_data.html#afc07932823f7b925d75c838070aa4556a46c8f3a5fb8d9cf794de4991ee30c408", null ],
+      [ "Notice_Board", "class_building_data.html#afc07932823f7b925d75c838070aa4556a99566fd0008014b2cdb5ad648d10c63b", null ],
       [ "Other", "class_building_data.html#afc07932823f7b925d75c838070aa4556a6311ae17c1ee52b36e68aaf4ad066387", null ]
     ] ],
     [ "AssignOccupiedTiles", "class_building_data.html#a586932c7f89b36d2e014a19aef7fde4b", null ],

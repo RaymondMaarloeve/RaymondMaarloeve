@@ -5,5 +5,6 @@ var searchData=
   ['decorationspawner_2ecs_2',['DecorationSpawner.cs',['../_decoration_spawner_8cs.html',1,'']]],
   ['dialogboxmanager_2ecs_3',['DialogBoxManager.cs',['../_dialog_box_manager_8cs.html',1,'']]],
   ['dicegamedecision_2ecs_4',['DiceGameDecision.cs',['../_dice_game_decision_8cs.html',1,'']]],
-  ['drawconclusionsresponsedto_2ecs_5',['DrawConclusionsResponseDTO.cs',['../_draw_conclusions_response_d_t_o_8cs.html',1,'']]]
+  ['drawconclusionsresponsedto_2ecs_5',['DrawConclusionsResponseDTO.cs',['../_draw_conclusions_response_d_t_o_8cs.html',1,'']]],
+  ['drunkenruckusdecision_2ecs_6',['DrunkenRuckusDecision.cs',['../_drunken_ruckus_decision_8cs.html',1,'']]]
 ];

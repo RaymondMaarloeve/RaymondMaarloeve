@@ -5,5 +5,6 @@ var searchData=
   ['walkdecision_2',['WalkDecision',['../class_walk_decision.html',1,'']]],
   ['wallspawner_3',['WallSpawner',['../class_wall_spawner.html',1,'']]],
   ['wallssetup_4',['WallsSetup',['../class_walls_setup.html',1,'']]],
-  ['warmhandsdecision_5',['WarmHandsDecision',['../class_warm_hands_decision.html',1,'']]]
+  ['warmhandsdecision_5',['WarmHandsDecision',['../class_warm_hands_decision.html',1,'']]],
+  ['watchingfromshadowsdecision_6',['WatchingFromShadowsDecision',['../class_watching_from_shadows_decision.html',1,'']]]
 ];
