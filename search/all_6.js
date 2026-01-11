@@ -10,5 +10,6 @@ var searchData=
   ['footstep_5fmanager_5fnpc_2ecs_7',['footstep_manager_npc.cs',['../footstep__manager__npc_8cs.html',1,'']]],
   ['fortress_8',['Fortress',['../class_building_data.html#afc07932823f7b925d75c838070aa4556a3cfbf3022c9e476ea09ebc7ce6d81a8f',1,'BuildingData']]],
   ['frontwallcenter_9',['FrontWallCenter',['../class_tile.html#a78c81c5d9b193fc141b18a3358688fb5',1,'Tile']]],
-  ['fullscreendropdown_10',['fullscreenDropdown',['../class_main_menu_manager.html#a0cd0e6fa24cf03244084c582378c7dac',1,'MainMenuManager']]]
+  ['fullscreen_10',['FullScreen',['../class_npc_settings_config.html#a31d08c759015d79c66cf5ab4c2b08cbb',1,'NpcSettingsConfig']]],
+  ['fullscreendropdown_11',['fullscreenDropdown',['../class_main_menu_manager.html#a0cd0e6fa24cf03244084c582378c7dac',1,'MainMenuManager']]]
 ];

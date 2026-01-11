@@ -15,9 +15,12 @@ var searchData=
   ['relevance_12',['relevance',['../class_obtained_memory.html#a782f47c427878640b6920a8c5107fcba',1,'ObtainedMemory']]],
   ['repairroofdecision_13',['RepairRoofDecision',['../class_repair_roof_decision.html#a45fc0b4ab80cf1d2b4200a47da4a26dc',1,'RepairRoofDecision.RepairRoofDecision()'],['../class_repair_roof_decision.html',1,'RepairRoofDecision']]],
   ['repairroofdecision_2ecs_14',['RepairRoofDecision.cs',['../_repair_roof_decision_8cs.html',1,'']]],
-  ['requiredsleepingnpcpercentage_15',['requiredSleepingNPCPercentage',['../class_day_night_cycle.html#aa0520234b1fa9f49ed38b271bc8eec98',1,'DayNightCycle']]],
-  ['resettodefaults_16',['ResetToDefaults',['../class_main_menu_manager.html#acb314be7d3e45c104a24c323802f3251',1,'MainMenuManager']]],
-  ['response_17',['response',['../class_chat_response_d_t_o.html#a89abc4a4cee0fc6ff1e229cec63c6593',1,'ChatResponseDTO']]],
-  ['role_18',['role',['../class_message.html#a14eb12b1a78d6757757ecfcfa883146b',1,'Message']]],
-  ['running_19',['running',['../classfootstep__manager__npc.html#aa9fd4083ab4a8829bb43d09f34de6159',1,'footstep_manager_npc']]]
+  ['reponame_15',['repoName',['../class_game_updater.html#ab358ad32c04d837d57ea762c7e163bc6',1,'GameUpdater']]],
+  ['repoowner_16',['repoOwner',['../class_game_updater.html#aef8271a5ee58d8b318075c40140adac4',1,'GameUpdater']]],
+  ['requiredsleepingnpcpercentage_17',['requiredSleepingNPCPercentage',['../class_day_night_cycle.html#aa0520234b1fa9f49ed38b271bc8eec98',1,'DayNightCycle']]],
+  ['resettodefaults_18',['ResetToDefaults',['../class_main_menu_manager.html#acb314be7d3e45c104a24c323802f3251',1,'MainMenuManager']]],
+  ['response_19',['response',['../class_chat_response_d_t_o.html#a89abc4a4cee0fc6ff1e229cec63c6593',1,'ChatResponseDTO']]],
+  ['revision_20',['Revision',['../class_npc_settings_config.html#a6a50887670092669b60d78b26561acd2',1,'NpcSettingsConfig']]],
+  ['role_21',['role',['../class_message.html#a14eb12b1a78d6757757ecfcfa883146b',1,'Message']]],
+  ['running_22',['running',['../classfootstep__manager__npc.html#aa9fd4083ab4a8829bb43d09f34de6159',1,'footstep_manager_npc']]]
 ];

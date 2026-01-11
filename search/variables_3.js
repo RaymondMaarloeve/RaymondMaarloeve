@@ -7,9 +7,11 @@ var searchData=
   ['decisionemojivisibility_4',['DecisionEmojiVisibility',['../class_n_p_c.html#a4e85c1ddd8c9c81668e28a32df217528',1,'NPC']]],
   ['decorations_5',['decorations',['../class_map_generator.html#af86445c360a9811bd3cb0a91604e4ea3',1,'MapGenerator']]],
   ['defaulticon_6',['defaultIcon',['../class_npc_action_icons.html#a39c1acff54b45e9efa7e9cfe47ae574a',1,'NpcActionIcons']]],
-  ['description_7',['description',['../class_character_d_t_o.html#a202ccf1e89abb0a5fc0a8ff9071b5e98',1,'CharacterDTO']]],
-  ['directionallight_8',['directionalLight',['../class_day_night_cycle.html#ad1c255e1a083a85218c458256a87b45b',1,'DayNightCycle']]],
-  ['disabledecisionmaking_9',['DisableDecisionMaking',['../class_game_manager.html#a6e4402658ba1b74bbbc910c2bb229cda',1,'GameManager']]],
-  ['disableserverconnection_10',['DisableServerConnection',['../class_game_manager.html#aa2c09a08453ee6de68d1d9c6ee6926cf',1,'GameManager']]],
-  ['distance_11',['distance',['../class_current_environment_d_t_o.html#af12c11e73d1d1a651465003cd1bf16e0',1,'CurrentEnvironmentDTO']]]
+  ['description_7',['Description',['../class_npc_model_data.html#af42985a6854f30fb5f55f3b6b5eb5bb9',1,'NpcModelData']]],
+  ['description_8',['description',['../class_character_d_t_o.html#a202ccf1e89abb0a5fc0a8ff9071b5e98',1,'CharacterDTO']]],
+  ['directionallight_9',['directionalLight',['../class_day_night_cycle.html#ad1c255e1a083a85218c458256a87b45b',1,'DayNightCycle']]],
+  ['disabledecisionmaking_10',['DisableDecisionMaking',['../class_game_manager.html#a6e4402658ba1b74bbbc910c2bb229cda',1,'GameManager']]],
+  ['disableserverconnection_11',['DisableServerConnection',['../class_game_manager.html#aa2c09a08453ee6de68d1d9c6ee6926cf',1,'GameManager']]],
+  ['distance_12',['distance',['../class_current_environment_d_t_o.html#af12c11e73d1d1a651465003cd1bf16e0',1,'CurrentEnvironmentDTO']]],
+  ['downloadbutton_13',['downloadButton',['../class_game_updater.html#a2b3771f15c0cb71645ffabedc09c0dfd',1,'GameUpdater']]]
 ];

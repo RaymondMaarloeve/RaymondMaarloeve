@@ -11,11 +11,12 @@ var searchData=
   ['sourceid_8',['SourceId',['../class_npc_action_event.html#a3db48e89276785e6fb7c7dfeeb92e36a',1,'NpcActionEvent']]],
   ['spawnedbuildings_9',['spawnedBuildings',['../class_map_generator.html#ac139d2902fbce9237436dc2683f2c942',1,'MapGenerator']]],
   ['speed_10',['speed',['../class_n_p_c.html#a1ff4c824759ae05a03c0d1a10e14c626',1,'NPC']]],
-  ['stopped_5faction_11',['stopped_action',['../class_idle_d_t_o.html#a1a852aa5f2f7fae60be1469312c2c161',1,'IdleDTO']]],
-  ['stoppeddecision_12',['StoppedDecision',['../class_n_p_c.html#a383a7f38abf03fcba878e44982e54db5',1,'NPC']]],
-  ['story_13',['story',['../class_generated_history_d_t_o.html#ab3f17f73d5c15d641c31826f6c80661e',1,'GeneratedHistoryDTO']]],
-  ['success_14',['success',['../class_chat_response_d_t_o.html#a7f0ff887c90705b1ead27be2f7cb971b',1,'ChatResponseDTO.success()'],['../class_message_d_t_o.html#a05d910c7ab79289c9b5558ecdf7c267e',1,'MessageDTO.success()']]],
-  ['surface_15',['surface',['../class_map_generator.html#a6661513b196383432c4b555faddd4940',1,'MapGenerator']]],
-  ['system_16',['System',['../_game_manager_8cs.html#a3c122fc3b07a3125646f3586d38f46ed',1,'GameManager.cs']]],
-  ['systemprompt_17',['SystemPrompt',['../_game_manager_8cs.html#ad56fcce64ea6a48cdb0dc7ae07365e7f',1,'GameManager.cs']]]
+  ['statustext_11',['statusText',['../class_game_updater.html#abffd447d94c697e9cc5bc13f480359db',1,'GameUpdater']]],
+  ['stopped_5faction_12',['stopped_action',['../class_idle_d_t_o.html#a1a852aa5f2f7fae60be1469312c2c161',1,'IdleDTO']]],
+  ['stoppeddecision_13',['StoppedDecision',['../class_n_p_c.html#a383a7f38abf03fcba878e44982e54db5',1,'NPC']]],
+  ['story_14',['story',['../class_generated_history_d_t_o.html#ab3f17f73d5c15d641c31826f6c80661e',1,'GeneratedHistoryDTO']]],
+  ['success_15',['success',['../class_chat_response_d_t_o.html#a7f0ff887c90705b1ead27be2f7cb971b',1,'ChatResponseDTO.success()'],['../class_message_d_t_o.html#a05d910c7ab79289c9b5558ecdf7c267e',1,'MessageDTO.success()']]],
+  ['surface_16',['surface',['../class_map_generator.html#a6661513b196383432c4b555faddd4940',1,'MapGenerator']]],
+  ['system_17',['System',['../_game_manager_8cs.html#a3c122fc3b07a3125646f3586d38f46ed',1,'GameManager.cs']]],
+  ['systemprompt_18',['SystemPrompt',['../_game_manager_8cs.html#ad56fcce64ea6a48cdb0dc7ae07365e7f',1,'GameManager.cs']]]
 ];

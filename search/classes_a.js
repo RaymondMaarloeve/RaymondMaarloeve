@@ -6,5 +6,6 @@ var searchData=
   ['message_3',['Message',['../class_message.html',1,'']]],
   ['messagedto_4',['MessageDTO',['../class_message_d_t_o.html',1,'']]],
   ['minimapcamerascript_5',['MinimapCameraScript',['../class_minimap_camera_script.html',1,'']]],
-  ['mourningdecision_6',['MourningDecision',['../class_mourning_decision.html',1,'']]]
+  ['minimapindicator_6',['MinimapIndicator',['../class_minimap_indicator.html',1,'']]],
+  ['mourningdecision_7',['MourningDecision',['../class_mourning_decision.html',1,'']]]
 ];

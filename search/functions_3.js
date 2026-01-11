@@ -5,10 +5,11 @@ var searchData=
   ['chatdecision_2',['ChatDecision',['../class_chat_decision.html#aea8ea67db5ff98158c71ddf93316df9e',1,'ChatDecision']]],
   ['checkingforfollowersdecision_3',['CheckingForFollowersDecision',['../class_checking_for_followers_decision.html#a090f20b5c5d297517bf24cefe7400f1b',1,'CheckingForFollowersDecision']]],
   ['chopwooddecision_4',['ChopWoodDecision',['../class_chop_wood_decision.html#a7302f9306aeab3f5c7a106510c405c80',1,'ChopWoodDecision']]],
-  ['cluespawner_5',['ClueSpawner',['../class_clue_spawner.html#ada266e77d1024da0675c34b3b1ce2609',1,'ClueSpawner']]],
-  ['connect_6',['Connect',['../class_llm_manager.html#a16ee38ba51ddab349c04ad0b9bce0630',1,'LlmManager']]],
-  ['cookstewdecision_7',['CookStewDecision',['../class_cook_stew_decision.html#a7215ce6a933cb1889128e2b4ae072927',1,'CookStewDecision']]],
-  ['countingcoinsdecision_8',['CountingCoinsDecision',['../class_counting_coins_decision.html#a764c317e772e9676a304302fcb5c518d',1,'CountingCoinsDecision']]],
-  ['currentenvironment_9',['CurrentEnvironment',['../class_current_environment.html#aa1d06a75d40d0048d91c5cc5062c1427',1,'CurrentEnvironment']]],
-  ['currentenvironmentdto_10',['CurrentEnvironmentDTO',['../class_current_environment_d_t_o.html#ad5a91d9b3b9a356ed90ea932658403a8',1,'CurrentEnvironmentDTO']]]
+  ['click_5fdownloadupdate_5',['Click_DownloadUpdate',['../class_game_updater.html#a229a06285ccb4f1d25442ea97add7dd9',1,'GameUpdater']]],
+  ['cluespawner_6',['ClueSpawner',['../class_clue_spawner.html#ada266e77d1024da0675c34b3b1ce2609',1,'ClueSpawner']]],
+  ['connect_7',['Connect',['../class_llm_manager.html#a16ee38ba51ddab349c04ad0b9bce0630',1,'LlmManager']]],
+  ['cookstewdecision_8',['CookStewDecision',['../class_cook_stew_decision.html#a7215ce6a933cb1889128e2b4ae072927',1,'CookStewDecision']]],
+  ['countingcoinsdecision_9',['CountingCoinsDecision',['../class_counting_coins_decision.html#a764c317e772e9676a304302fcb5c518d',1,'CountingCoinsDecision']]],
+  ['currentenvironment_10',['CurrentEnvironment',['../class_current_environment.html#aa1d06a75d40d0048d91c5cc5062c1427',1,'CurrentEnvironment']]],
+  ['currentenvironmentdto_11',['CurrentEnvironmentDTO',['../class_current_environment_d_t_o.html#ad5a91d9b3b9a356ed90ea932658403a8',1,'CurrentEnvironmentDTO']]]
 ];

@@ -6,5 +6,6 @@ var searchData=
   ['content_3',['content',['../class_message.html#ad553cf4aaec66b2cdcdbc1d6aee1b426',1,'Message']]],
   ['core_5fmemories_4',['core_memories',['../class_calculate_relevance_d_t_o.html#ae9a283bdde5222effd266c13b8639296',1,'CalculateRelevanceDTO.core_memories()'],['../class_idle_d_t_o.html#a7fb8df875b3cfaee37afb3473918dea3',1,'IdleDTO.core_memories()']]],
   ['current_5fenvironment_5',['current_environment',['../class_idle_d_t_o.html#a8632c641acb06f6e41ea97a83ad606fa',1,'IdleDTO']]],
-  ['currentcount_6',['currentCount',['../class_building_setup.html#a3098cc536df4b61f1871be55f325b2b0',1,'BuildingSetup']]]
+  ['currentcount_6',['currentCount',['../class_building_setup.html#a3098cc536df4b61f1871be55f325b2b0',1,'BuildingSetup']]],
+  ['currentversiontext_7',['currentVersionText',['../class_game_updater.html#a1d6e7cfc904473d5d4c81e004b6a32b1',1,'GameUpdater']]]
 ];

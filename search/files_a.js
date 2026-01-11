@@ -6,5 +6,6 @@ var searchData=
   ['npcactionsicons_2ecs_3',['NpcActionsIcons.cs',['../_npc_actions_icons_8cs.html',1,'']]],
   ['npcemojicontroller_2ecs_4',['NpcEmojiController.cs',['../_npc_emoji_controller_8cs.html',1,'']]],
   ['npceventbus_2ecs_5',['NpcEventBus.cs',['../_npc_event_bus_8cs.html',1,'']]],
-  ['nulldecisionsystem_2ecs_6',['NullDecisionSystem.cs',['../_null_decision_system_8cs.html',1,'']]]
+  ['npcsettingsui_2ecs_6',['NpcSettingsUI.cs',['../_npc_settings_u_i_8cs.html',1,'']]],
+  ['nulldecisionsystem_2ecs_7',['NullDecisionSystem.cs',['../_null_decision_system_8cs.html',1,'']]]
 ];
