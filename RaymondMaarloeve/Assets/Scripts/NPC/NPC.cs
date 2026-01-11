@@ -389,19 +389,49 @@ public class NPC : MonoBehaviour, IChattable
                 case BuildingData.BuildingType.None:
                     break;
                 case BuildingData.BuildingType.House:
+                    environments.Add(new CurrentEnvironment(new RepairRoofDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new SweepYardDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new CookStewDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new WarmHandsDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new GoToSleepDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new SobbingQuietlyDecision(buildingGO, this), buildingGO));
+
                     break;
                 case BuildingData.BuildingType.Church:
                     environments.Add(new CurrentEnvironment(new PrayDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new ReadBibleDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new MourningDecision(buildingGO, this), buildingGO));
+
                     break;
                 case BuildingData.BuildingType.Well:
                     environments.Add(new CurrentEnvironment(new GetWaterDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new GossipAtWellDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new EavesdropDecision(buildingGO, this), buildingGO));
+
+
                     break;
                 case BuildingData.BuildingType.Blacksmith:
+                    environments.Add(new CurrentEnvironment(new BlacksmithWorkDecision(buildingGO, this), buildingGO));
                     break;
                 case BuildingData.BuildingType.Tavern:
                     environments.Add(new CurrentEnvironment(new GetAleDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new WarmHandsDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new DiceGameDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new SingingDrunkDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new DrunkenRuckusDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new SobbingQuietlyDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new CountingCoinsDecision(buildingGO, this), buildingGO));
                     break;
                 case BuildingData.BuildingType.Scaffold:
+                    break;
+                case BuildingData.BuildingType.Obelisk:
+                    environments.Add(new CurrentEnvironment(new PaganPrayDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new LeavingStrangeMarkingsDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new OfferingSacrificeDecision(buildingGO, this), buildingGO));
+                    environments.Add(new CurrentEnvironment(new PerformingRitualDecision(buildingGO, this), buildingGO));
+                    break;
+                case BuildingData.BuildingType.Notice_Board:
+                    environments.Add(new CurrentEnvironment(new ReadNoticeBoardDecision(buildingGO, this), buildingGO));
                     break;
                 case BuildingData.BuildingType.Other:
                     break;

@@ -60,6 +60,8 @@ public class BuildingData : MonoBehaviour
         Stone,
         Small_Decoration,
         Clue,
+        Obelisk,
+        Notice_Board,
         Other
     }
 
