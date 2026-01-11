@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 
 /// <summary>
 /// Manages communication with the LLM server, including model registration, loading, unloading, and chat requests.
-/// Handles request queuing and ensures only one POST request is processed at a time.
+/// Handles request queuing with parallel execution support.
 /// </summary>
 public class LlmManager : MonoBehaviour
 {
@@ -15,22 +15,31 @@ public class LlmManager : MonoBehaviour
     /// Singleton instance of the LlmManager.
     /// </summary>
     public static LlmManager Instance;
+
     /// <summary>
     /// Base URL of the LLM server API.
     /// </summary>
     private string BaseUrl;
+
     /// <summary>
     /// Indicates whether the manager is connected to the LLM server.
     /// </summary>
     public bool IsConnected { get; private set; }
+
     /// <summary>
-    /// Queue of POST requests to be processed sequentially.
+    /// Queue of POST requests to be processed.
     /// </summary>
     private Queue<IEnumerator> postRequestQueue = new Queue<IEnumerator>();
+
     /// <summary>
-    /// Indicates if the POST request queue is currently being processed.
+    /// Maximum number of concurrent POST requests allowed.
     /// </summary>
-    private bool isProcessingQueue = false;
+    public int MaxParallelRequests = 4;
+
+    /// <summary>
+    /// Current count of active requests being processed.
+    /// </summary>
+    private int _currentActiveRequests = 0;
 
     /// <summary>
     /// Whether log requests and responses
@@ -85,7 +94,7 @@ public class LlmManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Queues a POST request, ensuring that only one executes at a time.
+    /// Queues a POST request. Execution starts if the number of active requests is below MaxParallelRequests.
     /// </summary>
     /// <typeparam name="T">Type to deserialize the response to.</typeparam>
     /// <typeparam name="TRequest">Type of the request data.</typeparam>
@@ -97,29 +106,40 @@ public class LlmManager : MonoBehaviour
         where T : class
         where TRequest : class
     {
-        // Add the request to the queue
+        // Add the actual request logic to the queue
         postRequestQueue.Enqueue(Post<T, TRequest>(endpoint, data, onSuccess, onError));
-        if (!isProcessingQueue)
+
+        ProcessQueue();
+    }
+
+    /// <summary>
+    /// Checks if new requests can be started and spawns them if slots are available.
+    /// </summary>
+    private void ProcessQueue()
+    {
+        // While we have items in the queue AND we haven't reached the parallelism limit
+        while (postRequestQueue.Count > 0 && _currentActiveRequests < MaxParallelRequests)
         {
-            StartCoroutine(ProcessPostQueue());
+            var request = postRequestQueue.Dequeue();
+            StartCoroutine(RunRequestWrapper(request));
         }
     }
 
     /// <summary>
-    /// Processes the POST request queue sequentially.
+    /// Wrapper that handles the lifecycle of a single parallel request.
+    /// Increments counter -> runs request -> decrements counter -> checks queue again.
     /// </summary>
-    /// <returns>Coroutine enumerator.</returns>
-    private IEnumerator ProcessPostQueue()
+    private IEnumerator RunRequestWrapper(IEnumerator requestRoutine)
     {
-        isProcessingQueue = true;
+        _currentActiveRequests++;
 
-        while (postRequestQueue.Count > 0)
-        {
-            var request = postRequestQueue.Dequeue();
-            yield return StartCoroutine(request);
-        }
+        // Wait for the actual POST request to finish
+        yield return StartCoroutine(requestRoutine);
 
-        isProcessingQueue = false;
+        _currentActiveRequests--;
+
+        // Since a slot opened up, check if there are more items pending in the queue
+        ProcessQueue();
     }
 
     /// <summary>
@@ -156,6 +176,7 @@ public class LlmManager : MonoBehaviour
                 onError?.Invoke($"LlmManager: Post request failed ({request.error}): {responseContent}");
                 yield break;
             }
+
             if (LogDebug)
                 Debug.Log($"LlmManager: Post response: {responseContent}");
 
@@ -187,7 +208,6 @@ public class LlmManager : MonoBehaviour
     /// <param name="maxTokens">Max tokens to generate</param>
     public void Chat(string modelID, List<Message> messages, Action<ChatResponseDTO> onComplete, Action<string> onError, float top_p = 0.95f, float temperature = 0.8f, int maxTokens = 4096)
     {
-
         var data = new ChatRequestDTO()
         {
             model_id = modelID,
@@ -201,10 +221,13 @@ public class LlmManager : MonoBehaviour
             temperature = temperature, // Default temperature for generation
             top_p = top_p // Default top_p for generation
         };
-        void onResponse(ChatResponseDTO response) {
-            Debug.Log($"Chat response, took {response.generation_time}, total_tokens: {response.total_tokens}: {response.response}");
+
+        void onResponse(ChatResponseDTO response)
+        {
+            if (LogDebug) Debug.Log($"Chat response, took {response.generation_time}, total_tokens: {response.total_tokens}: {response.response}");
             onComplete(response);
         }
+
         QueuePostRequest<ChatResponseDTO, ChatRequestDTO>("chat", data, onResponse, onError);
     }
     #endregion
@@ -257,12 +280,11 @@ public class LlmManager : MonoBehaviour
         return true;
     }
 
-    [ConsoleCommand("llmqueue", "Shows Post queue")]
+    [ConsoleCommand("llmqueue", "Shows Post queue status")]
     public static bool LLMQueue()
     {
-        Debug.Log($"POST Status Queue: {Instance.postRequestQueue.Count} elements");
+        Debug.Log($"POST Queue Status: {Instance.postRequestQueue.Count} waiting, {Instance._currentActiveRequests}/{Instance.MaxParallelRequests} active.");
         return true;
     }
-
     #endregion
 }
