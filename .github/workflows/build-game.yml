@@ -102,6 +102,26 @@ jobs:
         id: datetime
         run: echo "::set-output name=current_datetime::$(date '+%Y-%m-%d-%H%M%S')"
 
+      - name: Deploy Windows to itch.io
+        uses: yeslayla/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.ITCH_API_KEY }}
+          ITCH_GAME: raymond-maarloeve
+          ITCH_USER: gitmanik
+          CHANNEL: windows
+          PACKAGE: art/windows/StandaloneWindows64.zip
+          VERSION: ${{ steps.datetime.outputs.current_datetime }}
+
+      - name: Deploy Linux to itch.io
+        uses: yeslayla/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.ITCH_API_KEY }}
+          ITCH_GAME: raymond-maarloeve
+          ITCH_USER: gitmanik
+          CHANNEL: linux
+          PACKAGE: art/linux/StandaloneLinux64.zip
+          VERSION: ${{ steps.datetime.outputs.current_datetime }}
+
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
