@@ -79,6 +79,7 @@ var hierarchy =
       [ "MapGenerator", "class_map_generator.html", null ],
       [ "MinimapCameraScript", "class_minimap_camera_script.html", null ],
       [ "NPC", "class_n_p_c.html", null ],
+      [ "NotesManager", "class_notes_manager.html", null ],
       [ "NpcEmojiController", "class_npc_emoji_controller.html", null ],
       [ "PlayerController", "class_player_controller.html", null ],
       [ "SmartMeshColliderAdder", "class_smart_mesh_collider_adder.html", null ]

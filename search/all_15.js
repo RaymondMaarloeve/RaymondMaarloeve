@@ -18,8 +18,8 @@ var searchData=
   ['warmhandsdecision_2ecs_15',['WarmHandsDecision.cs',['../_warm_hands_decision_8cs.html',1,'']]],
   ['watchingfromshadowsdecision_16',['WatchingFromShadowsDecision',['../class_watching_from_shadows_decision.html',1,'WatchingFromShadowsDecision'],['../class_watching_from_shadows_decision.html#ac4a2d90b0e2a16616e45d8f3dd7d6b88',1,'WatchingFromShadowsDecision.WatchingFromShadowsDecision()']]],
   ['watchingfromshadowsdecision_2ecs_17',['WatchingFromShadowsDecision.cs',['../_watching_from_shadows_decision_8cs.html',1,'']]],
-  ['weight_18',['weight',['../class_building_setup.html#a6ba25c0f49c955cee4094b4ed19ea93d',1,'BuildingSetup.weight()'],['../class_need_d_t_o.html#a254fb8cb1172ad868ff250fe53006731',1,'NeedDTO.weight()'],['../class_obtained_memory_d_t_o.html#accaf980ea7a4d8008940150123acafa1',1,'ObtainedMemoryDTO.weight()']]],
-  ['weight_19',['Weight',['../class_obtained_memory.html#a1c0f578cb1291b41454026b1a1107717',1,'ObtainedMemory']]],
+  ['weight_18',['Weight',['../class_obtained_memory.html#a1c0f578cb1291b41454026b1a1107717',1,'ObtainedMemory']]],
+  ['weight_19',['weight',['../class_building_setup.html#a6ba25c0f49c955cee4094b4ed19ea93d',1,'BuildingSetup.weight()'],['../class_need_d_t_o.html#a254fb8cb1172ad868ff250fe53006731',1,'NeedDTO.weight()'],['../class_obtained_memory_d_t_o.html#accaf980ea7a4d8008940150123acafa1',1,'ObtainedMemoryDTO.weight()']]],
   ['well_20',['Well',['../class_building_data.html#afc07932823f7b925d75c838070aa4556a13bd94a2e0d36d81cdb52d7cf450401a',1,'BuildingData']]],
   ['writeonlyavlijsonobjectwithbodyspecifiedbelow_21',['WriteONLYaVLIJSONobjectwithbodyspecifiedbelow',['../_game_manager_8cs.html#aed8648dccaa515b279e5daf1542b9d74',1,'GameManager.cs']]]
 ];

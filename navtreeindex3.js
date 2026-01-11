@@ -1,5 +1,8 @@
 var NAVTREEINDEX3 =
 {
+"functions_h.html":[2,3,0,7],
+"functions_i.html":[2,3,0,8],
+"functions_l.html":[2,3,0,9],
 "functions_m.html":[2,3,0,10],
 "functions_n.html":[2,3,0,11],
 "functions_o.html":[2,3,0,12],
@@ -54,8 +57,8 @@ var NAVTREEINDEX3 =
 "interface_i_decision_system.html#ac45e7479d2a6c4f776c464250774143c":[2,0,39,1],
 "interface_i_decision_system.html#ad2bbded2ec76d4be316ec26e2cf509c8":[2,0,39,0],
 "pages.html":[],
-"struct_npc_action_icons_1_1_action_icon.html":[2,0,56,0],
-"struct_npc_action_icons_1_1_action_icon.html#a3d507ade046229eebf7ff3c42f43770c":[2,0,56,0,0],
-"struct_npc_action_icons_1_1_action_icon.html#ae5f68be170deff8164ad36e66ebaa74c":[2,0,56,0,1],
+"struct_npc_action_icons_1_1_action_icon.html":[2,0,57,0],
+"struct_npc_action_icons_1_1_action_icon.html#a3d507ade046229eebf7ff3c42f43770c":[2,0,57,0,0],
+"struct_npc_action_icons_1_1_action_icon.html#ae5f68be170deff8164ad36e66ebaa74c":[2,0,57,0,1],
 "todo.html":[1]
 };

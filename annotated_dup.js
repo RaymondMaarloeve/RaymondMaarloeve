@@ -54,6 +54,7 @@ var annotated_dup =
     [ "MinimapCameraScript", "class_minimap_camera_script.html", "class_minimap_camera_script" ],
     [ "MourningDecision", "class_mourning_decision.html", "class_mourning_decision" ],
     [ "NeedDTO", "class_need_d_t_o.html", "class_need_d_t_o" ],
+    [ "NotesManager", "class_notes_manager.html", "class_notes_manager" ],
     [ "NPC", "class_n_p_c.html", "class_n_p_c" ],
     [ "NpcActionEvent", "class_npc_action_event.html", "class_npc_action_event" ],
     [ "NpcActionIcons", "class_npc_action_icons.html", "class_npc_action_icons" ],

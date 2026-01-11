@@ -69,6 +69,7 @@ var NAVTREEINDEX0 =
 "_n_p_c_8cs.html#a9b77ffc728c31f7c2bfb388fb96e1e05":[3,0,0,0,1,2,3,2],
 "_n_p_c_8cs.html#ab08cb109dbc264a7d3f99733bca15c73":[3,0,0,0,1,2,3,1],
 "_need_d_t_o_8cs.html":[3,0,0,0,1,2,0,1,4],
+"_notes_manager_8cs.html":[3,0,0,0,1,11],
 "_npc_actions_icons_8cs.html":[3,0,0,0,1,2,0,2,0],
 "_npc_emoji_controller_8cs.html":[3,0,0,0,1,2,0,2,1],
 "_npc_event_bus_8cs.html":[3,0,0,0,1,2,4],
@@ -79,7 +80,7 @@ var NAVTREEINDEX0 =
 "_pagan_pray_decision_8cs.html":[3,0,0,0,1,2,0,0,22],
 "_path_generator_8cs.html":[3,0,0,0,1,1,7],
 "_performing_ritual_decision_8cs.html":[3,0,0,0,1,2,0,0,23],
-"_player_controller_8cs.html":[3,0,0,0,1,11],
+"_player_controller_8cs.html":[3,0,0,0,1,12],
 "_pray_decision_8cs.html":[3,0,0,0,1,2,0,0,24],
 "_read_bible_decision_8cs.html":[3,0,0,0,1,2,0,0,25],
 "_read_notice_board_decision_8cs.html":[3,0,0,0,1,2,0,0,26],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "class_day_box_manager.html#ab449710f1981fe2a18a57108dc9acef5":[2,0,20,0],
 "class_day_night_cycle.html":[2,0,21],
 "class_day_night_cycle.html#a1e6b5354c480d8da0c02fbe386d87831":[2,0,21,0],
-"class_day_night_cycle.html#a3a9e221019b318595bd9723384c0e123":[2,0,21,14],
-"class_day_night_cycle.html#a3bc5b838f0e4e539f18950f9b8ebce97":[2,0,21,9]
+"class_day_night_cycle.html#a3a9e221019b318595bd9723384c0e123":[2,0,21,14]
 };
