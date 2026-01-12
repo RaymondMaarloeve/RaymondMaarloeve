@@ -19,7 +19,10 @@ var hierarchy =
       [ "PlayerController", "class_player_controller.html", null ]
     ] ],
     [ "IDecision", "interface_i_decision.html", [
-      [ "ChatDecision", "class_chat_decision.html", null ],
+      [ "IChatDecision", "interface_i_chat_decision.html", [
+        [ "ChatDecision", "class_chat_decision.html", null ],
+        [ "JudgeDecision", "class_judge_decision.html", null ]
+      ] ],
       [ "IdleDecision", "class_idle_decision.html", null ],
       [ "VisitBuildingDecision", "class_visit_building_decision.html", [
         [ "BlacksmithWorkDecision", "class_blacksmith_work_decision.html", null ],
@@ -78,6 +81,7 @@ var hierarchy =
       [ "LoadingScene", "class_loading_scene.html", null ],
       [ "MainMenuManager", "class_main_menu_manager.html", null ],
       [ "MapGenerator", "class_map_generator.html", null ],
+      [ "MiniGameManager", "class_mini_game_manager.html", null ],
       [ "MinimapCameraScript", "class_minimap_camera_script.html", null ],
       [ "MinimapIndicator", "class_minimap_indicator.html", null ],
       [ "NPC", "class_n_p_c.html", null ],
@@ -102,6 +106,7 @@ var hierarchy =
     ] ],
     [ "StatusDTO", "class_status_d_t_o.html", null ],
     [ "Tile", "class_tile.html", null ],
+    [ "VerdictResponse", "class_verdict_response.html", null ],
     [ "WallSpawner", "class_wall_spawner.html", null ],
     [ "WallsSetup", "class_walls_setup.html", null ]
 ];

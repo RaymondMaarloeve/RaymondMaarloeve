@@ -8,5 +8,6 @@ var class_llm_manager =
     [ "Setup", "class_llm_manager.html#ab6e34bc3aece1952728ac29dea13a2b9", null ],
     [ "Status", "class_llm_manager.html#a97f29d33ad99c68a6f8ef018e80b6136", null ],
     [ "LogDebug", "class_llm_manager.html#aabdea52995036d70d49980b004a0dfd5", null ],
+    [ "MaxParallelRequests", "class_llm_manager.html#aa967105a4cccf5ec1a1fefb48740e130", null ],
     [ "IsConnected", "class_llm_manager.html#a91bc2cf70b9c9f62ba5d7890e6292223", null ]
 ];

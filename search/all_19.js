@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['✅znaleziono_0',['✅Znaleziono',['../_minimap_indicator_8cs.html#ac6f0bd04fa01dfc6c33047b3b3ef4761',1,'MinimapIndicator.cs']]]
+  ['⚠️npcnr_0',['⚠️NPCnr',['../_minimap_indicator_8cs.html#ab53d8fdd3f8d64c3e901a5c7f1f08559',1,'MinimapIndicator.cs']]]
 ];

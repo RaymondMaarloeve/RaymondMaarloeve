@@ -16,6 +16,7 @@ var dir_d4dbf9aa2a136bb14962852e419a5042 =
     [ "GossipAtWellDecision.cs", "_gossip_at_well_decision_8cs.html", "_gossip_at_well_decision_8cs" ],
     [ "GoToSleepDecision.cs", "_go_to_sleep_decision_8cs.html", "_go_to_sleep_decision_8cs" ],
     [ "HideObjectDecision.cs", "_hide_object_decision_8cs.html", "_hide_object_decision_8cs" ],
+    [ "IChatDecision.cs", "_i_chat_decision_8cs.html", "_i_chat_decision_8cs" ],
     [ "IDecision.cs", "_i_decision_8cs.html", "_i_decision_8cs" ],
     [ "IdleDecision.cs", "_idle_decision_8cs.html", "_idle_decision_8cs" ],
     [ "LeaveStrangeMarkingsDecision.cs", "_leave_strange_markings_decision_8cs.html", "_leave_strange_markings_decision_8cs" ],
