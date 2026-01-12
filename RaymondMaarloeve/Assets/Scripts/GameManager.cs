@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
             {
                 system = new LlmDecisionMaker();
             }
-            npcComponent.Setup(system, "", characterDTO);
+            npcComponent.Setup(system, "npc", characterDTO);
 
             HashSet<BuildingData.BuildingType> allowedTypes = new HashSet<BuildingData.BuildingType>()
             {
@@ -265,7 +265,7 @@ public class GameManager : MonoBehaviour
 
             Debug.Log("Generating history...");
 
-            LlmManager.Instance.Chat("", messages, result =>
+            LlmManager.Instance.Chat("narrator", messages, result =>
             {
                 callbackCalled = true;
                 resp = result.response;

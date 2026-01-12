@@ -486,7 +486,7 @@ public class NPC : MonoBehaviour, IChattable
     {
         LookAt(otherChatter.LookTarget);
         InterruptDecision(new ChatDecision(this, otherChatter, true));
-        Debug.Log($"Started chatting with {otherChatter.Name}");
+        Debug.Log($"{Name}: Started chatting with {otherChatter.Name}");
     }
 
     /// <summary>
@@ -521,7 +521,7 @@ public class NPC : MonoBehaviour, IChattable
     /// </summary>
     public void InterruptDecision(IDecision decision)
     {
-        Debug.Log("{Name}: Interrupting decision");
+        Debug.Log($"{Name}: Interrupting decision");
         StoppedDecision = CurrentDecision;
         SetCurrentDecision(decision);
     }

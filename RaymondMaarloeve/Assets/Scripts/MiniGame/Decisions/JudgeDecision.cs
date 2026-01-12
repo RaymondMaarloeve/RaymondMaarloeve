@@ -42,7 +42,7 @@ public class JudgeDecision : IChatDecision
         messages.Add(new Message { role = "system", content = prompt });
         messages.Add(new Message { role = "user", content = message });
 
-        LlmManager.Instance.Chat(owner.Name, messages, result =>
+        LlmManager.Instance.Chat("npc", messages, result =>
         {
             var resp = result.response;
             Debug.Log($"{owner.Name}: Judge decided: {resp}");
@@ -71,7 +71,7 @@ public class JudgeDecision : IChatDecision
         messages.Add(new Message { role = "system", content = prompt });
         messages.Add(new Message { role = "user", content = generateQuestionPrompt });
 
-        LlmManager.Instance.Chat(owner.Name, messages, result =>
+        LlmManager.Instance.Chat("npc", messages, result =>
         {
             generatedQuestion = result.response;
             Debug.Log($"{owner.Name}: Judge generated question: {generatedQuestion}");

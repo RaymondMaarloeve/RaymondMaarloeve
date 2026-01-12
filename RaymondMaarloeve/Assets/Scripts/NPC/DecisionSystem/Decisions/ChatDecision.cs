@@ -84,7 +84,7 @@ It is {DayNightCycle.Instance.GetCurrentDay()} days after the murder of {GameMan
             currentState = DecisionState.WAITING_FOR_RESPONSE;
         }
         conversation = new List<Message>();
-        conversationPrefix = new List<Message> { new Message() { role = "system", content = Prompt } };
+        conversationPrefix = new List<Message> { new Message() { role = "system", content = Prompt + $"\nYou are currently talking with: {otherNpc.Name}" } };
     }
 
     /// <summary>
@@ -145,18 +145,18 @@ It is {DayNightCycle.Instance.GetCurrentDay()} days after the murder of {GameMan
     {
         // TODO: Parse incoming message
         Debug.Log($"Received message: {message}");
-        conversation.Add(new Message() { role = otherNpc.Name, content = message });
+        conversation.Add(new Message() { role = "user", content = message });
 
         // TODO: Generate response
         var response = "";
-        conversation.Add(new Message() { role = npc.Name, content = response });
+        conversation.Add(new Message() { role = "assistant", content = response });
         if (GameManager.Instance.DisableServerConnection)
         {
             otherNpc.Chat("test response");
         }
         else
         {
-            LlmManager.Instance.Chat("", conversationPrefix.Concat(conversation).ToList(), (dto) => otherNpc.Chat(dto.response), (err) => Debug.LogError(err));
+            LlmManager.Instance.Chat(npc.ModelID, conversationPrefix.Concat(conversation).ToList(), (dto) => otherNpc.Chat(dto.response), (err) => Debug.LogError(err));
         }
     }
 
@@ -212,7 +212,7 @@ It is {DayNightCycle.Instance.GetCurrentDay()} days after the murder of {GameMan
 
         Debug.Log($"{npc.Name}: Drawing conclusions...");
 
-        LlmManager.Instance.Chat("", messages, result =>
+        LlmManager.Instance.Chat(npc.ModelID, messages, result =>
         {
             callbackCalled = true;
             resp = result.response;
