@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class MiniGameManager
+public class MiniGameManager : MonoBehaviour
 {
     public MiniGameManager()
     {
@@ -11,8 +12,7 @@ public class MiniGameManager
 
     public void StartMiniGame()
     {
-        // TODO: Spawn all judges
-        var judges = new List<NPC>();
+        SpawnJudges();
 
         verdicts = new Dictionary<NPC, bool?>();
         foreach (var judge in judges)
@@ -21,6 +21,71 @@ public class MiniGameManager
             judge.SetCurrentDecision(new JudgeDecision(judge, false));
         }
         Judge();
+    }
+
+    private NPC SpawnJudge()
+    {
+        Vector3 npcPosition = new Vector3(
+            MapGenerator.Instance.transform.position.x - MapGenerator.Instance.mapWidth / 2 + Random.Range(0, MapGenerator.Instance.mapWidth),
+            0,
+            MapGenerator.Instance.transform.position.z - MapGenerator.Instance.mapLength / 2 + Random.Range(0, MapGenerator.Instance.mapLength)
+        );
+
+        int npcVariant = Random.Range(0, GameManager.Instance.npcPrefabs.Length);
+
+        GameObject newNpc = Instantiate(GameManager.Instance.npcPrefabs[npcVariant], npcPosition, Quaternion.identity);
+        SceneManager.MoveGameObjectToScene(newNpc, SceneManager.GetSceneByName("Game"));
+
+        var npcComponent = newNpc.GetComponent<NPC>();
+
+        IDecisionSystem system = new NullDecisionSystem();
+        npcComponent.Setup(system, "npc", new CharacterDTO { name = "Judge" });
+
+        return npcComponent;
+    }
+
+    private void SpawnJudges()
+    {
+        judges = new List<NPC>();
+
+        GameObject wallsRoot = GameObject.Find("WallsRoot");
+
+        Transform gates = null;
+
+        foreach (Transform child in wallsRoot.transform)
+        {
+            if (child.name == "GATE(Clone)")
+            {
+                gates = child;
+                break;
+            }
+        }
+        if (gates == null)
+        {
+            Debug.LogError("Nie znaleziono bramy (Gate(Clone))!");
+            //return;
+        }
+
+        // Znajdź Entrance w _minnor_gates_02(Clone)
+        Transform entrance = gates.Find("PlayerSpawner");
+        if (entrance == null)
+        {
+            Debug.LogError("Nie znaleziono PlayerSpawner!");
+            //return;
+        }
+
+        judges.Add(SpawnJudge());
+        judges.Add(SpawnJudge());
+        judges.Add(SpawnJudge());
+
+        for (int i = 0; i < judges.Count; i++)
+        {
+            var judge = judges[i];
+            judge.transform.position = entrance.position - new Vector3(-0.5f * i, 0, 0);
+            judge.transform.rotation = entrance.rotation;
+
+            Debug.Log($"pos {judge.transform.position}");
+        }
     }
 
     public void Judged(IChattable judge, bool verdict)
@@ -61,7 +126,14 @@ public class MiniGameManager
     // false -> not guilty
     private Dictionary<NPC, bool?> verdicts;
 
-    [SerializeField] private GameObject[] judgePrefabs;
+    private List<NPC> judges;
 
     public static MiniGameManager Instance;
+
+    [ConsoleCommand("minigame", "Start minigame")]
+    public static bool StartMiniGameCommand()
+    {
+        Instance.StartMiniGame();
+        return true;
+    }
 }
