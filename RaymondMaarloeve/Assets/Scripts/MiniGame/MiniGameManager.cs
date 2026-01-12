@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MiniGameManager : MonoBehaviour
 {
+    public string fullCrimeStory = "";
+
     public MiniGameManager()
     {
         Instance = this;
@@ -12,15 +14,96 @@ public class MiniGameManager : MonoBehaviour
 
     public void StartMiniGame()
     {
+        // 1. Zrespawnuj sędziów
         SpawnJudges();
 
+        var murderer = GameManager.Instance.npcs.Where(x => x.CharacterData.murderer).First();
+
+        fullCrimeStory = GameManager.Instance.generatedHistory.story + $"The murderer is {murderer.Name}";
+        Debug.Log(fullCrimeStory);
+
         verdicts = new Dictionary<NPC, bool?>();
-        foreach (var judge in judges)
+        currentJudgeIndex = 0;
+
+        // 2. Inicjalizacja sędziów z pełną historią
+        for (int i = 0; i < judges.Count; i++)
         {
+            var judge = judges[i];
             verdicts.Add(judge, null);
-            judge.SetCurrentDecision(new JudgeDecision(judge, false));
+
+            TrialStage stage = GetStageForIndex(i);
+
+            // Przekazujemy 'fullCrimeStory' zamiast pojedynczych faktów
+            judge.SetCurrentDecision(new JudgeDecision(judge, false, stage, fullCrimeStory));
         }
-        Judge();
+
+        // 3. Aktywacja pierwszego
+        ActivateCurrentJudge();
+    }
+
+    private TrialStage GetStageForIndex(int index)
+    {
+        if (index == 0) return TrialStage.WHO_KILLED;
+        if (index == 1) return TrialStage.WHY_KILLED;
+        return TrialStage.ANYTHING_ELSE;
+    }
+
+    public void Judged(IChattable judge, bool verdict)
+    {
+        verdicts[(NPC)judge] = verdict;
+        Debug.Log($"Judge {judge.Name} verdict registered: {(verdict ? "NOT CORRECT" : "CORRECT")}");
+
+        // Reset sędziego
+        var npcJudge = (NPC)judge;
+        TrialStage finishedStage = GetStageForIndex(currentJudgeIndex);
+        npcJudge.SetCurrentDecision(new JudgeDecision(npcJudge, false, finishedStage, fullCrimeStory));
+
+        // Następny
+        currentJudgeIndex++;
+
+        if (currentJudgeIndex >= judges.Count)
+        {
+            EndingSequence();
+        }
+        else
+        {
+            ActivateCurrentJudge();
+        }
+    }
+
+    private void ActivateCurrentJudge()
+    {
+        if (currentJudgeIndex < judges.Count)
+        {
+            var activeJudge = judges[currentJudgeIndex];
+            TrialStage stage = GetStageForIndex(currentJudgeIndex);
+
+            Debug.Log($"Activating Judge {currentJudgeIndex} for stage: {stage}");
+            activeJudge.SetCurrentDecision(new JudgeDecision(activeJudge, true, stage, fullCrimeStory));
+        }
+    }
+
+    private void EndingSequence()
+    {
+        var votedGuilty = verdicts.Values.Where(x => x.HasValue && x.Value).Count();
+        var resultMessage = $"Trial Finished. Guilty Votes: {votedGuilty}/{verdicts.Count}";
+
+        if (votedGuilty > 0.5f * verdicts.Count)
+        {
+            Debug.Log("FINAL RESULT: GUILTY");
+        }
+        else
+        {
+            Debug.Log("FINAL RESULT: NOT GUILTY");
+        }
+
+        resultMessage += $"\nFull story: {GameManager.Instance.generatedHistory.story}";
+
+        Debug.Log(resultMessage);
+
+        PlayerPrefs.SetString("GameResult", resultMessage);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene("EndScene");
     }
 
     private NPC SpawnJudge()
@@ -49,7 +132,6 @@ public class MiniGameManager : MonoBehaviour
         judges = new List<NPC>();
 
         GameObject wallsRoot = GameObject.Find("WallsRoot");
-
         Transform gates = null;
 
         foreach (Transform child in wallsRoot.transform)
@@ -60,73 +142,34 @@ public class MiniGameManager : MonoBehaviour
                 break;
             }
         }
+
         if (gates == null)
         {
             Debug.LogError("Nie znaleziono bramy (Gate(Clone))!");
-            //return;
         }
 
-        // Znajdź Entrance w _minnor_gates_02(Clone)
-        Transform entrance = gates.Find("PlayerSpawner");
-        if (entrance == null)
-        {
-            Debug.LogError("Nie znaleziono PlayerSpawner!");
-            //return;
-        }
+        Transform entrance = (gates != null) ? gates.Find("PlayerSpawner") : null;
 
         judges.Add(SpawnJudge());
         judges.Add(SpawnJudge());
         judges.Add(SpawnJudge());
 
-        for (int i = 0; i < judges.Count; i++)
+        if (entrance != null)
         {
-            var judge = judges[i];
-            judge.transform.position = entrance.position - new Vector3(-0.5f * i, 0, 0);
-            judge.transform.rotation = entrance.rotation;
-
-            Debug.Log($"pos {judge.transform.position}");
-        }
-    }
-
-    public void Judged(IChattable judge, bool verdict)
-    {
-        if (EveryoneJudged)
-        {
-            EndingSequence();
-            return;
-        }
-
-        ((NPC)judge).SetCurrentDecision(new JudgeDecision(judge, false));
-    }
-
-    private void Judge()
-    {
-        var judges = verdicts.Where(x => x.Value == null).Select(x => x.Key).ToList();
-        var selectedJudge = judges[Random.Range(0, judges.Count)];
-        selectedJudge.SetCurrentDecision(new JudgeDecision(selectedJudge, true));
-    }
-
-    private void EndingSequence()
-    {
-        var votedGuilty = verdicts.Values.Where(x => x.HasValue && x.Value).ToList().Count;
-        if (votedGuilty > 0.5f * verdicts.Count)
-        {
-            Debug.Log("Guilty");
-        }
-        else
-        {
-            Debug.Log("Not guilty");
+            for (int i = 0; i < judges.Count; i++)
+            {
+                var judge = judges[i];
+                judge.transform.position = entrance.position - new Vector3(-1.5f + (i * 1.5f), 0, 0);
+                judge.transform.rotation = entrance.rotation;
+            }
         }
     }
 
     private bool EveryoneJudged => !verdicts.Values.Any(x => x == null);
 
-    // null -> did not judge
-    // true -> guilty
-    // false -> not guilty
     private Dictionary<NPC, bool?> verdicts;
-
     private List<NPC> judges;
+    private int currentJudgeIndex = 0;
 
     public static MiniGameManager Instance;
 

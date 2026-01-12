@@ -56,7 +56,7 @@ public class MainMenuManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == settingsSceneName)
             LoadSettings();
-        else if (SceneManager.GetActiveScene().name == "EndScene" && resultText != null)
+        else if (SceneManager.GetActiveScene().name == "EndScene")
         {
             string result = PlayerPrefs.GetString("GameResult", "No result available");
             resultText.text = result;

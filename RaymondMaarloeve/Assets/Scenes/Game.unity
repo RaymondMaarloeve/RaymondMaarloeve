@@ -637,7 +637,6 @@ GameObject:
   - component: {fileID: 330165697}
   - component: {fileID: 330165696}
   - component: {fileID: 330165699}
-  - component: {fileID: 330165700}
   m_Layer: 5
   m_Name: _UI
   m_TagString: Untagged
@@ -746,19 +745,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &330165700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330165694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59256810d629be548bb0d1b562f00997, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  notesParent: {fileID: 1509793900}
 --- !u!1 &447810721
 GameObject:
   m_ObjectHideFlags: 0
@@ -2046,7 +2032,6 @@ GameObject:
   - component: {fileID: 1191064609}
   - component: {fileID: 1191064611}
   - component: {fileID: 1191064610}
-  - component: {fileID: 1191064612}
   m_Layer: 5
   m_Name: Minimap
   m_TagString: Untagged
@@ -2066,8 +2051,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2035828077}
-  - {fileID: 981547065}
+  - {fileID: 447810722}
   m_Father: {fileID: 330165695}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
@@ -2812,6 +2796,7 @@ GameObject:
   - component: {fileID: 1294622901}
   - component: {fileID: 1294622903}
   - component: {fileID: 1294622904}
+  - component: {fileID: 1294622905}
   m_Layer: 0
   m_Name: _GameManager
   m_TagString: Untagged
@@ -2880,8 +2865,8 @@ MonoBehaviour:
   uiGameObject: {fileID: 330165694}
   MinimapGameObject: {fileID: 1191064608}
   musicAudioSource: {fileID: 1294622903}
-  LlmServerApi: 
-  DontRandomizeSeed: 0
+  LlmServerApi: http://127.0.0.1:5000
+  DontRandomizeSeed: 1
   Seed: 42
   DontGenerateHistory: 1
   historyJSON: '{"story":"The villagers of Ashwood awoke to an eerie silence on the
@@ -2933,8 +2918,8 @@ MonoBehaviour:
     occurred. You were seen flirting with Silas earlier that day. You felt a sense
     of excitement and danger. You are trying to enjoy the moment before you die.
     You like Silas, but you dislike Godric''s ribald nature.","murderer":true,"dead":false}]}'
-  DisableServerConnection: 1
-  DisableDecisionMaking: 1
+  DisableServerConnection: 0
+  DisableDecisionMaking: 0
   SkipRelevance: 1
   SkipConslusions: 1
 --- !u!114 &1294622897
@@ -3193,7 +3178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c9fa2b6daf246d7a183057693259627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LogDebug: 0
+  MaxParallelRequests: 1
+  LogDebug: 1
 --- !u!82 &1294622903
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3204,7 +3190,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6c3879dbdce0c20e092ebf59554e5eb4, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 6c3879dbdce0c20e092ebf59554e5eb4, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -3306,6 +3292,19 @@ MonoBehaviour:
   notesParent: {fileID: 1509793900}
   inputNote: {fileID: 287470231}
   dropdown: {fileID: 983848157}
+--- !u!114 &1294622905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294622892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5119e44d3ae8013195361061c0372b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  judgePrefabs: []
 --- !u!1 &1321225839
 GameObject:
   m_ObjectHideFlags: 0
@@ -4980,7 +4979,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1191064609}
+  m_Father: {fileID: 447810722}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}

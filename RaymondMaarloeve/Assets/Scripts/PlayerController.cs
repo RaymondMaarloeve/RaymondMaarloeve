@@ -193,6 +193,12 @@ public class PlayerController : MonoBehaviour, IChattable
     /// </summary>
     public void FinishChatting()
     {
+        if (ChattingWith == null)
+        {
+            Debug.LogError("Player: Tried to finish chatting but currently not in chat");
+            return;
+        }
+
         characterMesh.enabled = true;
         GameManager.Instance.MinimapGameObject.SetActive(true);
         CameraFollow.Instance.SetTarget(transform, false);
