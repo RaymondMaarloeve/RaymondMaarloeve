@@ -61,6 +61,18 @@ public class GameManager : MonoBehaviour
 
         ApplySettings();
 
+        archetypes = new List<string>
+        {
+            "seductive",
+            "playful",
+            "delusional",
+            "guard",
+            "helpful man",
+            "riebald",
+            "priest",
+            "fallen noble"
+        };
+
         if (!DisableServerConnection)
         {
             Debug.Log("GameManager: Connecting to LLM Server");
